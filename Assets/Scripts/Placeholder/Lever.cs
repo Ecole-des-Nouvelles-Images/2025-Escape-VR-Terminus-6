@@ -1,12 +1,11 @@
-using TMPro;
 using UnityEngine;
+using UnityEngine.XR.Interaction.Toolkit;
 using UnityEngine.XR.Interaction.Toolkit.Interactables;
 
 public class Lever : MonoBehaviour {
     public float leverValue;
     [Header("Components")]
     [SerializeField] private HingeJoint _hingeJoint;
-    [SerializeField] private TMP_Text _leverValueText;
     [SerializeField] private XRGrabInteractable _xrGrabInteractable;
     
     [Header("Values")]
@@ -15,7 +14,26 @@ public class Lever : MonoBehaviour {
     
     private float _leverRotation, _trueLeverRotation;
     private float _min, _max, _positivemid, _negativemid;
+    private bool _isMovable;
 
+    public void Unlock() {
+        _isMovable = true;
+        Debug.Log("aaaaaaaa");
+    }
+
+    /*public void Lock() {
+        Debug.Log("bbbbbbbb");
+        if (_trueLeverRotation > _positivemid) {
+            transform.rotation = Quaternion.Euler(new Vector3(0f, 0f, 0f));
+            leverValue = 0f;
+        }
+        else if ((_trueLeverRotation + _leverMargin) >= _max) {
+            transform.rotation = Quaternion.Euler(new Vector3(_max, 0, 0));
+            leverValue = 1f;
+        }
+        else leverValue = 0f;
+    }*/
+    
     private void Start() {
         _min = _hingeJoint.limits.min;
         _max = _hingeJoint.limits.max;
@@ -24,23 +42,14 @@ public class Lever : MonoBehaviour {
     }
 
     void Update() {
-        _leverRotation = transform.rotation.eulerAngles.x;
-        _trueLeverRotation = _leverRotation;
-        
-        if (_leverRotation > 180)
-            _trueLeverRotation -= 360;
+        if (_isMovable) {
+            Debug.Log("move");
+            _leverRotation = transform.rotation.eulerAngles.x;
+            _trueLeverRotation = _leverRotation;
+            this.transform.rotation = Quaternion.Euler(new Vector3(_trueLeverRotation, 0, 0));
+        }
+        else if (!_isMovable) {
 
-        if (_trueLeverRotation > _positivemid) 
-            leverValue = 0.5f;
-        else if ((_trueLeverRotation + _leverMargin) >= _max)
-            leverValue = 1f;
-        else
-            leverValue = 0f;
-        
-        /*_leverRotationClamped = Mathf.Clamp(_leverRotationValue, _hingeJoint.limits.min, _hingeJoint.limits.max);
-        leverNorm = _leverRotationClamped / _hingeJoint.limits.max;*/
-        
-        _leverValueText.text = leverValue.ToString("#0.000");
-        this.transform.rotation = Quaternion.Euler(new Vector3(_trueLeverRotation, 0, 0));
+        }
     }
 }

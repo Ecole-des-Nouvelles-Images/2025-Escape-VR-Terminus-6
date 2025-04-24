@@ -1,9 +1,10 @@
+using System;
 using DG.Tweening;
 using UnityEngine;
 
 public class Tunnel : MonoBehaviour {
     [SerializeField] private Lever _lever;
-    [SerializeField] private Animator _tunnelAnimator;
+    public Animator _tunnelAnimator;
     [SerializeField] private float _speed;
     
     // Interval @ which the tunnel gets info from the lever to interpolate
@@ -11,8 +12,14 @@ public class Tunnel : MonoBehaviour {
 
     private float _currSpeed;
     private float _speedIntervalTime;
-    private float _spd_old, _spd_new, _spd_imm;
-    
+    private float _spd_old;
+    private float _spd_new;
+    private float _spd_imm;
+
+    private void Start() {
+        //if (_tunnelAnimator == null) _tunnelAnimator = GetComponent<Animator>();
+    }
+
     void Update() {
         //Always keep updating the var
         _speedIntervalTime += Time.deltaTime;
@@ -29,8 +36,6 @@ public class Tunnel : MonoBehaviour {
             DOTween.To(() => _spd_imm, x => _spd_imm = x, _spd_new, _speedGetInterval);
             _speedIntervalTime = 0;
         }
-        
-        transform.Translate(0, 0, _spd_imm * _speed * Time.deltaTime);
     }
 
     private void Interval() {
