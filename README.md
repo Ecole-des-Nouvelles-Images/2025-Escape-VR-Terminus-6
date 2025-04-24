@@ -1,5 +1,5 @@
 
-# [Project Name]
+# Terminus 6
 
 [A brief and engaging tagline or description of the game]
 
@@ -31,10 +31,10 @@ The development process included **[key phases, such as preproduction, productio
 
 ## Team
 This game was brought to life by **[Team Name or "a group of X developers/artists"]**:
-- **[Name 1]**: [Role and contributions]
-- **[Name 2]**: [Role and contributions]
-- **[Name 3]**: [Role and contributions]
-- **[Name 4]**: [Role and contributions]
+- **Bastien SANTÉ**: Product Owner, Dev
+- **Maxime SOUDAY**: Scrum Master, Game Art
+- **Mathis GANZ**: Game Art
+- **Vincent MÉNÉROUD**: Dev, Tech Art
 
 ![Team](https://github.com/Ecole-des-Nouvelles-Images/Unity-Template/blob/main/MetaData/team-photo.png)
 
