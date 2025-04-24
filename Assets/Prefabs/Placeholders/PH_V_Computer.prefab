@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 7202935212054228725}
   - component: {fileID: 6548454783330930533}
   m_Layer: 0
-  m_Name: Blocking Computer
+  m_Name: PH_M_Blocking Computer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -119,8 +119,9 @@ GameObject:
   - component: {fileID: 2662306065842609302}
   - component: {fileID: 6255855630997817950}
   - component: {fileID: 2039935045400817454}
+  - component: {fileID: 24266535737577303}
   m_Layer: 0
-  m_Name: CD_Lector
+  m_Name: PH_M_CD_Lector
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -240,6 +241,27 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Anchor: {fileID: 7045492428013454590}
   CdGhost: {fileID: 7650498759741335210}
+--- !u!95 &24266535737577303
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4588242741431489403}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: fc4f84bcc4852b546be49e9e41c14d73, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &7505031315679503168
 GameObject:
   m_ObjectHideFlags: 0
@@ -252,7 +274,7 @@ GameObject:
   - component: {fileID: 6398114802251504569}
   - component: {fileID: 6669857828253632724}
   m_Layer: 0
-  m_Name: TV_Screen (1)
+  m_Name: PH_M_TV_Screen
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -335,7 +357,7 @@ GameObject:
   - component: {fileID: 5605010521542759008}
   - component: {fileID: 7650498759741335210}
   m_Layer: 0
-  m_Name: CD_Ghost
+  m_Name: PH_M_CD_Ghost
   m_TagString: CD
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -430,7 +452,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8343809065839416019}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 1.7041562, y: -0.21510088, z: 1.8875303}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0

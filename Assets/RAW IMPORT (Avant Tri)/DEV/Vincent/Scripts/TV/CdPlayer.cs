@@ -22,12 +22,8 @@ public class CdPlayer : MonoBehaviour
         if (!other.CompareTag("CD")) return;
         if (other.GetComponent<XRGrabInteractable>().isSelected) { CdGhost.enabled = true; }
         else {
-            CdGhost.enabled = false;
             StartCoroutine(CDIn(other.gameObject));
-            other.GetComponent<Rigidbody>().isKinematic = true;
-            other.GetComponent<Rigidbody>().useGravity = false;
-            other.GetComponent<MeshRenderer>().enabled = false;
-            
+            //other.GetComponent<MeshRenderer>().enabled = false;
         }
     }
     private void Update() {
@@ -36,7 +32,14 @@ public class CdPlayer : MonoBehaviour
     private void EjectCd() { _cd.GetComponent<Rigidbody>().AddForce(new Vector3(0,0,15), ForceMode.Impulse); }
 
     private IEnumerator CDIn(GameObject cd) {
-        _cd.transform.position = Anchor.position;
+        cd.GetComponent<Collider>().enabled = false;
+        cd.GetComponent<Rigidbody>().useGravity = false;
+        cd.GetComponent<Rigidbody>().isKinematic = false;
+        cd.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
+        CdGhost.enabled = false;
+        cd.transform.parent = CdGhost.transform;
+        cd.transform.position = CdGhost.transform.position;
+        cd.transform.rotation = CdGhost.transform.rotation;
         _cd = cd;
         _cdIn = true;
         GetComponent<Animator>().SetTrigger("TriggerCdIn");

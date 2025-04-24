@@ -16,9 +16,9 @@ public class XRButton : MonoBehaviour {
 
     private int _currentMaterialId;
 
-    public Material CamMatA;
+    /*public Material CamMatA;
     public Material CamMatB;
-    public MeshRenderer TVScreen;
+    public MeshRenderer TVScreen;*/
 
     private bool _isPressed = false;
     private const float PressedScaleFactor = 0.75f;
@@ -74,10 +74,10 @@ public class XRButton : MonoBehaviour {
         _material.color = color;
     }
 
-    public void SwitchCams() {
+    /*public void SwitchCams() {
         _currentMaterialId = _currentMaterialId == 0 ? 1 : 0;
         TVScreen.material = _currentMaterialId == 0 ? CamMatB : CamMatA;
-    }
+    }*/
 
     private IEnumerator ButtonCooldown() {
         SetMaterialColor(CooldownColor);
