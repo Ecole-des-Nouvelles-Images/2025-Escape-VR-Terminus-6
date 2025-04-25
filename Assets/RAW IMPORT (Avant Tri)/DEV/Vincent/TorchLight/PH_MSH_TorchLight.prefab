@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4490460807198517333}
   - component: {fileID: 1852568352299506847}
   m_Layer: 0
-  m_Name: GodRay
+  m_Name: PH_MSH_LightRay
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -95,7 +95,7 @@ GameObject:
   - component: {fileID: 5929210328011857313}
   - component: {fileID: 1147385495287398162}
   m_Layer: 0
-  m_Name: Lamp_Lens
+  m_Name: PH_MSH_Lens
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -186,7 +186,7 @@ GameObject:
   - component: {fileID: 1633780902155447875}
   - component: {fileID: 5775131302937707846}
   m_Layer: 0
-  m_Name: PH_S_TorchLight
+  m_Name: PH_MSH_TorchLight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -419,13 +419,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ce8f2ca07f7a9a4f847be7045882bcf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lampLight: {fileID: 0}
-  lampMeshRenderer: {fileID: 0}
-  lightRayMesh: {fileID: 0}
-  lampMaterialOn: {fileID: 0}
-  lampMaterialOff: {fileID: 0}
-  leftTriggerAction: {fileID: 0}
-  rightTriggerAction: {fileID: 0}
+  lampLight: {fileID: 3706832035424434545}
+  lampMeshRenderer: {fileID: 1147385495287398162}
+  lightRayMesh: {fileID: 1852568352299506847}
+  lampMaterialOn: {fileID: 2100000, guid: 699c15ad106e3a841bf231d620956ea0, type: 2}
+  lampMaterialOff: {fileID: 2100000, guid: af0af930250a20943bb71032c1a18c20, type: 2}
+  leftTriggerAction: {fileID: -6395602842196007441, guid: c348712bda248c246b8c49b3db54643f, type: 3}
+  rightTriggerAction: {fileID: 3279264004350380116, guid: c348712bda248c246b8c49b3db54643f, type: 3}
 --- !u!114 &1633780902155447875
 MonoBehaviour:
   m_ObjectHideFlags: 0
