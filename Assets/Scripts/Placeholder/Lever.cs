@@ -13,43 +13,46 @@ public class Lever : MonoBehaviour {
     [SerializeField] private float _maxInteractionDistance;
     
     private float _leverRotation, _trueLeverRotation;
-    private float _min, _max, _positivemid, _negativemid;
+    private float _min, _max, _mid;
+    private float _lomid, _himid;
     private bool _isMovable;
 
     public void Unlock() {
         _isMovable = true;
-        Debug.Log("aaaaaaaa");
+        Debug.Log("Lever Unlocked");
     }
 
-    /*public void Lock() {
-        Debug.Log("bbbbbbbb");
-        if (_trueLeverRotation > _positivemid) {
-            transform.rotation = Quaternion.Euler(new Vector3(0f, 0f, 0f));
+    public void Lock() {
+        Debug.Log("Lever Locked");
+        _isMovable = false;
+        if (_leverRotation < _lomid) {
+            transform.rotation = Quaternion.Euler(new Vector3(_min, 0f, 0f));
             leverValue = 0f;
         }
-        else if ((_trueLeverRotation + _leverMargin) >= _max) {
-            transform.rotation = Quaternion.Euler(new Vector3(_max, 0, 0));
+        else if (_leverRotation > _lomid && _leverRotation < _himid) {
+            transform.rotation = Quaternion.Euler(new Vector3(_mid, 0f, 0f));
+            leverValue = 0.5f;
+        }
+        else if (_leverRotation > _himid || (_leverRotation + _leverMargin) >= _max) {
+            transform.rotation = Quaternion.Euler(new Vector3(_max, 0f, 0f));
             leverValue = 1f;
         }
-        else leverValue = 0f;
-    }*/
+        
+    }
     
     private void Start() {
         _min = _hingeJoint.limits.min;
         _max = _hingeJoint.limits.max;
-        _positivemid = _hingeJoint.limits.max / 2;
-        _negativemid = _hingeJoint.limits.min / 2;
+        _mid = _hingeJoint.limits.max / 2;
+        _lomid = _mid - _leverMargin;
+        _himid = _mid + _leverMargin;
     }
 
     void Update() {
         if (_isMovable) {
-            Debug.Log("move");
             _leverRotation = transform.rotation.eulerAngles.x;
-            _trueLeverRotation = _leverRotation;
-            this.transform.rotation = Quaternion.Euler(new Vector3(_trueLeverRotation, 0, 0));
-        }
-        else if (!_isMovable) {
-
+            
+            this.transform.rotation = Quaternion.Euler(new Vector3(_leverRotation, 0, 0));
         }
     }
 }

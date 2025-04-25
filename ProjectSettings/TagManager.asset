@@ -6,6 +6,10 @@ TagManager:
   tags:
   - Anchor
   - Hand
+  - RightHand
+  - LeftHand
+  - Enigma
+  - Train
   layers:
   - Default
   - TransparentFX
