@@ -1922,6 +1922,7 @@ MonoBehaviour:
   Exit:
     m_PersistentCalls:
       m_Calls: []
+  _tunnel: {fileID: 0}
   id: 0
   _enigma: {fileID: 260245387}
   _enigmaSolveIndicator: {fileID: 1548544629}
@@ -2014,8 +2015,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 150, y: 20, z: 50}
-  m_Center: {x: 0, y: 0, z: 2000}
+  m_Size: {x: 400, y: 20, z: 50}
+  m_Center: {x: 0, y: 0, z: 1995}
 --- !u!114 &1780256516
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2034,6 +2035,7 @@ MonoBehaviour:
   Exit:
     m_PersistentCalls:
       m_Calls: []
+  _tunnel: {fileID: 919132148103768978}
   id: 2
   _enigma: {fileID: 260245387}
   _enigmaSolveIndicator: {fileID: 1548544629}
@@ -2693,10 +2695,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b132c8ff81ee7a840ae71121f7e3794b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _lever: {fileID: 557982101}
+  AutoSlowdown:
+    m_PersistentCalls:
+      m_Calls: []
   _tunnelAnimator: {fileID: 919132148103768977}
+  ignoreLever: 0
+  _lever: {fileID: 0}
   _speed: 0.3
   _speedGetInterval: 5
+  _slowdownInterval: 2
 --- !u!33 &989744978998742943
 MeshFilter:
   m_ObjectHideFlags: 0

@@ -12,18 +12,17 @@ public class Lever : MonoBehaviour {
     [SerializeField] private float _leverMargin;
     [SerializeField] private float _maxInteractionDistance;
     
-    private float _leverRotation, _trueLeverRotation;
-    private float _min, _max, _mid;
-    private float _lomid, _himid;
-    private bool _isMovable;
+    [Header("Debug")]
+    private float _leverRotation;   //Self-explanatory
+    private float _min, _max, _mid; //Minium, maximum and middle rotation
+    private float _lomid, _himid;   //Values calculated from the middle for padding
+    private bool _isMovable;        //Is the lever locked? Not the same as ignoreLever
 
     public void Unlock() {
         _isMovable = true;
-        Debug.Log("Lever Unlocked");
     }
 
     public void Lock() {
-        Debug.Log("Lever Locked");
         _isMovable = false;
         if (_leverRotation < _lomid) {
             transform.rotation = Quaternion.Euler(new Vector3(_min, 0f, 0f));
@@ -51,7 +50,6 @@ public class Lever : MonoBehaviour {
     void Update() {
         if (_isMovable) {
             _leverRotation = transform.rotation.eulerAngles.x;
-            
             this.transform.rotation = Quaternion.Euler(new Vector3(_leverRotation, 0, 0));
         }
     }
