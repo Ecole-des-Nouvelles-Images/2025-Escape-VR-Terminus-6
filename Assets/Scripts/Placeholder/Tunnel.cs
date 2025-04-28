@@ -3,14 +3,15 @@ using UnityEngine;
 using UnityEngine.Events;
 
 public class Tunnel : MonoBehaviour {
-    [Header("Relations")]
-    public UnityEvent AutoSlowdown;
+    [Header("Essentials")]
+    public UnityEvent AutoSlowdown; 
     public Animator _tunnelAnimator;
     public bool ignoreLever;
     
     [SerializeField] private Lever _lever;
     [SerializeField] private float _speed;
     
+    [Header("Speed")]
     // Interval @ which the tunnel gets info from the lever to interpolate
     [SerializeField] private float _speedGetInterval;
     // Interval @ which the tunnel stops automatically upon entering stations
@@ -19,41 +20,41 @@ public class Tunnel : MonoBehaviour {
     [Header("Debug")]
     private float _currspd;     // Current speed
     private float _spdgtime;    // Interval in secs to "get" the current speed
-    private float _spd_old;     // Old speed value, start of interpolation
-    private float _spd_new;     // New speed value, end of interpolation
-    private float _spd_imm;     // Speed at the time of the get
+    private float _oldSpeed;     // Old speed value, start of interpolation
+    private float _newSpeed;     // New speed value, end of interpolation
+    private float _immSpeed;     // Speed at the time of the get
 
     private void Start()
     {
         _lever = FindObjectOfType<Lever>();
         AutoSlowdown.AddListener(Halt);
+        _lever.SpeedChange.AddListener(OnSpeedChange);
     }
 
     void Update() {
-        //Always keep updating the var
-        _spdgtime += Time.deltaTime;
-        _currspd = _lever.leverValue * _speed;
-        _tunnelAnimator.SetFloat("Speed", _spd_imm);
-        
-        //Every x seconds, capture the current speed and interpolate w/ new speed.
-        if (_spdgtime >= _speedGetInterval && ignoreLever == false) {
-            _spd_old = _spd_new;
-            _spd_new = _currspd;
-            _spd_imm = _spd_old;
-
-            DOTween.To(() => _spd_imm, x => _spd_imm = x, _spd_new, _speedGetInterval);
-            _spdgtime = 0;
-        }
+        //Always update the variable
+        _tunnelAnimator.SetFloat("Speed", _immSpeed);
     }
 
     private void Halt() {
         Debug.Log("<color=yellow>Halting</color>");
+        _lever.Reset();
         ignoreLever = true;
-        DOTween.To(() => _spd_imm, x => _spd_imm = x, 0, _slowdownInterval);
+        _oldSpeed = _newSpeed = 0;
+        DOTween.To(() => _immSpeed, x => _immSpeed = x, _newSpeed, _slowdownInterval);
     }
 
-    public void ResetInterval()
-    {
+    private void OnSpeedChange() {
+        Debug.Log("Speed changed");
+        _oldSpeed = _newSpeed;
+        _newSpeed = _currspd;
+        _immSpeed = _oldSpeed;
+        DOTween.KillAll();
+        DOTween.To(() => _immSpeed, x => _immSpeed = x, _newSpeed, _speedGetInterval);
+        _spdgtime = 0;
+    }
+
+    public void ResetInterval() {
         _spdgtime = _speedGetInterval;
     }
 }

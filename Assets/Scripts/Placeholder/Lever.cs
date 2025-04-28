@@ -1,10 +1,12 @@
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.XR.Interaction.Toolkit;
 using UnityEngine.XR.Interaction.Toolkit.Interactables;
 
 public class Lever : MonoBehaviour {
+    [Header("Essentials")]
     public float leverValue;
-    [Header("Components")]
+    public UnityEvent SpeedChange;
     [SerializeField] private HingeJoint _hingeJoint;
     [SerializeField] private XRGrabInteractable _xrGrabInteractable;
     
@@ -14,7 +16,7 @@ public class Lever : MonoBehaviour {
     
     [Header("Debug")]
     private float _leverRotation;   //Self-explanatory
-    private float _min, _max, _mid; //Minium, maximum and middle rotation
+    private float _min, _max, _mid; //Minimum, maximum and middle rotation
     private float _lomid, _himid;   //Values calculated from the middle for padding
     private bool _isMovable;        //Is the lever locked? Not the same as ignoreLever
 
@@ -36,7 +38,12 @@ public class Lever : MonoBehaviour {
             transform.rotation = Quaternion.Euler(new Vector3(_max, 0f, 0f));
             leverValue = 1f;
         }
-        
+        SpeedChange.Invoke();
+    }
+
+    public void Reset() {
+        transform.rotation = Quaternion.Euler(Vector3.zero);
+        leverValue = 0f;
     }
     
     private void Start() {

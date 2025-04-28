@@ -189,6 +189,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   leverValue: 1
+  SpeedChange:
+    m_PersistentCalls:
+      m_Calls: []
   _hingeJoint: {fileID: 548466073589862764}
   _xrGrabInteractable: {fileID: 4795410365180216319}
   _leverMargin: 8
