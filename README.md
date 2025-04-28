@@ -34,7 +34,7 @@ This game was brought to life by **[Team Name or "a group of X developers/artist
 - **Bastien SANTÉ**: Product Owner, Dev
 - **Maxime SOUDAY**: Scrum Master, Game Art
 - **Mathis GANZ**: Game Art
-- **Vincent MÉNÉROUD**: Dev, Tech Art
+- **Vincent MÉNÉROUD**: Dev
 
 ![Team](https://github.com/Ecole-des-Nouvelles-Images/Unity-Template/blob/main/MetaData/team-photo.png)
 
