@@ -2641,7 +2641,7 @@ MonoBehaviour:
   ignoreLever: 0
   _lever: {fileID: 0}
   _speed: 1.5
-  _speedGetInterval: 5
+  _speedGetInterval: 1
   _slowdownInterval: 2
 --- !u!33 &989744978998742943
 MeshFilter:

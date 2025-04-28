@@ -19,7 +19,6 @@ public class Tunnel : MonoBehaviour {
 
     [Header("Debug")]
     private float _currspd;     // Current speed
-    private float _spdgtime;    // Interval in secs to "get" the current speed
     private float _oldSpeed;     // Old speed value, start of interpolation
     private float _newSpeed;     // New speed value, end of interpolation
     private float _immSpeed;     // Speed at the time of the get
@@ -41,20 +40,20 @@ public class Tunnel : MonoBehaviour {
         _lever.Reset();
         ignoreLever = true;
         _oldSpeed = _newSpeed = 0;
-        DOTween.To(() => _immSpeed, x => _immSpeed = x, _newSpeed, _slowdownInterval);
+        TweenSpeed(_slowdownInterval);    
     }
 
     private void OnSpeedChange() {
-        Debug.Log("Speed changed");
+        if(ignoreLever) return;
+
         _oldSpeed = _newSpeed;
         _newSpeed = _currspd;
         _immSpeed = _oldSpeed;
-        DOTween.KillAll();
-        DOTween.To(() => _immSpeed, x => _immSpeed = x, _newSpeed, _speedGetInterval);
-        _spdgtime = 0;
+        TweenSpeed(_speedGetInterval);
+        Debug.Log("Speed changed");
     }
 
-    public void ResetInterval() {
-        _spdgtime = _speedGetInterval;
+    private void TweenSpeed(float time) {
+        DOTween.To(() => _immSpeed, x => _immSpeed = x, _newSpeed, time);
     }
 }

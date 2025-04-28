@@ -57,7 +57,6 @@ public class Station : MonoBehaviour
 
     private void OnEnigmaSolved() {
         //_speaker.Play();
-        _tunnel.ResetInterval();
         _tunnel.ignoreLever = false;
         Debug.Log("Lever reactivated");
         _enigma.Solve.RemoveListener(OnEnigmaSolved);
