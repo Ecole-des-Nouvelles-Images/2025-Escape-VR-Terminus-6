@@ -1,49 +1,66 @@
-using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.Video;
 using UnityEngine.XR.Interaction.Toolkit.Interactables;
 
-public class CdPlayer : MonoBehaviour
-{
-    public Transform Anchor;
+public class CdPlayer : MonoBehaviour {
+    [SerializeField] private Transform _anchor;
+    [SerializeField] private MeshRenderer _cdGhost;
+    private GameObject _currentCd;
+    private bool _isCdIn;
+
     private VideoPlayer _videoPlayer;
-    public MeshRenderer CdGhost;
-    private GameObject _cd;
-    private bool _cdIn;
 
     private void Awake() {
         _videoPlayer = GetComponent<VideoPlayer>();
-        CdGhost.enabled = false;
+        _cdGhost.enabled = false;
+    }
+
+    private void Update() {
+        if (_videoPlayer.time >= _videoPlayer.clip.length && _isCdIn) {
+            _isCdIn = false;
+            EjectCd();
+        }
     }
 
     private void OnTriggerStay(Collider other) {
         if (!other.CompareTag("CD")) return;
-        if (other.GetComponent<XRGrabInteractable>().isSelected) { CdGhost.enabled = true; }
-        else {
-            StartCoroutine(CDIn(other.gameObject));
-            //other.GetComponent<MeshRenderer>().enabled = false;
+
+        var grabInteractable = other.GetComponent<XRGrabInteractable>();
+        if (grabInteractable.isSelected)
+            _cdGhost.enabled = true;
+        else
+            StartCoroutine(InsertCd(other.gameObject));
+    }
+
+    private void EjectCd() {
+        if (_currentCd != null) {
+            var rb = _currentCd.GetComponent<Rigidbody>();
+            rb.AddForce(Vector3.forward * 15, ForceMode.Impulse);
         }
     }
-    private void Update() {
-        if (_videoPlayer.time >= _videoPlayer.clip.length && _cdIn) { _cdIn = false; EjectCd(); }
-    }
-    private void EjectCd() { _cd.GetComponent<Rigidbody>().AddForce(new Vector3(0,0,15), ForceMode.Impulse); }
 
-    private IEnumerator CDIn(GameObject cd) {
-        cd.GetComponent<Collider>().enabled = false;
-        cd.GetComponent<Rigidbody>().useGravity = false;
-        cd.GetComponent<Rigidbody>().isKinematic = false;
-        cd.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
-        CdGhost.enabled = false;
-        cd.transform.parent = CdGhost.transform;
-        cd.transform.position = CdGhost.transform.position;
-        cd.transform.rotation = CdGhost.transform.rotation;
-        _cd = cd;
-        _cdIn = true;
+    private IEnumerator InsertCd(GameObject cd) {
+        var rb = cd.GetComponent<Rigidbody>();
+        var collider = cd.GetComponent<Collider>();
+
+        collider.enabled = false;
+        rb.useGravity = false;
+        rb.isKinematic = true;
+        rb.constraints = RigidbodyConstraints.FreezeAll;
+
+        _cdGhost.enabled = false;
+        cd.transform.SetParent(_cdGhost.transform, false);
+        cd.transform.localPosition = Vector3.zero;
+        cd.transform.localRotation = Quaternion.identity;
+
+        _currentCd = cd;
+        _isCdIn = true;
+
         GetComponent<Animator>().SetTrigger("TriggerCdIn");
         yield return new WaitForSeconds(0.33f);
+
         _videoPlayer.Play();
     }
 }
