@@ -7,7 +7,7 @@ public class Station : MonoBehaviour
     public UnityEvent Enter;                    // Station entry event
     public UnityEvent Exit;                     // Station exit event
     public bool IsMirror;                       // Used only for Enigma 2, allows mirror train code to execute
-    [SerializeField] private Tunnel _tunnel;    // Tunnel (Tunnel wil prolly be a singleton
+    [SerializeField] private Tunnel _tunnel;    // Tunnel (Tunnel will prolly be a singleton
     [SerializeField] private int id;            // Station ID
     [SerializeField] private Enigma _enigma;    // Get events for the enigma, with minimal overhead
 
@@ -50,13 +50,15 @@ public class Station : MonoBehaviour
     }
 
     private void OnStationEnter() {
-        if (IsMirror) _fakeTrain.SetActive(true);
+        if (IsMirror) {
+            _fakeTrain.SetActive(true);
+        }
+        _speaker.Play();
         Debug.Log("Lever Deactivated");
         Enter.RemoveListener(OnStationEnter);
     }
 
     private void OnEnigmaSolved() {
-        //_speaker.Play();
         _tunnel.ignoreLever = false;
         Debug.Log("Lever reactivated");
         _enigma.Solve.RemoveListener(OnEnigmaSolved);

@@ -188,7 +188,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8b38031c6ff4e64d8d1d6362c7dea60, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  leverValue: 1
+  LeverValue: 0
   SpeedChange:
     m_PersistentCalls:
       m_Calls: []
@@ -424,8 +424,8 @@ HingeJoint:
   m_ExtendedLimits: 0
   m_UseAcceleration: 0
   m_Limits:
-    min: -50
-    max: 50
+    min: 0
+    max: 60
     bounciness: 0
     bounceMinVelocity: 0
     contactDistance: 0
@@ -447,5 +447,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65707415b7786a041bdae823c979c703, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GrabInteractable: {fileID: 0}
+  GrabInteractable: {fileID: 4795410365180216319}
   MaxDistance: 2
