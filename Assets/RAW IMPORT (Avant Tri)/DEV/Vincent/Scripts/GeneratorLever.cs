@@ -21,8 +21,8 @@ public class GeneratorLever : MonoBehaviour {
     }
     private void Update() {
         if (!_isMovable) return;
-        _leverRotation = transform.localRotation.eulerAngles.z;
-        transform.localRotation = Quaternion.Euler(0, 0, _leverRotation);
+        _leverRotation = transform.rotation.eulerAngles.x;
+        transform.localRotation = Quaternion.Euler(_leverRotation, 0, 0);
     }
     private void InitializeComponents() {
         _hingeJoint = GetComponent<HingeJoint>();
@@ -43,11 +43,11 @@ public class GeneratorLever : MonoBehaviour {
     private void LockLever() {
         _isMovable = false;
         if (_leverRotation < _mid) {
-            transform.localRotation = Quaternion.Euler(0, 0, _minRot);
+            transform.rotation = Quaternion.Euler(_minRot, 0,0 );
             LeverActivated = false;
         }
         else if (_leverRotation > _mid) {
-            transform.localRotation = Quaternion.Euler(0, 0, _maxRot);
+            transform.rotation = Quaternion.Euler(_maxRot, 0,0 );
             LeverActivated = true;
         }
     }
