@@ -21,9 +21,7 @@ public class GeneratorLever : MonoBehaviour {
     }
     private void Update() {
         _leverRotation = transform.localRotation.eulerAngles.z;
-        Debug.Log(transform.localRotation.eulerAngles.z);
         if (!_isMovable) return;
-        //transform.localRotation = Quaternion.Euler( 0, 0,_leverRotation);
     }
     private void InitializeComponents() {
         _hingeJoint = GetComponent<HingeJoint>();
