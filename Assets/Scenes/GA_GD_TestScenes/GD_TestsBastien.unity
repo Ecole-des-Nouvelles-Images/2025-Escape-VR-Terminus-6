@@ -3945,8 +3945,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 543450652646158634}
-  - component: {fileID: 919132148103768978}
   - component: {fileID: 919132148103768977}
+  - component: {fileID: 919132148103768978}
   m_Layer: 0
   m_Name: PH_Tunnel_Large
   m_TagString: Untagged
@@ -3984,7 +3984,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 919132148103768976}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b132c8ff81ee7a840ae71121f7e3794b, type: 3}
+  m_Script: {fileID: 11500000, guid: d4df37e4eb1d85d43b02f9738181a998, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   LoopStart:
@@ -3999,11 +3999,11 @@ MonoBehaviour:
   _tunnelAnimator: {fileID: 919132148103768977}
   ignoreLever: 0
   _loopEntryTrigger: {fileID: 1977954307}
-  _lever: {fileID: 0}
+  _lever: {fileID: 557982101}
   _speed: 1.5
   _acceleration: 1
-  _accelerationTime: 15
-  _slowdownTime: 4.5
+  _accelerationTime: 10
+  _slowdownTime: 5
 --- !u!33 &989744978998742943
 MeshFilter:
   m_ObjectHideFlags: 0

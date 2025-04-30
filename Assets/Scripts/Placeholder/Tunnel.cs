@@ -15,7 +15,7 @@ public class Tunnel : MonoBehaviour {
     [SerializeField] private LoopEntryTrigger _loopEntryTrigger;
     
     [Header("Movement")]
-    [SerializeField] private Lever _lever;
+    [SerializeField] private TrainLever _lever;
     [SerializeField] private float _speed;
     [SerializeField] private float _acceleration;
     
@@ -32,7 +32,7 @@ public class Tunnel : MonoBehaviour {
 
     private void Start()
     {
-        _lever = FindObjectOfType<Lever>();
+        _lever = FindObjectOfType<TrainLever>();
         _loopEntryTrigger = FindObjectOfType<LoopEntryTrigger>();
         _loopEntryTrigger.LoopEnter.AddListener(OnLoopEnter);
         AutoSlowdown.AddListener(Halt);
