@@ -20,18 +20,19 @@ public class GeneratorLever : MonoBehaviour {
         InitializeValues();
     }
     private void Update() {
+        _leverRotation = transform.localRotation.eulerAngles.z;
+        Debug.Log(transform.localRotation.eulerAngles.z);
         if (!_isMovable) return;
-        _leverRotation = transform.rotation.eulerAngles.x;
-        transform.localRotation = Quaternion.Euler(_leverRotation, 0, 0);
+        //transform.localRotation = Quaternion.Euler( 0, 0,_leverRotation);
     }
     private void InitializeComponents() {
         _hingeJoint = GetComponent<HingeJoint>();
         _grabInteractable = GetComponent<XRGrabInteractable>();
     }
     private void InitializeValues() {
-        _minRot = _hingeJoint.limits.max;
-        _maxRot = _hingeJoint.limits.min;
-        _mid = _hingeJoint.limits.min / 2;
+        _minRot = 250;
+        _maxRot = 360;
+        _mid = 270;
     }
     private void SetupEventListeners() {
         _grabInteractable.selectEntered.AddListener(OnGrab);
@@ -39,16 +40,17 @@ public class GeneratorLever : MonoBehaviour {
     }
     private void OnGrab(SelectEnterEventArgs args) { UnlockLever(); }
     private void OnRelease(SelectExitEventArgs args) { LockLever(); }
-    private void UnlockLever() { _isMovable = true; }
+    private void UnlockLever() { _isMovable = true; GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None; }
     private void LockLever() {
         _isMovable = false;
-        if (_leverRotation < _mid) {
-            transform.rotation = Quaternion.Euler(_minRot, 0,0 );
-            LeverActivated = false;
-        }
-        else if (_leverRotation > _mid) {
-            transform.rotation = Quaternion.Euler(_maxRot, 0,0 );
+        GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
+        if (_leverRotation is >= 200 and < 280) {
+            transform.localRotation = Quaternion.Euler(0, 0,_minRot );
             LeverActivated = true;
+        }
+        else {
+            transform.localRotation = Quaternion.Euler( 0,0 ,_maxRot);
+            LeverActivated = false;
         }
     }
 }
