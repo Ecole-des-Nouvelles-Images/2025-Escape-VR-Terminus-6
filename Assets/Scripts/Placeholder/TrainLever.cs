@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.XR.Interaction.Toolkit.Interactables;
 
-public class Lever : MonoBehaviour {
+public class TrainLever : MonoBehaviour {
     [Header("Essentials")]
     public float LeverValue;
     public UnityEvent SpeedChange;
