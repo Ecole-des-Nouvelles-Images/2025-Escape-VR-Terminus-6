@@ -5,19 +5,19 @@ public class CableAnchor : MonoBehaviour {
     public Material MatOn;
     public Material MatOff;
     public bool CablePlugged;
-    private bool _matOk;
+    public bool CableOk;
 
     private void Start() { InitializeComponents(); }
     private void InitializeComponents() {
         DeactivateGhost();
-        _matOk = false;
+        CableOk = false;
     }
     public void VerifyColor(Material cableMat) {
-        if (cableMat.name == MatOn.name)SetMaterialStatus(true, MatOn); 
+        if (cableMat.name == MatOn.name)SetMaterialStatus(true, MatOn);
         else if (!CablePlugged)SetMaterialStatus(false, MatOff);
     }
     private void SetMaterialStatus(bool status, Material material) {
-        _matOk = status;
+        CableOk = status;
         ColorIndicator.GetComponent<MeshRenderer>().material = material;
     }
     public void ColorOff() { SetMaterialStatus(false, MatOff); }

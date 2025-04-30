@@ -8,6 +8,7 @@ public class Fusible : MonoBehaviour {
     private XRGrabInteractable _grabInteractable;
     public MeshRenderer GhostMeshRenderer;
     private Rigidbody _rb;
+    public bool FusibleOk;
 
     private void Start() {
         GhostMeshRenderer.enabled = false;
@@ -82,5 +83,6 @@ public class Fusible : MonoBehaviour {
         _rb.useGravity = false;
         _rb.constraints = RigidbodyConstraints.FreezeAll;
         _rb.isKinematic = true;
+        FusibleOk = true;
     }
 }

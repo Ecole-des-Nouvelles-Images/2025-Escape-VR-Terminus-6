@@ -98,6 +98,10 @@ public class CableHead : MonoBehaviour {
         _tempCableAnchor.SetCablePlugged(true);
         ResetRigidbodyVelocities();
         AttachToAnchor();
+        if (_tempCableAnchor.CableOk) {
+            GetComponent<Collider>().enabled = false;
+            _tempCableAnchor.GetComponent<Collider>().enabled = false;
+        }
     }
 
     private void ResetRigidbodyVelocities() {

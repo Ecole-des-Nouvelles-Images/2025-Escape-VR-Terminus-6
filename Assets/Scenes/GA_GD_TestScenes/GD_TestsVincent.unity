@@ -5421,6 +5421,7 @@ MonoBehaviour:
   MatOn: {fileID: 2100000, guid: 41b8422255f9bcd4ea92e94cc84edbdf, type: 2}
   MatOff: {fileID: 2100000, guid: 31df69879b2ea4b4a857f335628a6df2, type: 2}
   CablePlugged: 0
+  CableOk: 0
 --- !u!54 &4075421496855231676
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -5651,6 +5652,7 @@ MonoBehaviour:
   MatOn: {fileID: 2100000, guid: 40e5e9e30e62647489cd96ec7cb43258, type: 2}
   MatOff: {fileID: 2100000, guid: a437d82f484725b4da5a6b4990a93cb8, type: 2}
   CablePlugged: 0
+  CableOk: 0
 --- !u!54 &4110903981639879683
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -5898,6 +5900,7 @@ MonoBehaviour:
   MatOn: {fileID: 2100000, guid: ed1a1e6ced9097d4fba44b3bde83d676, type: 2}
   MatOff: {fileID: 2100000, guid: 4239f6940461dd24ca9cb5902bd970b6, type: 2}
   CablePlugged: 0
+  CableOk: 0
 --- !u!54 &5038464657432900402
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -10720,6 +10723,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   GhostMeshRenderer: {fileID: 1740116642}
+  FusibleOk: 0
 --- !u!1 &8783102029953324193
 GameObject:
   m_ObjectHideFlags: 0
@@ -10831,6 +10835,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8557998850780588595}
+  - component: {fileID: 9047676883210743946}
+  - component: {fileID: 9047676883210743947}
   m_Layer: 0
   m_Name: PH_MSH_Generator_low
   m_TagString: Untagged
@@ -10838,6 +10844,40 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &9047676883210743946
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9047676883210743945}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80f9f154c1d0b2942b47a59acef6a662, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fontColor: {r: 1, g: 0.4612097, b: 0.18431371, a: 1}
+  backgroundColor: {r: 0.21960786, g: 0.21960786, b: 0.21960786, a: 1}
+--- !u!114 &9047676883210743947
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9047676883210743945}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 721babf3b0519234f97909fb9130dc87, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  LocalGeneratorLever: {fileID: 9067638782970345490}
+  LocalFusible: {fileID: 8754699014971172905}
+  LocalCableHead1: {fileID: 4110903981639879682}
+  LocalCableHead2: {fileID: 5038464657432900401}
+  LocalCableHead3: {fileID: 4075421496855231675}
+  LampMeshRenderer: {fileID: 2088470148044524840}
+  LampMatOn: {fileID: 2100000, guid: 62bab08abfc3aa046b2acea73244513b, type: 2}
+  LampMatOff: {fileID: 2100000, guid: 17893a5273d01e645bd1569a731660db, type: 2}
 --- !u!59 &9067638782970345489
 HingeJoint:
   m_ObjectHideFlags: 0
