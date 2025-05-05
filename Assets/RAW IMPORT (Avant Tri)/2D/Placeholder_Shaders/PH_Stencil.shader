@@ -12,18 +12,36 @@ Shader "Custom/Stencil"
             "Queue" = "Geometry"
             "RenderPipeline" = "UniversalPipeline"
         }
-        
+
         Pass
         {
+            Name "StencilWrite"
+            Tags { "LightMode" = "UniversalForward" }
+
             Blend Zero One
             ZWrite Off
-            
+
             Stencil
             {
                 Ref [_StencilID]
                 Comp Always
                 Pass Replace
                 Fail Keep
+            }
+        }
+
+        Pass
+        {
+            Name "StencilRender"
+            Tags { "LightMode" = "UniversalForward" }
+
+            Stencil
+            {
+                Ref [_StencilID]
+                Comp Equal
+                Pass Keep
+                Fail Keep
+                ZFail Keep
             }
         }
     }
