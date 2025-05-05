@@ -10,6 +10,7 @@ TagManager:
   - LeftHand
   - Enigma
   - Train
+  - CD
   layers:
   - Default
   - TransparentFX
@@ -19,6 +20,7 @@ TagManager:
   - UI
   - Ghost
   - 
+  - PortalExclude
   - 
   - 
   - 
@@ -40,8 +42,7 @@ TagManager:
   - 
   - 
   - 
-  - 
-  - 
+  - Stencil 0
   - Stencil 1
   m_SortingLayers:
   - name: Default
