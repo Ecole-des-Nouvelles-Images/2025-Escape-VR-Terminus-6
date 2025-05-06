@@ -17,6 +17,7 @@ public class NumberManager : MonoBehaviour
     
     void Start()
     {
+        currentCode = "___";
         UpdateCodeDisplay();
     }
 
