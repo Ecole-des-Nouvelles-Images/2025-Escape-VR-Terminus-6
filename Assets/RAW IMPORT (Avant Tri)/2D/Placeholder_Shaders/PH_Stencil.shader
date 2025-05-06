@@ -12,12 +12,14 @@ Shader "Custom/Stencil"
             "Queue" = "Geometry"
             "RenderPipeline" = "UniversalPipeline"
         }
+        Cull Off
 
         Pass
         {
             Name "StencilWrite"
             Tags { "LightMode" = "UniversalForward" }
-
+            Cull Off
+            
             Blend Zero One
             ZWrite Off
 
@@ -34,7 +36,8 @@ Shader "Custom/Stencil"
         {
             Name "StencilRender"
             Tags { "LightMode" = "UniversalForward" }
-
+            Cull Off
+            
             Stencil
             {
                 Ref [_StencilID]

@@ -11,6 +11,8 @@ TagManager:
   - Enigma
   - Train
   - CD
+  - Interactable
+  - Teleportable
   layers:
   - Default
   - TransparentFX

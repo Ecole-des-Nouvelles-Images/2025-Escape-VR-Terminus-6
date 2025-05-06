@@ -45,17 +45,24 @@ public class Station : MonoBehaviour
         if (other.CompareTag("Train")) {
             _playerTrain = other.gameObject;
             Enter.Invoke();
-            _tunnel.AutoSlowdown.Invoke();
+            _tunnel.Halt.Invoke();
         }
     }
 
     private void OnStationEnter() {
+        if (_enigma) {
+            _tunnel.ignoreLever = true;
+            _enigma.Begin.Invoke();
+            Debug.Log($"Starting Enigma {_enigma.id}");
+        } else { 
+            _tunnel.ignoreLever = false;
+            Debug.Log("No enigma here");  
+        }
+        
         if (IsMirror) {
             _fakeTrain.SetActive(true);
         }
         _speaker.Play();
-        Debug.Log("Lever Deactivated");
-        Enter.RemoveListener(OnStationEnter);
     }
 
     private void OnEnigmaSolved() {

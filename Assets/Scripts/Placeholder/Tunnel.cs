@@ -7,7 +7,7 @@ public class Tunnel : MonoBehaviour {
     [Header("Essentials")]
     public UnityEvent LoopStart;
     public UnityEvent LoopEnd;
-    public UnityEvent AutoSlowdown; 
+    [FormerlySerializedAs("AutoSlowdown")] public UnityEvent Halt; 
     public Animator _tunnelAnimator;
     public bool ignoreLever;
 
@@ -35,7 +35,8 @@ public class Tunnel : MonoBehaviour {
         _lever = FindObjectOfType<TrainLever>();
         _loopEntryTrigger = FindObjectOfType<LoopEntryTrigger>();
         _loopEntryTrigger.LoopEnter.AddListener(OnLoopEnter);
-        AutoSlowdown.AddListener(Halt);
+        
+        Halt.AddListener(OnHalt);
         _lever.SpeedChange.AddListener(OnSpeedChange);
     }
 
@@ -62,18 +63,23 @@ public class Tunnel : MonoBehaviour {
         _tunnelAnimator.SetFloat("Speed", _currentSpeed);
     }
 
-    private void Halt() {
+    private void OnHalt() {
         _targetSpeed = 0;
-        _isInSlowdown = true; ignoreLever = true;
+        _isInSlowdown = true;
         _lever.Reset();
     }
 
     private void OnSpeedChange() {
-        if(ignoreLever) return;
-        _targetSpeed = _currentSpeed;
+        if (ignoreLever) {
+            _lever.Reset();
+        }
+        else {
+            _targetSpeed = _currentSpeed;
+        }
     }
 
     private void OnLoopEnter() {
         _tunnelAnimator.SetBool("IsLooping", true);
     }
 }
+
