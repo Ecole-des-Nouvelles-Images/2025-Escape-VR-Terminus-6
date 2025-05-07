@@ -49,7 +49,7 @@ public class Portal : MonoBehaviour
             var offset = originTransform.position - transform.position;
             var offsetRotation = originTransform.transform.rotation.eulerAngles - transform.rotation.eulerAngles;
             originTransform.transform.position = destinationPortal.transform.position + offset;
-            originTransform.transform.eulerAngles = destinationPortal.transform.rotation.eulerAngles + offsetRotation;
+            //originTransform.transform.eulerAngles = destinationPortal.transform.rotation.eulerAngles + offsetRotation;
             StartCoroutine(MaskOtherPortal());
             _teleportedObjects.Add(other);
                 
