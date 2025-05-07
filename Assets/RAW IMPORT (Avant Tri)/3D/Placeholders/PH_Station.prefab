@@ -62,7 +62,6 @@ MeshRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 1141231893171109544, guid: a4f0655126b9ecb498c09978ab2300d3, type: 3}
-  - {fileID: 2100000, guid: 700c65b7333c6454e8120ea6bba1a710, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -146,7 +145,6 @@ MeshRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: 122a3e22c7294b74bad96d9e7f949bad, type: 2}
-  - {fileID: 2100000, guid: 700c65b7333c6454e8120ea6bba1a710, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -230,7 +228,6 @@ MeshRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: c1124dc971b10f14880a34256e84a663, type: 2}
-  - {fileID: 2100000, guid: 700c65b7333c6454e8120ea6bba1a710, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -314,7 +311,6 @@ MeshRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: 122a3e22c7294b74bad96d9e7f949bad, type: 2}
-  - {fileID: 2100000, guid: 700c65b7333c6454e8120ea6bba1a710, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -393,12 +389,9 @@ MonoBehaviour:
   Exit:
     m_PersistentCalls:
       m_Calls: []
-  IsMirror: 0
   _tunnel: {fileID: 0}
   id: 0
   _enigma: {fileID: 0}
-  _fakeTrain: {fileID: 0}
-  _rotationCenter: {fileID: 0}
   _speaker: {fileID: 5163956372835890684}
   _message: {fileID: 8300000, guid: e2c8b62b8eabd37449cff466bae0030d, type: 3}
 --- !u!65 &6768218058017899275
@@ -580,7 +573,6 @@ MeshRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: 6917fedf591a0104386de7edbabaf38b, type: 2}
-  - {fileID: 2100000, guid: 700c65b7333c6454e8120ea6bba1a710, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

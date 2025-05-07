@@ -10,9 +10,6 @@ TagManager:
   - LeftHand
   - Enigma
   - Train
-  - CD
-  - Interactable
-  - Teleportable
   layers:
   - Default
   - TransparentFX
@@ -22,7 +19,6 @@ TagManager:
   - UI
   - Ghost
   - 
-  - PortalExclude
   - 
   - 
   - 
@@ -44,8 +40,9 @@ TagManager:
   - 
   - 
   - 
-  - Stencil 0
-  - Stencil 1
+  - 
+  - 
+  - 
   m_SortingLayers:
   - name: Default
     uniqueID: 0
