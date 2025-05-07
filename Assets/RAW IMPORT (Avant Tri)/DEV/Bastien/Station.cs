@@ -44,8 +44,9 @@ public class Station : MonoBehaviour
     private void OnTriggerEnter(Collider other) {
         if (other.CompareTag("Train")) {
             _playerTrain = other.gameObject;
-            Enter.Invoke();
+            Debug.Log("trigger hit");
             _tunnel.Halt.Invoke();
+            Enter.Invoke();
         }
     }
 

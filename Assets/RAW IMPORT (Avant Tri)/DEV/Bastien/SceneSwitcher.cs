@@ -18,6 +18,6 @@ public class SceneSwitcher : MonoBehaviour
     }
 
     public void StartGame(){
-	SceneManager.LoadScene("GD_TestsBastien", LoadSceneMode.Single);
+	SceneManager.LoadScene("GameScene_Alt", LoadSceneMode.Single);
     }
 }
