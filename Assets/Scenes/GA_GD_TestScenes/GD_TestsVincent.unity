@@ -2448,6 +2448,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1429025803}
     m_Modifications:
+    - target: {fileID: 428002543318579008, guid: bdbedafa4a5e56346a6b62966f976657, type: 3}
+      propertyPath: MaxDistance
+      value: 0.4
+      objectReference: {fileID: 0}
     - target: {fileID: 1307065768458033417, guid: bdbedafa4a5e56346a6b62966f976657, type: 3}
       propertyPath: m_Name
       value: PH_V_CD_Blocking
@@ -4586,6 +4590,7 @@ GameObject:
   - component: {fileID: 6005056255164060436}
   - component: {fileID: 6005056255164060435}
   - component: {fileID: 6005056255164060440}
+  - component: {fileID: 6005056255164060441}
   m_Layer: 0
   m_Name: PH_MSH_Cable_Head1
   m_TagString: Untagged
@@ -5399,6 +5404,7 @@ GameObject:
   - component: {fileID: 7721375744223760396}
   - component: {fileID: 7721375744223760395}
   - component: {fileID: 7721375744223760400}
+  - component: {fileID: 7721375744223760401}
   m_Layer: 0
   m_Name: PH_MSH_Cable_Head2
   m_TagString: Untagged
@@ -6918,6 +6924,7 @@ GameObject:
   - component: {fileID: 6233415840236247933}
   - component: {fileID: 6233415840236247932}
   - component: {fileID: 6233415840236247937}
+  - component: {fileID: 6233415840236247938}
   m_Layer: 0
   m_Name: PH_MSH_Cable_Head3
   m_TagString: Untagged
@@ -6979,8 +6986,8 @@ GameObject:
   - component: {fileID: 5477012135628270344}
   - component: {fileID: 6230203388144602195}
   - component: {fileID: 6968882717697195346}
-  - component: {fileID: 6968882717697195348}
   - component: {fileID: 6968882717697195347}
+  - component: {fileID: 6968882717697195348}
   - component: {fileID: 6968882717697195349}
   m_Layer: 0
   m_Name: FreakyGrassHead_low
@@ -7267,7 +7274,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   GrabInteractable: {fileID: 6005056255164060436}
-  MaxDistance: 0.025
+  MaxDistance: 0.15
 --- !u!114 &6005056255164060436
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7348,13 +7355,13 @@ MonoBehaviour:
   m_SnapToColliderVolume: 1
   m_ReinitializeDynamicAttachEverySingleGrab: 1
   m_AttachEaseInTime: 0.15
-  m_MovementType: 2
+  m_MovementType: 0
   m_VelocityDamping: 1
   m_VelocityScale: 1
   m_AngularVelocityDamping: 1
   m_AngularVelocityScale: 1
   m_TrackPosition: 1
-  m_SmoothPosition: 0
+  m_SmoothPosition: 1
   m_SmoothPositionAmount: 8
   m_TightenPosition: 0.1
   m_TrackRotation: 0
@@ -7558,6 +7565,29 @@ MonoBehaviour:
   CableBase: {fileID: 1772225280700508170}
   ConnectedMaterial: {fileID: 2100000, guid: 41b8422255f9bcd4ea92e94cc84edbdf, type: 2}
   _isConnected: 0
+--- !u!114 &6005056255164060441
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2510239759633193850}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0a1302d0d134fa8a2a5b3bf4aec3c20, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_PermittedDisplacementAxes: 6
+  m_ConstrainedAxisDisplacementMode: 1
+  m_TwoHandedRotationMode: 1
+  m_AllowOneHandedScaling: 1
+  m_AllowTwoHandedScaling: 0
+  m_OneHandedScaleSpeed: 0.5
+  m_ThresholdMoveRatioForScale: 0.05
+  m_ClampScaling: 1
+  m_MinimumScaleRatio: 0.25
+  m_MaximumScaleRatio: 2
+  m_ScaleMultiplier: 0.25
 --- !u!33 &6101649208277472572
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -7768,7 +7798,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   GrabInteractable: {fileID: 0}
-  MaxDistance: 0.025
+  MaxDistance: 0.15
 --- !u!114 &6233415840236247933
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7849,13 +7879,13 @@ MonoBehaviour:
   m_SnapToColliderVolume: 1
   m_ReinitializeDynamicAttachEverySingleGrab: 1
   m_AttachEaseInTime: 0.15
-  m_MovementType: 2
+  m_MovementType: 0
   m_VelocityDamping: 1
   m_VelocityScale: 1
   m_AngularVelocityDamping: 1
   m_AngularVelocityScale: 1
   m_TrackPosition: 1
-  m_SmoothPosition: 0
+  m_SmoothPosition: 1
   m_SmoothPositionAmount: 8
   m_TightenPosition: 0.1
   m_TrackRotation: 0
@@ -8059,6 +8089,29 @@ MonoBehaviour:
   CableBase: {fileID: 1473916474647113691}
   ConnectedMaterial: {fileID: 2100000, guid: ed1a1e6ced9097d4fba44b3bde83d676, type: 2}
   _isConnected: 0
+--- !u!114 &6233415840236247938
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5499567731009987939}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0a1302d0d134fa8a2a5b3bf4aec3c20, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_PermittedDisplacementAxes: 6
+  m_ConstrainedAxisDisplacementMode: 1
+  m_TwoHandedRotationMode: 1
+  m_AllowOneHandedScaling: 1
+  m_AllowTwoHandedScaling: 0
+  m_OneHandedScaleSpeed: 0.5
+  m_ThresholdMoveRatioForScale: 0.05
+  m_ClampScaling: 1
+  m_MinimumScaleRatio: 0.25
+  m_MaximumScaleRatio: 2
+  m_ScaleMultiplier: 0.25
 --- !u!1 &6276327676165822430
 GameObject:
   m_ObjectHideFlags: 0
@@ -8764,7 +8817,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.05, y: 0.015, z: 0.2}
+  m_Size: {x: 0.07, y: 0.015, z: 0.2}
   m_Center: {x: 0, y: -0.025, z: 0}
 --- !u!65 &6968882717697195349
 BoxCollider:
@@ -8785,7 +8838,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.05, y: 0.11593845, z: 0.015000001}
+  m_Size: {x: 0.07, y: 0.11593845, z: 0.015000001}
   m_Center: {x: 0, y: 0.04, z: 0}
 --- !u!33 &7004501505934408635
 MeshFilter:
@@ -9587,7 +9640,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   GrabInteractable: {fileID: 0}
-  MaxDistance: 0.025
+  MaxDistance: 0.15
 --- !u!114 &7721375744223760396
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9668,13 +9721,13 @@ MonoBehaviour:
   m_SnapToColliderVolume: 1
   m_ReinitializeDynamicAttachEverySingleGrab: 1
   m_AttachEaseInTime: 0.15
-  m_MovementType: 2
+  m_MovementType: 0
   m_VelocityDamping: 1
   m_VelocityScale: 1
   m_AngularVelocityDamping: 1
   m_AngularVelocityScale: 1
   m_TrackPosition: 1
-  m_SmoothPosition: 0
+  m_SmoothPosition: 1
   m_SmoothPositionAmount: 8
   m_TightenPosition: 0.1
   m_TrackRotation: 0
@@ -9878,6 +9931,29 @@ MonoBehaviour:
   CableBase: {fileID: 3505763677770746105}
   ConnectedMaterial: {fileID: 2100000, guid: 40e5e9e30e62647489cd96ec7cb43258, type: 2}
   _isConnected: 0
+--- !u!114 &7721375744223760401
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3713616140534225210}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0a1302d0d134fa8a2a5b3bf4aec3c20, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_PermittedDisplacementAxes: 6
+  m_ConstrainedAxisDisplacementMode: 1
+  m_TwoHandedRotationMode: 1
+  m_AllowOneHandedScaling: 1
+  m_AllowTwoHandedScaling: 0
+  m_OneHandedScaleSpeed: 0.5
+  m_ThresholdMoveRatioForScale: 0.05
+  m_ClampScaling: 1
+  m_MinimumScaleRatio: 0.25
+  m_MaximumScaleRatio: 2
+  m_ScaleMultiplier: 0.25
 --- !u!1 &7754511669534584063
 GameObject:
   m_ObjectHideFlags: 0
@@ -11403,7 +11479,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   GrabInteractable: {fileID: 3919389732387503654}
-  MaxDistance: 0.3
+  MaxDistance: 0.5
 --- !u!114 &8718574396817924492
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12004,7 +12080,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   GrabInteractable: {fileID: 7687162549581659479}
-  MaxDistance: 0.2
+  MaxDistance: 0.45
 --- !u!114 &9209052124476787864
 MonoBehaviour:
   m_ObjectHideFlags: 0

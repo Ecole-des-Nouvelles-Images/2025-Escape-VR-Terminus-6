@@ -14,6 +14,7 @@ public class CableHead : MonoBehaviour {
     private Vector3 _originalPosition;
     private Rigidbody _rb;
     private CableAnchor _tempCableAnchor;
+    private bool _isReturning = false; // Nouveau booléen pour le retour progressif
 
     private void Start() {
         InitializeComponents();
@@ -23,6 +24,9 @@ public class CableHead : MonoBehaviour {
 
     private void Update() {
         UpdateLineRenderer();
+        if (_isReturning) {
+            ReturnToBase();
+        }
     }
 
     private void FixedUpdate() {
@@ -61,10 +65,12 @@ public class CableHead : MonoBehaviour {
         DetachFromAnchor();
         _tempCableAnchor?.ColorOff();
         _tempCableAnchor?.SetCablePlugged(false);
+        _isReturning = false; // Réinitialiser le retour lors de la saisie
     }
 
     private void DetachFromAnchor() {
         if (transform.parent == _anchorTransform) transform.parent = null;
+        _isConnected = false;
     }
 
     private void HandleAnchorStay(Collider other) {
@@ -80,12 +86,15 @@ public class CableHead : MonoBehaviour {
     }
 
     private void OnRelease(SelectExitEventArgs args) {
+        if (!_isConnected) {
+            _isReturning = true;
+        }
         if (_anchorDetected) HandleReleaseNearAnchor();
     }
 
     private void HandleReleaseNearAnchor() {
         if (_tempCableAnchor.CablePlugged) {
-            transform.position = _originalPosition;
+            ReturnToBase();
             _tempCableAnchor.CablePlugged = true;
         }
         else {
@@ -111,7 +120,17 @@ public class CableHead : MonoBehaviour {
 
     private void AttachToAnchor() {
         transform.position = _anchorTransform.position;
+        _isConnected = true;
     }
-    
-    
+
+    private void ReturnToBase() {
+        // Interpolation vers la position de base
+        if (_isConnected) return; 
+        transform.position = Vector3.Lerp(transform.position, _originalPosition, Time.deltaTime * 4f);
+
+        // Vérifier si la position est proche de la position de base pour arrêter le retour
+        if (Vector3.Distance(transform.position, _originalPosition) < 0.01f) {
+            _isReturning = false;
+        }
+    }
 }
