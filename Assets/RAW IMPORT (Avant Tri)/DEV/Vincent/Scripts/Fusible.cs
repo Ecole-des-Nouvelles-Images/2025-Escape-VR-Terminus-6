@@ -55,7 +55,7 @@ public class Fusible : MonoBehaviour {
 
     private void HandleAnchorExit(Collider other) {
         _anchorDetected = false;
-        other.GetComponent<CableAnchor>().DeactivateGhost();
+        GhostMeshRenderer.enabled = false;
     }
 
     private void OnRelease(SelectExitEventArgs args) {
