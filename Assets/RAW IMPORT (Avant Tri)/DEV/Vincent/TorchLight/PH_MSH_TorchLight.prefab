@@ -175,7 +175,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1737770598839340257}
-  - component: {fileID: 1340272369223875483}
   - component: {fileID: 7320754758513823222}
   - component: {fileID: 5866887054305780055}
   - component: {fileID: 5559895495604668123}
@@ -187,7 +186,7 @@ GameObject:
   - component: {fileID: 5775131302937707846}
   m_Layer: 0
   m_Name: PH_MSH_TorchLight
-  m_TagString: Untagged
+  m_TagString: Interactable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -209,20 +208,6 @@ Transform:
   - {fileID: 720164470918129648}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1340272369223875483
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2080284857654492171}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 80f9f154c1d0b2942b47a59acef6a662, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  fontColor: {r: 0.43867922, g: 1, b: 0.6830915, a: 1}
-  backgroundColor: {r: 0.21960786, g: 0.21960786, b: 0.21960786, a: 1}
 --- !u!33 &7320754758513823222
 MeshFilter:
   m_ObjectHideFlags: 0

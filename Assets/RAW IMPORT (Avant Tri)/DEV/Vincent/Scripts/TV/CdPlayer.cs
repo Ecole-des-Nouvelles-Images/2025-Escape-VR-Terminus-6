@@ -54,6 +54,7 @@ public class CdPlayer : MonoBehaviour {
         cd.transform.SetParent(_cdGhost.transform, false);
         cd.transform.localPosition = Vector3.zero;
         cd.transform.localRotation = Quaternion.identity;
+        cd.transform.localScale = Vector3.one;
 
         _currentCd = cd;
         _isCdIn = true;
