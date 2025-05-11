@@ -13,13 +13,18 @@ public class CabinEnvironment : MonoBehaviour
     void Start()
     {
         _portal.SetActive(false);
-        _enigma.Solve.AddListener(OnEnigmaSolve);
+        SetupEventListeners();
     }
 
     // Update is called once per frame
     void Update()
     {
         
+    }
+
+    private void SetupEventListeners()
+    {
+        _enigma.Solve.AddListener(OnEnigmaSolve);
     }
 
     private void OnEnigmaSolve()
