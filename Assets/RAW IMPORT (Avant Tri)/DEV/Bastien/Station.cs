@@ -1,3 +1,5 @@
+using System;
+using JetBrains.Annotations;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -6,10 +8,12 @@ public class Station : MonoBehaviour
     [Header("Essentials")]
     public UnityEvent Enter;                    // Station entry event
     public UnityEvent Exit;                     // Station exit event
+    public UnityEvent Load;
     public bool IsMirror;                       // Used only for Enigma 2, allows mirror train code to execute
     [SerializeField] private Tunnel _tunnel;    // Tunnel (Tunnel will prolly be a singleton
     [SerializeField] private int id;            // Station ID
     [SerializeField] private Enigma _currentEnigma;// Get events for the enigma, with minimal overhead
+    [SerializeField, CanBeNull] private GameObject _culledContent;
 
     [Header("Mirror Illusion -- use only for Enigma 2")]
     [SerializeField] private GameObject _fakeTrain;     // Object for the mirror train
@@ -25,6 +29,8 @@ public class Station : MonoBehaviour
     
     private void Start() {
         if(IsMirror) _fakeTrain.SetActive(false);
+        _culledContent = GetComponentInChildren<CullableContent>().gameObject;
+        _culledContent.SetActive(false);
         _speaker = GetComponent<AudioSource>();
         _speaker.clip = _message;
     }
@@ -38,7 +44,9 @@ public class Station : MonoBehaviour
     }
     
     private void OnTriggerEnter(Collider other) {
-        if (other.CompareTag("Train")) {
+        if (other.CompareTag("Train"))
+        {
+            _culledContent.SetActive(true);
             _tunnel.Halt.Invoke();
             Enter.Invoke();
             
