@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,24 +10,16 @@ public class GameManager : MonoBehaviour
     [Header("Enigma Management & tracking")]
     [SerializeField] private List<Enigma> _enigmas;
 
-    private int currentEnigma = 0;
+    [SerializeField] private int currentEnigma = 0;
+    [SerializeField] private int currentEnigmaBackup = 0;
     
     private void Start() {
-        SetupEventListeners();
         currentEnigma = 0;
     }
-    
-    private UnityAction OnEnigmaSolved(Enigma e)
-    {
-        if (e.isSolved) return null;
-        
-        e.Solve.RemoveListener(() => OnEnigmaSolved(e));
-        return () => currentEnigma = _enigmas.IndexOf(e);
-    }
 
-    private void SetupEventListeners() {
-        foreach (Enigma e in _enigmas) {
-            e.Solve.AddListener(OnEnigmaSolved(e));
-        }
+    public void VerifyEnigma(Enigma enigma) {
+        currentEnigmaBackup = enigma.Id;
+        currentEnigma = currentEnigmaBackup; //were cooked
+        enigma.Solved = true;
     }
 }
