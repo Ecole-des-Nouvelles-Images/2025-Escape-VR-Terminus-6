@@ -74,8 +74,8 @@ public class Portal : MonoBehaviour
 
     private IEnumerator MaskOtherPortal()
     {
-        destinationPortal.GetComponent<MeshRenderer>().enabled = false;
+        destinationPortal.GetComponentInParent<MeshRenderer>().enabled = false;
         yield return new WaitForSeconds(0.05f);
-        destinationPortal.GetComponent<MeshRenderer>().enabled = true;
+        destinationPortal.GetComponentInParent<MeshRenderer>().enabled = true;
     }
 }

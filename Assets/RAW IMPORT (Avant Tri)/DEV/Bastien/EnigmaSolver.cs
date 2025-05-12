@@ -14,8 +14,6 @@ public class EnigmaSolver : MonoBehaviour {
     }
 
     private void SolveEnigma() {
-        Debug.Log("Enigma solved!");
-        _enigma.isSolved = true;
         _enigma.Solve.RemoveListener(SolveEnigma);
     }
 }
