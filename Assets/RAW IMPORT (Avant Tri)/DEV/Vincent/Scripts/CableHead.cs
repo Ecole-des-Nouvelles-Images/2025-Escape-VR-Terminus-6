@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.XR.Interaction.Toolkit;
 using UnityEngine.XR.Interaction.Toolkit.Interactables;
 
@@ -15,11 +16,24 @@ public class CableHead : MonoBehaviour {
     private Rigidbody _rb;
     private CableAnchor _tempCableAnchor;
     private bool _isReturning = false; // Nouveau booléen pour le retour progressif
-
+    public bool CableHeadUnlocked;
     private void Start() {
         InitializeComponents();
         SetupEventListeners();
         _originalPosition = transform.position;
+        LockHead();
+    }
+
+    public void LockHead() {
+        CableHeadUnlocked = false;
+        if (_grabInteractable != null) {
+            _grabInteractable.enabled = CableHeadUnlocked;
+        }
+    }
+
+    public void UnlockHead() {
+        CableHeadUnlocked = true;
+        _grabInteractable.enabled = CableHeadUnlocked;
     }
 
     private void Update() {

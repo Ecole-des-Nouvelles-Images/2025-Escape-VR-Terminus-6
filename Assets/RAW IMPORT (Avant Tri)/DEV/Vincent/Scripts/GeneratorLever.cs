@@ -26,6 +26,15 @@ public class GeneratorLever : MonoBehaviour
         InitializeComponents();
         SetupEventListeners();
         InitializeValues();
+        LockLeverGenerator();
+    }
+
+    public void LockLeverGenerator() {
+        _grabInteractable.enabled = false;
+    }
+
+    public void UnlockLeverGenerator() {
+        _grabInteractable.enabled = true;
     }
 
     private void Update()
