@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,5 +9,14 @@ public class Enigma : MonoBehaviour {
     public UnityEvent Solve;
     public UnityEvent Begin;
     public bool isSolved;
-    public int id;
+    
+    private void Start()
+    {
+       this.Solve.AddListener(OnSolve); 
+    }
+
+    private void OnSolve()
+    {
+        this.isSolved = true;
+    }
 }

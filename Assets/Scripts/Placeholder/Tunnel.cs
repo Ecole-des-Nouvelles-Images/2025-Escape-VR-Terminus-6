@@ -7,8 +7,8 @@ public class Tunnel : MonoBehaviour {
     [Header("Essentials")]
     public UnityEvent LoopStart;
     public UnityEvent LoopEnd;
-    [FormerlySerializedAs("AutoSlowdown")] public UnityEvent Halt; 
-    public Animator _tunnelAnimator;
+    public UnityEvent Halt; 
+    public Animator tunnelAnimator;
     public bool ignoreLever;
 
     [Header("Looping")]
@@ -20,10 +20,8 @@ public class Tunnel : MonoBehaviour {
     [SerializeField] private float _acceleration;
     
     [Header("Speed")]
-    // Interval @ which the tunnel gets info from the lever to interpolate
     [SerializeField] private float _accelerationTime;
-    // Interval @ which the tunnel stops automatically upon entering stations
-    [FormerlySerializedAs("_slowdownInterval"),SerializeField] private float _slowdownTime;
+    [SerializeField] private float _slowdownTime;
 
     [Header("Debug")]
     private bool _isInSlowdown;
@@ -32,12 +30,10 @@ public class Tunnel : MonoBehaviour {
 
     private void Start()
     {
+        tunnelAnimator = GetComponent<Animator>();
         _lever = FindObjectOfType<TrainLever>();
         _loopEntryTrigger = FindObjectOfType<LoopEntryTrigger>();
-        _loopEntryTrigger.LoopEnter.AddListener(OnLoopEnter);
-        
-        Halt.AddListener(OnHalt);
-        _lever.SpeedChange.AddListener(OnSpeedChange);
+        SetupEventListeners();
     }
 
     void Update() {
@@ -60,7 +56,7 @@ public class Tunnel : MonoBehaviour {
                 _currentSpeed -= _acceleration * Time.deltaTime / _accelerationTime;
             } 
         } 
-        _tunnelAnimator.SetFloat("Speed", _currentSpeed);
+        tunnelAnimator.SetFloat("Speed", _currentSpeed);
     }
 
     private void OnHalt() {
@@ -70,16 +66,18 @@ public class Tunnel : MonoBehaviour {
     }
 
     private void OnSpeedChange() {
-        if (ignoreLever) {
-            _lever.Reset();
-        }
-        else {
-            _targetSpeed = _currentSpeed;
-        }
+        if (ignoreLever) _lever.Reset();
+        else _targetSpeed = _currentSpeed;
     }
 
     private void OnLoopEnter() {
-        _tunnelAnimator.SetBool("IsLooping", true);
+        tunnelAnimator.SetBool("IsLooping", true);
+    }
+
+    private void SetupEventListeners() {
+        _loopEntryTrigger.LoopEnter.AddListener(OnLoopEnter);
+        Halt.AddListener(OnHalt);
+        _lever.SpeedChange.AddListener(OnSpeedChange);
     }
 }
 
