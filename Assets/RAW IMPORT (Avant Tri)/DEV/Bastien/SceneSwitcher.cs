@@ -18,6 +18,6 @@ public class SceneSwitcher : MonoBehaviour
     }
 
     public void StartGame(){
-	SceneManager.LoadScene("GameScene_Alt", LoadSceneMode.Single);
+	SceneManager.LoadScene("GameScene_Alt_Vincent", LoadSceneMode.Single);
     }
 }
