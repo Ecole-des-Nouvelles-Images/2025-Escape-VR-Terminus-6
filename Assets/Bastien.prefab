@@ -2178,9 +2178,12 @@ MonoBehaviour:
   Halt:
     m_PersistentCalls:
       m_Calls: []
-  _tunnelAnimator: {fileID: 2051104976078384719}
+  tunnelAnimator: {fileID: 0}
   ignoreLever: 0
   _loopEntryTrigger: {fileID: 3371919237156477553}
+  _segment: {fileID: 0}
+  _segmentRotationStep: 0
+  _totalSegmentCount: 0
   _lever: {fileID: 9000248389407857839}
   _speed: 1.5
   _acceleration: 1
@@ -2874,7 +2877,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   isSolved: 0
-  id: 2
+  Solved: 0
+  Id: 0
 --- !u!1 &6508869733708603967
 GameObject:
   m_ObjectHideFlags: 0
@@ -3472,7 +3476,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   isSolved: 0
-  id: 0
+  Solved: 0
+  Id: 0
 --- !u!1 &8772341146796978443
 GameObject:
   m_ObjectHideFlags: 0
@@ -3524,7 +3529,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   isSolved: 0
-  id: 0
+  Solved: 0
+  Id: 0
 --- !u!1 &8783721840375156588
 GameObject:
   m_ObjectHideFlags: 0
