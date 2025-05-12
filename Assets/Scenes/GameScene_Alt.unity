@@ -173,7 +173,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   isSolved: 0
-  id: 1
+  Solved: 0
+  Id: 1
 --- !u!1 &286240623
 GameObject:
   m_ObjectHideFlags: 0
@@ -239,6 +240,8 @@ MonoBehaviour:
   - {fileID: 8147900575027338186}
   - {fileID: 539548968586632696}
   - {fileID: 3473953898559272009}
+  currentEnigma: 0
+  currentEnigmaBackup: 0
 --- !u!4 &292402748
 Transform:
   m_ObjectHideFlags: 0
@@ -1271,7 +1274,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   isSolved: 0
-  id: 3
+  Solved: 0
+  Id: 3
 --- !u!54 &555705612094251266
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -6932,7 +6936,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   isSolved: 0
-  id: 4
+  Solved: 0
+  Id: 4
 --- !u!114 &3474406177505575550
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14529,7 +14534,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   isSolved: 0
-  id: 2
+  Solved: 0
+  Id: 2
 --- !u!1 &8158798461706519434
 GameObject:
   m_ObjectHideFlags: 0
