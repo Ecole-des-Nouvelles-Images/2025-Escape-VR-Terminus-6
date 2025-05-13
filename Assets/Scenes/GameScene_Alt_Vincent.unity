@@ -1060,7 +1060,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   isSolved: 0
-  id: 0
+  Solved: 0
+  Id: 0
 --- !u!54 &555705612094251266
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -6664,7 +6665,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   isSolved: 0
-  id: 0
+  Solved: 0
+  Id: 0
 --- !u!114 &3474406177505575550
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6723,6 +6725,7 @@ MonoBehaviour:
   _mid: 0
   _minRot: 0
   _maxRot: 0
+  _enigma: {fileID: 0}
 --- !u!65 &3503936273376228306
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -7232,6 +7235,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   codeDisplay: {fileID: 7735190626609964504}
+  _enigma: {fileID: 0}
   codeDatabase: {fileID: 11400000, guid: 26b48ecc0b9ed9147962f7965265756e, type: 2}
 --- !u!23 &4066624060028294511
 MeshRenderer:
@@ -11940,9 +11944,13 @@ MonoBehaviour:
   Halt:
     m_PersistentCalls:
       m_Calls: []
-  _tunnelAnimator: {fileID: 3178973326706732772}
+  tunnelAnimator: {fileID: 0}
   ignoreLever: 0
   _loopEntryTrigger: {fileID: 2206887857392409306}
+  _segment: {fileID: 0}
+  _container: {fileID: 0}
+  _segmentRotationStep: 0
+  _totalSegmentCount: 0
   _lever: {fileID: 5624113091519271455}
   _speed: 1.5
   _acceleration: 1
@@ -13941,7 +13949,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   isSolved: 0
-  id: 0
+  Solved: 0
+  Id: 0
 --- !u!1 &8158798461706519434
 GameObject:
   m_ObjectHideFlags: 0
