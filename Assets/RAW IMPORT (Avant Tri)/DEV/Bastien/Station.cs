@@ -12,8 +12,11 @@ public class Station : MonoBehaviour
     public bool IsMirror;                       // Used only for Enigma 2, allows mirror train code to execute
     [SerializeField] private Tunnel _tunnel;    // Tunnel (Tunnel will prolly be a singleton
     [SerializeField] private int id;            // Station ID
+     [SerializeField, CanBeNull] private GameObject _culledContent;
+     
+    [Header("Enigmas")]
     [SerializeField] private Enigma _currentEnigma;// Get events for the enigma, with minimal overhead
-    [SerializeField, CanBeNull] private GameObject _culledContent;
+    [SerializeField] private bool _changeEnigmaOnExit;
 
     [Header("Mirror Illusion -- use only for Enigma 2")]
     [SerializeField] private GameObject _fakeTrain;     // Object for the mirror train
@@ -28,6 +31,8 @@ public class Station : MonoBehaviour
     private Vector3 _symVector;
     
     private void Start() {
+        _currentEnigma = GameManager.Instance.AssignEnigma();
+        
         if(IsMirror) _fakeTrain.SetActive(false);
         _culledContent = GetComponentInChildren<CullableContent>().gameObject;
         _culledContent.SetActive(false);
@@ -46,6 +51,7 @@ public class Station : MonoBehaviour
     private void OnTriggerEnter(Collider other) {
         if (other.CompareTag("Train"))
         {
+            _currentEnigma = GameManager.Instance.AssignEnigma();
             _culledContent.SetActive(true);
             _tunnel.Halt.Invoke();
             Enter.Invoke();
@@ -65,6 +71,10 @@ public class Station : MonoBehaviour
             }
             _speaker.Play();
         }
+    }
+
+    private void OnTriggerExit(Collider other) {
+        Exit.Invoke();
     }
 
     private void OnEnigmaSolved() {

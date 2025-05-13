@@ -16,6 +16,7 @@ public class Tunnel : MonoBehaviour {
 
     [Header("Generation")]
     [SerializeField] private GameObject _segment;
+    [SerializeField] private GameObject _container;
     [SerializeField] private float _segmentRotationStep;
     [SerializeField] private int _totalSegmentCount;
     
@@ -93,12 +94,13 @@ public class Tunnel : MonoBehaviour {
         GameObject _sgo;
         float _yInstanceRotation = 0;
         
-        for (int i = 0; i <= _totalSegmentCount; i++) {
-            if (i == 0 || i == 127 || i == 96){
+        for (int i = 0; i < _totalSegmentCount; i++) {
+            if (i == 0 || i == 96){
                 Debug.Log($"Cannot create tunnel segment {i}, station here.");
             } else {
-                _sgo = Instantiate(_segment, this.transform);
+                _sgo = Instantiate(_segment, _container.transform);
                 _sgo.transform.rotation = Quaternion.Euler(0, _yInstanceRotation, 0);
+                _sgo.GetComponent<Segment>().id = i;
             }
 
             _yInstanceRotation += _segmentRotationStep;

@@ -2182,6 +2182,7 @@ MonoBehaviour:
   ignoreLever: 0
   _loopEntryTrigger: {fileID: 3371919237156477553}
   _segment: {fileID: 0}
+  _container: {fileID: 0}
   _segmentRotationStep: 0
   _totalSegmentCount: 0
   _lever: {fileID: 9000248389407857839}

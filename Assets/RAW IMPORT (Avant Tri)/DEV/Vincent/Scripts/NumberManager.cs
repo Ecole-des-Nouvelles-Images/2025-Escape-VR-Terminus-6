@@ -9,6 +9,8 @@ public class NumberManager : MonoBehaviour
     private string currentCode = "___";
     private int currentIndex = 0;
 
+    [SerializeField] private Enigma _enigma;
+
     public CodeObjectDatabase codeDatabase;
     //public bool RadioLocked;
     //public MeshRenderer LockIndicator;
@@ -79,6 +81,7 @@ public class NumberManager : MonoBehaviour
             GameObject obj = GameObject.Find(pair.objectName);
             if (obj != null) {
                 if (pair.code == currentCode) {
+                    _enigma.Solve.Invoke();
                     if (obj.GetComponent<AudioCode>()) { obj.GetComponent<AudioCode>().ActivateCode(currentCode); } 
                 }
             }
