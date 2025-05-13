@@ -16,4 +16,8 @@ public class EnigmaSolver : MonoBehaviour {
     private void SolveEnigma() {
         _enigma.Solve.RemoveListener(SolveEnigma);
     }
+
+    public void TriggerSolveEvent() {
+        _enigma.Solve.Invoke();
+    }
 }
