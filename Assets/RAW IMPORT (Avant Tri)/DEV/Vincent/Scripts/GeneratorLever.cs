@@ -12,10 +12,13 @@ public class GeneratorLever : MonoBehaviour
     [SerializeField] private HingeJoint _hingeJoint;
     [SerializeField] private XRGrabInteractable _grabInteractable;
 
-    [Header("Rotations Values")]
+    [Header("Rotation Values")]
     [SerializeField] private float _leverRotation;
     [SerializeField] private float _mid;
     [SerializeField] private float _minRot, _maxRot;
+
+    [Header("Temporary Enigma Solve")]
+    [SerializeField] private Enigma _enigma;
 
     private Quaternion _targetRotation;
     private float _interpolationDuration = 1.5f; // Durée de l'interpolation en secondes
@@ -55,6 +58,7 @@ public class GeneratorLever : MonoBehaviour
                 if (_targetRotation == Quaternion.Euler(0, 0, _minRot))
                 {
                     LeverActivated = true;
+                    _enigma.Solve.Invoke();
                 }
                 else if (_targetRotation == Quaternion.Euler(0, 0, _maxRot))
                 {
