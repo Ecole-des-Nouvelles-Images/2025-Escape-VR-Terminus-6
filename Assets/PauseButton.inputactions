@@ -1,0 +1,34 @@
+{
+    "name": "PauseButton",
+    "maps": [
+        {
+            "name": "PauseButton",
+            "id": "73c947ed-693c-4cc9-bc4a-7218ac5b81f8",
+            "actions": [
+                {
+                    "name": "MenuButton",
+                    "type": "Button",
+                    "id": "9293bb84-5245-43da-959b-88bb5996e0f1",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "5e52deab-2e38-4f4a-bc49-0a1014caf522",
+                    "path": "<XRController>{LeftHand}/menuButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "MenuButton",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}
