@@ -5,19 +5,12 @@ using UnityEngine.SceneManagement;
 
 public class SceneSwitcher : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     public void StartGame(){
-	SceneManager.LoadScene("GameScene_Alt_Bastien", LoadSceneMode.Single);
+	SceneManager.LoadScene("GameScene_Alt_Vincent", LoadSceneMode.Single);
+    }
+
+    public void StartTransitionAnimation()
+    {
+        GetComponent<Animator>().SetTrigger("StartTransition");
     }
 }
