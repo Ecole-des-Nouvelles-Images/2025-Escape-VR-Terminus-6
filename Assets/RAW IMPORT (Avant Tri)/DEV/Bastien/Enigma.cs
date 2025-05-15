@@ -8,7 +8,6 @@ using UnityEngine.Serialization;
 public class Enigma : MonoBehaviour { 
     public UnityEvent Solve;
     public UnityEvent Begin;
-    public bool isSolved;
     public bool Solved;
     public int Id;
     
@@ -19,7 +18,7 @@ public class Enigma : MonoBehaviour {
 
     private void OnSolve()
     {
-        this.isSolved = true;
+        this.Solved = true;
         SolveValidation();
     }
 

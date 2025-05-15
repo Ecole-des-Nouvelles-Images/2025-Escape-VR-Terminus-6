@@ -24,10 +24,10 @@ public class CabinEnvironment : MonoBehaviour
 
     private void SetupEventListeners()
     {
-        _enigma.Solve.AddListener(OnEnigmaSolve);
+        _enigma.Solve.AddListener(OnEnigmaSolved);
     }
 
-    private void OnEnigmaSolve()
+    private void OnEnigmaSolved()
     {
         _back.SetActive(false);
         _portal.SetActive(true);
