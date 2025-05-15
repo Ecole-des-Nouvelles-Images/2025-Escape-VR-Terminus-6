@@ -23,24 +23,6 @@ public class NumberManager : MonoBehaviour
         UpdateCodeDisplay();
     }
 
-    /*private void Update()
-    {
-        if (RadioLocked)
-        {
-            if (LockIndicator.material != LockOnMaterial)
-            {
-                LockIndicator.material = LockOnMaterial;
-            }
-        }
-        else
-        {
-            if (LockIndicator.material != LockOffMaterial)
-            {
-                LockIndicator.material = LockOffMaterial;
-            }
-        }
-    }*/
-
     public void AddNumber(int number)
     {
         if (currentIndex < 3)

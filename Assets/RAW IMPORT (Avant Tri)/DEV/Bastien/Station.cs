@@ -12,11 +12,12 @@ public class Station : MonoBehaviour
     public bool IsMirror;                       // Used only for Enigma 2, allows mirror train code to execute
     [SerializeField] private Tunnel _tunnel;    // Tunnel (Tunnel will prolly be a singleton
     [SerializeField] private int id;            // Station ID
-     [SerializeField, CanBeNull] private GameObject _culledContent;
+    [SerializeField, CanBeNull] private GameObject _culledContent;
      
     [Header("Enigmas")]
     [SerializeField] private Enigma _currentEnigma;// Get events for the enigma, with minimal overhead
     [SerializeField] private bool _changeEnigmaOnExit;
+    [SerializeField, CanBeNull] private GeneratorManager _generatorManager;
 
     [Header("Mirror Illusion -- use only for Enigma 2")]
     [SerializeField] private GameObject _fakeTrain;     // Object for the mirror train
@@ -25,6 +26,7 @@ public class Station : MonoBehaviour
     [Header("Audio & Immersion")]
     [SerializeField] private AudioSource _speaker;      // Audio source
     [SerializeField] private AudioClip _message;        // Voice line when entering the station
+    
 
     [Header("Debug")]
     private GameObject _playerTrain;
@@ -60,6 +62,9 @@ public class Station : MonoBehaviour
                 _currentEnigma.Solve.AddListener(OnEnigmaSolved);
                 _currentEnigma.Begin.Invoke();
                 _tunnel.ignoreLever = true;
+                if (GameManager.Instance.currentEnigma == 1) {
+                    _generatorManager.SwitchLock();
+                }
             } else { 
                 _tunnel.ignoreLever = false;
                 Debug.Log("No enigma here, you can continue");  

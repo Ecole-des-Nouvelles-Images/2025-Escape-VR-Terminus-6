@@ -8,12 +8,16 @@ public class EnigmaSolver : MonoBehaviour {
     }
     
     private void OnTriggerEnter(Collider other) {
-        if (other.CompareTag("Enigma") && (_enigma.isSolved == false)) {
+        if (other.CompareTag("Enigma") && (_enigma.Solved == false)) {
             _enigma.Solve.Invoke();
         }
     }
 
     private void SolveEnigma() {
         _enigma.Solve.RemoveListener(SolveEnigma);
+    }
+
+    public void TriggerSolveEvent() {
+        _enigma.Solve.Invoke();
     }
 }
