@@ -2483,6 +2483,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b509a96eeb0dcaee6b594e39c04bb34e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PortalCrossed:
+    m_PersistentCalls:
+      m_Calls: []
   _back: {fileID: 3131777297879771182}
   _portal: {fileID: 3863008357920249807}
   _enigma: {fileID: 26723441693340898}
@@ -2877,7 +2880,6 @@ MonoBehaviour:
   Begin:
     m_PersistentCalls:
       m_Calls: []
-  isSolved: 0
   Solved: 0
   Id: 0
 --- !u!1 &6508869733708603967
@@ -3476,7 +3478,6 @@ MonoBehaviour:
   Begin:
     m_PersistentCalls:
       m_Calls: []
-  isSolved: 0
   Solved: 0
   Id: 0
 --- !u!1 &8772341146796978443
@@ -3529,7 +3530,6 @@ MonoBehaviour:
   Begin:
     m_PersistentCalls:
       m_Calls: []
-  isSolved: 0
   Solved: 0
   Id: 0
 --- !u!1 &8783721840375156588
