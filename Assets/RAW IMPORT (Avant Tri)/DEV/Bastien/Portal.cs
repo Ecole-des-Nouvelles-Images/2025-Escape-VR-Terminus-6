@@ -3,9 +3,11 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.XR.CoreUtils;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Portal : MonoBehaviour
 {
+    public UnityEvent CabinSwitch;
     [SerializeField] private Portal destinationPortal;
     [SerializeField] private string playerTag = "Player";
     [SerializeField] private bool isActive = true;
@@ -13,12 +15,15 @@ public class Portal : MonoBehaviour
     private bool _isHidden;
     private HashSet<Collider> _teleportedObjects = new HashSet<Collider>();
 
+    
     public event Action<Collider> OnTriggerEntered;
     public event Action<Collider> OnTriggerExited;
 
     private void OnTriggerEnter(Collider other)
     {
-        OnTriggerEntered?.Invoke(other);
+        if (other.CompareTag("MainCamera")) {
+           OnTriggerEntered?.Invoke(other); 
+        }
     }
         
     private void OnTriggerExit(Collider other)
