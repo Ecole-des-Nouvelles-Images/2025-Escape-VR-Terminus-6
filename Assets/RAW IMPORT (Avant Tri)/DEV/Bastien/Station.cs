@@ -12,7 +12,7 @@ public class Station : MonoBehaviour
     public bool IsMirror;                       // Used only for Enigma 2, allows mirror train code to execute
     [SerializeField] private Tunnel _tunnel;    // Tunnel (Tunnel will prolly be a singleton
     [SerializeField] private int id;            // Station ID
-    [SerializeField, CanBeNull] private GameObject _culledContent;
+
      
     [Header("Enigmas")]
     [SerializeField] private Enigma _currentEnigma;// Get events for the enigma, with minimal overhead
@@ -33,11 +33,7 @@ public class Station : MonoBehaviour
     private Vector3 _symVector;
     
     private void Start() {
-        _currentEnigma = GameManager.Instance.AssignEnigma();
-        
         if(IsMirror) _fakeTrain.SetActive(false);
-        _culledContent = GetComponentInChildren<CullableContent>().gameObject;
-        _culledContent.SetActive(false);
         _speaker = GetComponent<AudioSource>();
         _speaker.clip = _message;
     }
@@ -54,7 +50,6 @@ public class Station : MonoBehaviour
         if (other.CompareTag("Train"))
         {
             _currentEnigma = GameManager.Instance.AssignEnigma();
-            _culledContent.SetActive(true);
             _tunnel.Halt.Invoke();
             Enter.Invoke();
             
@@ -62,9 +57,8 @@ public class Station : MonoBehaviour
                 _currentEnigma.Solve.AddListener(OnEnigmaSolved);
                 _currentEnigma.Begin.Invoke();
                 _tunnel.ignoreLever = true;
-                if (GameManager.Instance.currentEnigma == 1) {
-                    _generatorManager.SwitchLock();
-                }
+                _generatorManager.SwitchLock();
+                //_generatorManager.SwitchLock(); // Done twice, because wtf
             } else { 
                 _tunnel.ignoreLever = false;
                 Debug.Log("No enigma here, you can continue");  
@@ -84,7 +78,7 @@ public class Station : MonoBehaviour
 
     private void OnEnigmaSolved() {
         _tunnel.ignoreLever = false;
-        Debug.Log("Lever reactivated");
+        Debug.Log("Lever reactivated after enigma");
         _currentEnigma.Solve.RemoveListener(OnEnigmaSolved);
     }
 }

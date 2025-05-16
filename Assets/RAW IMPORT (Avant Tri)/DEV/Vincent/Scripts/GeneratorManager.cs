@@ -26,10 +26,11 @@ public class GeneratorManager : MonoBehaviour
 
     private void Awake() {
         _animator = GetComponent<Animator>();
+        _locked = false;
     }
 
     private void Start() {
-        SwitchLock();
+        //SwitchLock();
     }
 
     private void Update()

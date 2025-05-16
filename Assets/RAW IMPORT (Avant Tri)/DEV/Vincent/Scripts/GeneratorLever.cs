@@ -59,6 +59,7 @@ public class GeneratorLever : MonoBehaviour
                 {
                     LeverActivated = true;
                     _enigma.Solve.Invoke();
+                    GameManager.Instance.VerifyEnigma(_enigma);
                 }
                 else if (_targetRotation == Quaternion.Euler(0, 0, _maxRot))
                 {
@@ -113,6 +114,7 @@ public class GeneratorLever : MonoBehaviour
         if (_leverRotation >= 200 && _leverRotation < 280)
         {
             _targetRotation = Quaternion.Euler(0, 0, _minRot);
+            //GameManager.Instance.VerifyEnigma(_enigma);
         }
         else
         {
