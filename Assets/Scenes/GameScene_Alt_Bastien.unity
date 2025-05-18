@@ -173,7 +173,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   Solved: 0
-  Id: 1
+  Id: 0
 --- !u!1 &286240623
 GameObject:
   m_ObjectHideFlags: 0
@@ -784,7 +784,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   Solved: 0
-  Id: 3
+  Id: 2
 --- !u!4 &723275782649616365
 Transform:
   m_ObjectHideFlags: 0
@@ -2480,7 +2480,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   Solved: 0
-  Id: 4
+  Id: 3
 --- !u!114 &3474406177505575550
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3376,7 +3376,7 @@ PrefabInstance:
     - target: {fileID: 1805711953704890297, guid: 8fce3d8f090c24c4a97aad76d8d6177d, type: 3}
       propertyPath: _currentEnigma
       value: 
-      objectReference: {fileID: 8147900575027338186}
+      objectReference: {fileID: 0}
     - target: {fileID: 1805711953704890297, guid: 8fce3d8f090c24c4a97aad76d8d6177d, type: 3}
       propertyPath: _generatorManager
       value: 
@@ -4474,7 +4474,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   Solved: 0
-  Id: 2
+  Id: 1
 --- !u!4 &8310052843265105470
 Transform:
   m_ObjectHideFlags: 0

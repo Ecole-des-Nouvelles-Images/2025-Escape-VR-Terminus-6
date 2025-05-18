@@ -11,35 +11,33 @@ public class GameManager : MonoBehaviour {
     public static GameManager Instance => instance;
     
     private void Awake() {
-            if (instance != null && instance != this) {
-                Destroy(this.gameObject);
-                return;
-            } else {
-                instance = this;
-            }
-            DontDestroyOnLoad(this.gameObject);
-        }
+        if (instance != null && instance != this) {
+            Destroy(this.gameObject);
+            return; 
+        } else { instance = this; }
+        DontDestroyOnLoad(this.gameObject);
+    }
     
     
     [Header("Enigma Management & tracking")]
     [SerializeField] private List<Enigma> _enigmas;
 
     public int currentEnigma = 0;
-    [SerializeField] private int currentEnigmaBackup = 0;
+    // [SerializeField] private int currentEnigmaBackup = 0;
 
     
     private void Start() {
         currentEnigma = 0;
     }
 
-    public void VerifyEnigma(Enigma enigma) {
-        currentEnigmaBackup = enigma.Id;
-        currentEnigma = currentEnigmaBackup; //were cooked
-        enigma.Solved = true;
+    public void VerifyEnigma(Enigma enigma)
+    {
+        currentEnigma++;
+        Debug.Log("Increasing Enigma by 1");
     }
 
     public Enigma AssignEnigma() {
-        Debug.Log($"Enigma {currentEnigma + 1} assigned");
+        Debug.Log($"Enigma {currentEnigma} assigned");
         return _enigmas[currentEnigma];
     }
 }
