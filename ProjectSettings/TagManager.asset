@@ -50,3 +50,6 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: FirstPlan
+    uniqueID: 1289417335
+    locked: 0
