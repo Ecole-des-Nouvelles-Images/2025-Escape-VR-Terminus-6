@@ -13,6 +13,7 @@ public class Station : MonoBehaviour
     [SerializeField] private Tunnel _tunnel;    // Tunnel (Tunnel will prolly be a singleton
     [SerializeField] private int id;            // Station ID
 
+    
      
     [Header("Enigmas")]
     [SerializeField] private Enigma _currentEnigma;// Get events for the enigma, with minimal overhead
@@ -24,6 +25,7 @@ public class Station : MonoBehaviour
     [SerializeField] private GameObject _rotationCenter;// Used to calculate rotational symmetry
     
     [Header("Audio & Immersion")]
+    [SerializeField] private Bipper _cabinBipper;
     [SerializeField] private AudioSource _speaker;      // Audio source
     [SerializeField] private AudioClip _message;        // Voice line when entering the station
     
@@ -69,6 +71,9 @@ public class Station : MonoBehaviour
                 _fakeTrain.SetActive(true);
             }
             _speaker.Play();
+
+            _cabinBipper.ChangeBool();
+
         }
     }
 

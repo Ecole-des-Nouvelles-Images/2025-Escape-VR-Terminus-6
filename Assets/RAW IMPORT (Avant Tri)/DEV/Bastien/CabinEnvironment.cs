@@ -18,12 +18,6 @@ public class CabinEnvironment : MonoBehaviour {
         SetupEventListeners();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     private void SetupEventListeners() {
         _enigma.Solve.AddListener(OnEnigmaSolved);
         //PortalCrossed.AddListener(ChangeCabin);

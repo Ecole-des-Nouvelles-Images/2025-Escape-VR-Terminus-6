@@ -83,7 +83,7 @@ public class Tunnel : MonoBehaviour {
     private void OnLoopEnter() {
         tunnelAnimator.SetBool("IsLooping", true);
     }
-
+    
     private void SetupEventListeners() {
         _loopEntryTrigger.LoopEnter.AddListener(OnLoopEnter);
         Halt.AddListener(OnHalt);
