@@ -102,7 +102,6 @@ public class Tunnel : MonoBehaviour {
                 _sgo.transform.rotation = Quaternion.Euler(0, _yInstanceRotation, 0);
                 _sgo.GetComponent<Segment>().id = i;
             }
-
             _yInstanceRotation += _segmentRotationStep;
 
         }
