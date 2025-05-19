@@ -14,8 +14,6 @@ public class Portal : MonoBehaviour
     
     private bool _isHidden;
     private HashSet<Collider> _teleportedObjects = new HashSet<Collider>();
-
-    
     public event Action<Collider> OnTriggerEntered;
     public event Action<Collider> OnTriggerExited;
 

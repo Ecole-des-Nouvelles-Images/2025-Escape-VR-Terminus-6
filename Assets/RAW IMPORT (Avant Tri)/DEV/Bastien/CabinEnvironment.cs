@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -6,6 +7,10 @@ public class CabinEnvironment : MonoBehaviour {
     [SerializeField] private GameObject _portal;
     [SerializeField] private Enigma _enigma;
 
+    [SerializeField] private List<GameObject> _firstCabinContents;
+    [SerializeField] private List<GameObject> _secondCabinContents;
+    
+    
     [SerializeField] private Portal _switchPortal;
     // Start is called before the first frame update
     void Start() {
@@ -31,8 +36,12 @@ public class CabinEnvironment : MonoBehaviour {
     }
 
     private void ChangeCabin() {
-        for (int i = 0; i < this.transform.childCount; i++) {
-            transform.GetChild(i).gameObject.SetActive(false);
+        foreach (GameObject goa in _firstCabinContents) {
+            goa.SetActive(false);
+        }
+
+        foreach (GameObject gob in _secondCabinContents) {
+            gob.SetActive(true);
         }
     }
     
