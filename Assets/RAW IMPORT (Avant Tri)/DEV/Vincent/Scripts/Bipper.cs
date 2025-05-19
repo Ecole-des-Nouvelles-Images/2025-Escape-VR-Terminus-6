@@ -9,40 +9,58 @@ public class Bipper : MonoBehaviour
     public Material matRed;
     public bool anomalyDetected;
 
-    private Enigma _enigma;
+    public Enigma enigma;
 
+    private float _shortTimer = 0.3f;
+    private float _medTimer = 0.3f;
+    private float _longTimer = 0.5f;
+
+    private float _blinkt;
+    private bool _colorSelect;
+    private bool _isBlinking;
+    
     public UnityEvent Anomaly;
-    private void FixedUpdate()
+    private void Update()
     {
-        //GetComponent<Renderer>().material = anomalyDetected ? matRed : matGreen;
+        if (_isBlinking) {
+            ChillBlinking();
+        } else {
+            return;
+        }
     }
 
     private void Start() {
-        _enigma = GameManager.Instance.AssignEnigma();
-        _enigma.Begin.AddListener(ChillBlinking);
-        _enigma.Solve.AddListener(NoBlinking);
+        Anomaly.AddListener(BlinkSetup);
+        _blinkt = 0;
+        _isBlinking = false;
     }
 
-    public void ChangeBool()
-    {
-        anomalyDetected = !anomalyDetected;
-        Anomaly.Invoke();
+    private void BlinkSetup() {
+        enigma.Solve.AddListener(NoBlinking);
+        _isBlinking = true;
     }
 
-    public void ChillBlinking()
-    {
-        StartCoroutine(ChillBlinkingCoroutine());
+    public void ChillBlinking() {
+        _isBlinking = true;
+        if (_blinkt < _shortTimer) {
+            _blinkt += Time.deltaTime;
+            return;
+        } else {
+            _blinkt = 0f;
+            _colorSelect = !_colorSelect;
+            GetComponent<Renderer>().material = _colorSelect ? matRed : matGreen;
+            Debug.Log("Timer Ended");
+        }
     }
 
-    public void NoBlinking()
-    {
-        StopAllCoroutines();
+    public void NoBlinking() {
+        _isBlinking = false;
         GetComponent<MeshRenderer>().material = matGreen;
     }
 
-    IEnumerator ChillBlinkingCoroutine()
+    private void ChillBlinkingCoroutine()
     {
-        GetComponent<Renderer>().material = matRed;
+        /*GetComponent<Renderer>().material = matRed;
         yield return new WaitForSeconds(0.5f);
         GetComponent<Renderer>().material = matGreen;
         yield return new WaitForSeconds(0.5f);
@@ -66,6 +84,6 @@ public class Bipper : MonoBehaviour
         yield return new WaitForSeconds(0.3f);
         GetComponent<Renderer>().material = matGreen;
         yield return new WaitForSeconds(5f);
-        StartCoroutine(ChillBlinkingCoroutine());
+        StartCoroutine(ChillBlinkingCoroutine());*/
     }
 }

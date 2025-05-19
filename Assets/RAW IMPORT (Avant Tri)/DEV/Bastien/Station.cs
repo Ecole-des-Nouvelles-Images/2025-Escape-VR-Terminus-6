@@ -12,9 +12,7 @@ public class Station : MonoBehaviour
     public bool IsMirror;                       // Used only for Enigma 2, allows mirror train code to execute
     [SerializeField] private Tunnel _tunnel;    // Tunnel (Tunnel will prolly be a singleton
     [SerializeField] private int id;            // Station ID
-
     
-     
     [Header("Enigmas")]
     [SerializeField] private Enigma _currentEnigma;// Get events for the enigma, with minimal overhead
     [SerializeField] private bool _changeEnigmaOnExit;
@@ -60,6 +58,8 @@ public class Station : MonoBehaviour
                 _currentEnigma.Begin.Invoke();
                 _tunnel.ignoreLever = true;
                 _generatorManager.SwitchLock();
+                _cabinBipper.enigma = this._currentEnigma;
+                _cabinBipper.Anomaly.Invoke();
                 //_generatorManager.SwitchLock(); // Done twice, because wtf
             } else { 
                 _tunnel.ignoreLever = false;
@@ -71,8 +71,6 @@ public class Station : MonoBehaviour
                 _fakeTrain.SetActive(true);
             }
             _speaker.Play();
-
-            _cabinBipper.ChangeBool();
 
         }
     }
