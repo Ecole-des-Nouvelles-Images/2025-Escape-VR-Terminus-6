@@ -22,6 +22,9 @@ public class GeneratorManager : MonoBehaviour
 
     public CapsuleCollider FusibleAnchorCollider;
     
+    [Header("Temporary Enigma Solve")]
+    [SerializeField] private Enigma _enigma;
+    
     public bool GeneratorOk { get; private set; }
 
     private void Awake() {
@@ -50,6 +53,11 @@ public class GeneratorManager : MonoBehaviour
 
         // Met à jour GeneratorOk en fonction des booléens
         GeneratorOk = leverOk && fusibleOk && cableHead1Ok && cableHead2Ok && cableHead3Ok;
+
+        if (GeneratorOk)
+        {
+            _enigma.Solve.Invoke();
+        }
     }
 
     private void VerifyLamp() {

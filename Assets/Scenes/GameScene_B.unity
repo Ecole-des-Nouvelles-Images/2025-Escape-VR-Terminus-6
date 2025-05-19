@@ -260,6 +260,11 @@ Camera:
   m_CorrespondingSourceObject: {fileID: 5198983034020260931, guid: e2f23e1f2041b854bb7931b1d0fe1d5d, type: 3}
   m_PrefabInstance: {fileID: 7282236920465567898}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &494903168 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5259252922020383622, guid: 5d281cfe5a4c99f459ed5ede4abd527c, type: 3}
+  m_PrefabInstance: {fileID: 738199648687975799}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &830268523 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1823154936747327128, guid: 5d281cfe5a4c99f459ed5ede4abd527c, type: 3}
@@ -791,7 +796,19 @@ MonoBehaviour:
       m_Calls: []
   Begin:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 494903168}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
   Solved: 0
   Id: 2
 --- !u!4 &723275782649616365
@@ -941,6 +958,10 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Teleportable
       objectReference: {fileID: 0}
+    - target: {fileID: 5259252922020383622, guid: 5d281cfe5a4c99f459ed5ede4abd527c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6312122370572156236, guid: 5d281cfe5a4c99f459ed5ede4abd527c, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.72
@@ -997,6 +1018,10 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 1037054712}
+    - target: {fileID: 8375885898247874432, guid: 5d281cfe5a4c99f459ed5ede4abd527c, type: 3}
+      propertyPath: _enigma
+      value: 
+      objectReference: {fileID: 8147900575027338186}
     m_RemovedComponents:
     - {fileID: 6160543571181248088, guid: 5d281cfe5a4c99f459ed5ede4abd527c, type: 3}
     m_RemovedGameObjects: []
