@@ -360,37 +360,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 721babf3b0519234f97909fb9130dc87, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &1596442650
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1596442651}
-  m_Layer: 0
-  m_Name: =====VINCENT=====
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1596442651
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1596442650}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 1
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1655144115
 GameObject:
   m_ObjectHideFlags: 0
@@ -4749,5 +4718,4 @@ SceneRoots:
   - {fileID: 885703485573300939}
   - {fileID: 7589446397005686982}
   - {fileID: 738199648687975799}
-  - {fileID: 1596442651}
   - {fileID: 1835362680572901696}
