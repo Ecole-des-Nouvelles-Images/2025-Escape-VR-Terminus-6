@@ -95,7 +95,7 @@ public class Tunnel : MonoBehaviour {
         float _yInstanceRotation = 0;
         
         for (int i = 0; i < _totalSegmentCount; i++) {
-            if (i == 0 || i == 96){
+            if (i == 112 || i == 96){
                 Debug.Log($"Cannot create tunnel segment {i}, station here.");
             } else {
                 _sgo = Instantiate(_segment, _container.transform);

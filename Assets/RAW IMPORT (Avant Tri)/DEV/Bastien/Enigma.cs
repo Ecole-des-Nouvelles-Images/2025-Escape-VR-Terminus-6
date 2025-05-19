@@ -23,10 +23,8 @@ public class Enigma : MonoBehaviour {
     }
 
     private void SolveValidation() {
-        if (!Solved) {
-            FindObjectOfType<GameManager>().VerifyEnigma(this);
-            Debug.Log("Try to solve " + this.gameObject);
-            this.Solve.RemoveListener(OnSolve);
-        }
+        FindObjectOfType<GameManager>().VerifyEnigma(this);
+        Debug.Log("Try to solve " + this.gameObject);
+        this.Solve.RemoveListener(OnSolve);
     }
 }
