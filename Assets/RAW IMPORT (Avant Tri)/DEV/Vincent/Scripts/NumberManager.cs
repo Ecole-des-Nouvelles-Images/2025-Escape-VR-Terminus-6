@@ -7,7 +7,10 @@ public class NumberManager : MonoBehaviour
 {
     public TextMeshProUGUI codeDisplay;
     private string currentCode = "___";
+    [SerializeField] private string _unlockCode;
     private int currentIndex = 0;
+
+    private bool _radioLocked;
 
     [SerializeField] private Enigma _enigma;
 
@@ -20,6 +23,7 @@ public class NumberManager : MonoBehaviour
     void Start()
     {
         currentCode = "___";
+        _radioLocked = true;
         UpdateCodeDisplay();
     }
 
@@ -51,14 +55,17 @@ public class NumberManager : MonoBehaviour
 
     private void TestCode()
     {
-        /*if (RadioLocked)
-        {
-            if (currentCode == "486")
-            {
-                RadioLocked = false;
-            }
+        if (_radioLocked && currentCode == _unlockCode) {
+            _radioLocked = false;
+            Debug.Log("Radio Unlocked");
+        } else if (currentCode != _unlockCode) {
+                currentCode = "Err";
+                UpdateCodeDisplay();
+                Debug.Log("Wrong code");
         }
-        if (RadioLocked) return;*/
+        
+        if (_radioLocked) return;
+        
         foreach (var pair in codeDatabase.codeObjects) {
             GameObject obj = GameObject.Find(pair.objectName);
             if (obj != null) {
