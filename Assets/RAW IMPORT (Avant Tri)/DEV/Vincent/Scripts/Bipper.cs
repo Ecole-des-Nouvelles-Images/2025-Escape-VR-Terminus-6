@@ -49,7 +49,7 @@ public class Bipper : MonoBehaviour
             _blinkt = 0f;
             _colorSelect = !_colorSelect;
             GetComponent<Renderer>().material = _colorSelect ? matRed : matGreen;
-            Debug.Log("Timer Ended");
+//            Debug.Log("Timer Ended");
         }
     }
 
