@@ -55,7 +55,8 @@ public class GeneratorManager : MonoBehaviour
     {
         // Vérifie les booléens dans les objets associés
         bool leverOk = LocalGeneratorLever  != null && LocalGeneratorLever.LeverActivated;
-        bool fusibleOk = LocalFusible       != null && LocalFusible.FusibleOk;
+        //bool fusibleOk = LocalFusible       != null && LocalFusible.FusibleOk;
+        bool fusibleOk = true;
         bool cableHead1Ok = LocalCableHead1 != null && LocalCableHead1.CableOk;
         bool cableHead2Ok = LocalCableHead2 != null && LocalCableHead2.CableOk;
         bool cableHead3Ok = LocalCableHead3 != null && LocalCableHead3.CableOk;

@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.XR.Interaction.Toolkit;
@@ -27,8 +28,15 @@ public class TorchLight : MonoBehaviour
         _grabInteractable = GetComponent<XRGrabInteractable>();
         _grabInteractable.selectEntered.AddListener(OnSelectEnter);
         _grabInteractable.selectExited.AddListener(OnSelectExit);
+        
+    }
+
+    private void Start()
+    {
+        ToggleLamp();
         ToggleLamp();
     }
+
     private void OnSelectEnter(SelectEnterEventArgs args) {
         _currentInteractor = args.interactorObject;
     }

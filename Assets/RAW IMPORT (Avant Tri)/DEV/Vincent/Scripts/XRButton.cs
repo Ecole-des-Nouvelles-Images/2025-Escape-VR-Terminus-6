@@ -19,7 +19,7 @@ public class XRButton : MonoBehaviour {
     private bool _isPressed = false;
     private const float PressedScaleFactor = 0.75f;
     private const float ColliderScaleFactor = 1.15f;
-    private const float CooldownDuration = 1f;
+    private const float CooldownDuration = 0.2f;
 
     private void Awake() { InitializeComponents(); }
 
