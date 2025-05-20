@@ -16,9 +16,7 @@ public class GeneratorLever : MonoBehaviour
     [SerializeField] private float _leverRotation;
     [SerializeField] private float _mid;
     [SerializeField] private float _minRot, _maxRot;
-
     
-
     private Quaternion _targetRotation;
     private float _interpolationDuration = 1.5f; // Durée de l'interpolation en secondes
     private float _interpolationTimer;
@@ -58,8 +56,7 @@ public class GeneratorLever : MonoBehaviour
                 {
                     LeverActivated = true;
                 }
-                else if (_targetRotation == Quaternion.Euler(0, 0, _maxRot))
-                {
+                else if (_targetRotation == Quaternion.Euler(0, 0, _maxRot)) {
                     LeverActivated = false;
                 }
                 _interpolationTimer = 0; // Réinitialise le timer pour la prochaine interpolation

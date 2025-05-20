@@ -1,4 +1,4 @@
-using System;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class GeneratorManager : MonoBehaviour
@@ -31,9 +31,12 @@ public class GeneratorManager : MonoBehaviour
     [SerializeField] private AudioClip _closingNoise;
 
     [Header("Lights")]
-    [SerializeField] private GameObject _amogusLight, _leverLight;
+    [SerializeField] private GameObject _amogusLight;
+    [SerializeField] private GameObject _leverLight;
+    
     
     public bool GeneratorOk { get; private set; }
+    private bool _amogusOk;
 
     private void Awake() {
         _animator = GetComponent<Animator>();
@@ -49,24 +52,24 @@ public class GeneratorManager : MonoBehaviour
     {
         UpdateGeneratorOk();
         VerifyLamp();
+        CheckLights();
     }
 
     private void UpdateGeneratorOk()
     {
         // Vérifie les booléens dans les objets associés
-        bool leverOk = LocalGeneratorLever  != null && LocalGeneratorLever.LeverActivated;
         //bool fusibleOk = LocalFusible       != null && LocalFusible.FusibleOk;
         bool fusibleOk = true;
         bool cableHead1Ok = LocalCableHead1 != null && LocalCableHead1.CableOk;
         bool cableHead2Ok = LocalCableHead2 != null && LocalCableHead2.CableOk;
         bool cableHead3Ok = LocalCableHead3 != null && LocalCableHead3.CableOk;
-
+        _amogusOk = (cableHead1Ok && cableHead2Ok && cableHead3Ok);
         // Met à jour GeneratorOk en fonction des booléens
-        GeneratorOk = leverOk && fusibleOk && cableHead1Ok && cableHead2Ok && cableHead3Ok;
-
-        if (GeneratorOk)
-        {
+        GeneratorOk = (LocalGeneratorLever.LeverActivated && _amogusOk);
+        
+        if (GeneratorOk) {
             _enigma.Solve.Invoke();
+            GameManager.Instance.currentStation.LightsOff.Invoke();
         }
     }
 
@@ -84,10 +87,20 @@ public class GeneratorManager : MonoBehaviour
             LampMeshRenderer.material = LampMatOn;
         }
     }
-
+    
     private void LampOff() {
         if (LampMeshRenderer.material != LampMatOff) {
             LampMeshRenderer.material = LampMatOff;
+        }
+    }
+
+    private void CheckLights() {
+        if (LocalGeneratorLever.LeverActivated && _amogusOk == false) {
+            _leverLight.GetComponent<Light>().enabled = false;
+            _amogusLight.GetComponent<Light>().enabled = true;
+        } else if (LocalGeneratorLever.LeverActivated && _amogusOk) {
+            _leverLight.GetComponent<Light>().enabled = true;
+            _amogusLight.GetComponent<Light>().enabled = false;
         }
     }
 
