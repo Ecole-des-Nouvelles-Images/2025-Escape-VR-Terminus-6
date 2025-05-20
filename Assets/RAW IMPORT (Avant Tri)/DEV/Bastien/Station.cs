@@ -57,7 +57,10 @@ public class Station : MonoBehaviour
                 _currentEnigma.Solve.AddListener(OnEnigmaSolved);
                 _currentEnigma.Begin.Invoke();
                 _tunnel.ignoreLever = true;
-                _generatorManager.SwitchLock();
+                if (_currentEnigma.Id == 2) {
+                    _generatorManager.SwitchLock();
+                    _generatorManager.SwitchLock();
+                }
                 _cabinBipper.enigma = this._currentEnigma;
                 _cabinBipper.Anomaly.Invoke();
                 //_generatorManager.SwitchLock(); // Done twice, because wtf
