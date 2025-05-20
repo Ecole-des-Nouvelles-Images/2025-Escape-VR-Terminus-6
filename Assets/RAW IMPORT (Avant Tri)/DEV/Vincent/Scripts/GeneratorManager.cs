@@ -22,14 +22,23 @@ public class GeneratorManager : MonoBehaviour
 
     public CapsuleCollider FusibleAnchorCollider;
     
-    [Header("Temporary Enigma Solve")]
+    [Header("Enigma")]
     [SerializeField] private Enigma _enigma;
+
+    [Header("Sounds")]
+    [SerializeField] private AudioSource _audioSource;
+    [SerializeField] private AudioClip _openingNoise;
+    [SerializeField] private AudioClip _closingNoise;
+
+    [Header("Lights")]
+    [SerializeField] private GameObject _amogusLight, _leverLight;
     
     public bool GeneratorOk { get; private set; }
 
     private void Awake() {
         _animator = GetComponent<Animator>();
         _locked = false;
+        _amogusLight.SetActive(false); _leverLight.SetActive(false);
     }
 
     private void Start() {
@@ -45,8 +54,8 @@ public class GeneratorManager : MonoBehaviour
     private void UpdateGeneratorOk()
     {
         // Vérifie les booléens dans les objets associés
-        bool leverOk = LocalGeneratorLever != null && LocalGeneratorLever.LeverActivated;
-        bool fusibleOk = LocalFusible != null && LocalFusible.FusibleOk;
+        bool leverOk = LocalGeneratorLever  != null && LocalGeneratorLever.LeverActivated;
+        bool fusibleOk = LocalFusible       != null && LocalFusible.FusibleOk;
         bool cableHead1Ok = LocalCableHead1 != null && LocalCableHead1.CableOk;
         bool cableHead2Ok = LocalCableHead2 != null && LocalCableHead2.CableOk;
         bool cableHead3Ok = LocalCableHead3 != null && LocalCableHead3.CableOk;
@@ -93,7 +102,8 @@ public class GeneratorManager : MonoBehaviour
             CableHead2.UnlockHead();
             CableHead3.UnlockHead();
             _animator.SetTrigger("OpenGenerator");
-            _locked = false;
+            _amogusLight.SetActive(true);
+            _leverLight.SetActive(true);
         }
         else {
             LocalGeneratorLever.LockLeverGenerator();
@@ -105,7 +115,14 @@ public class GeneratorManager : MonoBehaviour
             CableHead2.LockHead();
             CableHead3.LockHead();
             _locked = true;
+            _audioSource.clip = _openingNoise;
+            _audioSource.Play();
         }
+    }
+
+    public void PlayOpenSound() {
+        _audioSource.clip = _openingNoise;
+        _audioSource.Play();
     }
     
 }
