@@ -58,7 +58,7 @@ public class NumberManager : MonoBehaviour
         if (_radioLocked && currentCode == _unlockCode) {
             _radioLocked = false;
             Debug.Log("Radio Unlocked");
-        } else if (currentCode != _unlockCode) {
+        } else if (_radioLocked && currentCode != _unlockCode) {
                 currentCode = "Err";
                 UpdateCodeDisplay();
                 Debug.Log("Wrong code");

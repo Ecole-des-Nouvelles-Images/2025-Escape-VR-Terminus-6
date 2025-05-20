@@ -7,8 +7,10 @@ using UnityEngine.XR.Interaction.Toolkit.Interactables;
 public class CdPlayer : MonoBehaviour {
     [SerializeField] private Transform _anchor;
     [SerializeField] private MeshRenderer _cdGhost;
+    [SerializeField] private Enigma _enigma;
     private GameObject _currentCd;
     private bool _isCdIn;
+    private float _playbackTime;
 
     private VideoPlayer _videoPlayer;
 
@@ -18,8 +20,10 @@ public class CdPlayer : MonoBehaviour {
     }
 
     private void Update() {
-        if (_videoPlayer.time >= _videoPlayer.clip.length && _isCdIn) {
+        _playbackTime = (float)_videoPlayer.time;
+        if (_playbackTime >= _videoPlayer.clip.length - .5f) {
             _isCdIn = false;
+            _enigma.Solve.Invoke();
             EjectCd();
         }
     }

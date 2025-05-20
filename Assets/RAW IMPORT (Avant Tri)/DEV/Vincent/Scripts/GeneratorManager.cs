@@ -103,6 +103,8 @@ public class GeneratorManager : MonoBehaviour
             CableHead2.UnlockHead();
             CableHead3.UnlockHead();
             _animator.SetTrigger("OpenGenerator");
+            _audioSource.clip = _openingNoise;
+            _audioSource.Play();
             _amogusLight.SetActive(true);
             _leverLight.SetActive(true);
         }
@@ -116,8 +118,6 @@ public class GeneratorManager : MonoBehaviour
             CableHead2.LockHead();
             CableHead3.LockHead();
             _locked = true;
-            _audioSource.clip = _openingNoise;
-            _audioSource.Play();
         }
     }
 
