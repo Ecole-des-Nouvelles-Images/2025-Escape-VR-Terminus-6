@@ -8,8 +8,9 @@ public class Station : MonoBehaviour
     [Header("Essentials")]
     public UnityEvent Enter;                    // Station entry event
     public UnityEvent Exit;                     // Station exit event
+    public UnityEvent LightsOff;
     public UnityEvent Load;
-    public bool IsMirror;                       // Used only for Enigma 2, allows mirror train code to execute
+    
     [SerializeField] private Tunnel _tunnel;    // Tunnel (Tunnel will prolly be a singleton
     [SerializeField] private int id;            // Station ID
     
@@ -19,8 +20,11 @@ public class Station : MonoBehaviour
     [SerializeField, CanBeNull] private GeneratorManager _generatorManager;
 
     [Header("Mirror Illusion -- use only for Enigma 2")]
+    public bool IsMirror;                       // Used only for Enigma 2, allows mirror train code to execute
     [SerializeField] private GameObject _fakeTrain;     // Object for the mirror train
     [SerializeField] private GameObject _rotationCenter;// Used to calculate rotational symmetry
+    [SerializeField] private GameObject _firstModel;
+    [SerializeField] private GameObject _secondModel;
     
     [Header("Audio & Immersion")]
     [SerializeField] private Bipper _cabinBipper;
@@ -36,6 +40,9 @@ public class Station : MonoBehaviour
         if(IsMirror) _fakeTrain.SetActive(false);
         _speaker = GetComponent<AudioSource>();
         _speaker.clip = _message;
+        if (_secondModel) {
+            _secondModel.SetActive(false);
+        }
     }
 
     private void Update() {
@@ -47,8 +54,8 @@ public class Station : MonoBehaviour
     }
     
     private void OnTriggerEnter(Collider other) {
-        if (other.CompareTag("Train"))
-        {
+        if (other.CompareTag("Train")) {
+            GameManager.Instance.currentStation = this;
             _currentEnigma = GameManager.Instance.AssignEnigma();
             _tunnel.Halt.Invoke();
             Enter.Invoke();
@@ -60,6 +67,7 @@ public class Station : MonoBehaviour
                 if (_currentEnigma.Id == 2) {
                     _generatorManager.SwitchLock();
                     _generatorManager.SwitchLock();
+                    this.LightsOff.AddListener(OnLightsOff);
                 }
                 _cabinBipper.enigma = this._currentEnigma;
                 _cabinBipper.Anomaly.Invoke();
@@ -78,8 +86,18 @@ public class Station : MonoBehaviour
         }
     }
 
+    private void OnLightsOff() {
+        _firstModel.SetActive(false);
+        _fakeTrain.SetActive(false);
+        _secondModel.SetActive(true);
+    }
+
     private void OnTriggerExit(Collider other) {
         Exit.Invoke();
+    }
+
+    private void ErrorSound() {
+        
     }
 
     private void OnEnigmaSolved() {

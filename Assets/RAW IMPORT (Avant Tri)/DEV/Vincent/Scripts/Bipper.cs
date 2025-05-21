@@ -37,7 +37,10 @@ public class Bipper : MonoBehaviour
 
     private void BlinkSetup() {
         enigma.Solve.AddListener(NoBlinking);
-        _isBlinking = true;
+        if (enigma.isAnomaly) {
+            _isBlinking = true;
+            ChillBlinking();
+        }
     }
 
     public void ChillBlinking() {

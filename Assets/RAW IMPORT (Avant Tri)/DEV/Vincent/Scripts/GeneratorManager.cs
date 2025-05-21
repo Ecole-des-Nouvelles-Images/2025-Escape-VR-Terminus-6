@@ -1,4 +1,4 @@
-using System;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class GeneratorManager : MonoBehaviour
@@ -31,14 +31,18 @@ public class GeneratorManager : MonoBehaviour
     [SerializeField] private AudioClip _closingNoise;
 
     [Header("Lights")]
-    [SerializeField] private GameObject _amogusLight, _leverLight;
+    [SerializeField] private Light _amogusLight;
+    [SerializeField] private Light _leverLight;
+    [SerializeField] private Light _cabinLight;
+    
     
     public bool GeneratorOk { get; private set; }
+    private bool _amogusOk;
 
     private void Awake() {
         _animator = GetComponent<Animator>();
         _locked = false;
-        _amogusLight.SetActive(false); _leverLight.SetActive(false);
+        _amogusLight.enabled = false; _leverLight.enabled = false;
     }
 
     private void Start() {
@@ -49,24 +53,24 @@ public class GeneratorManager : MonoBehaviour
     {
         UpdateGeneratorOk();
         VerifyLamp();
+        CheckLights();
     }
 
     private void UpdateGeneratorOk()
     {
         // Vérifie les booléens dans les objets associés
-        bool leverOk = LocalGeneratorLever  != null && LocalGeneratorLever.LeverActivated;
         //bool fusibleOk = LocalFusible       != null && LocalFusible.FusibleOk;
         bool fusibleOk = true;
         bool cableHead1Ok = LocalCableHead1 != null && LocalCableHead1.CableOk;
         bool cableHead2Ok = LocalCableHead2 != null && LocalCableHead2.CableOk;
         bool cableHead3Ok = LocalCableHead3 != null && LocalCableHead3.CableOk;
-
+        _amogusOk = (cableHead1Ok && cableHead2Ok && cableHead3Ok);
         // Met à jour GeneratorOk en fonction des booléens
-        GeneratorOk = leverOk && fusibleOk && cableHead1Ok && cableHead2Ok && cableHead3Ok;
-
-        if (GeneratorOk)
-        {
+        GeneratorOk = (LocalGeneratorLever.LeverActivated == false && _amogusOk);
+        
+        if (GeneratorOk) {
             _enigma.Solve.Invoke();
+            GameManager.Instance.currentStation.LightsOff.Invoke();
         }
     }
 
@@ -84,10 +88,22 @@ public class GeneratorManager : MonoBehaviour
             LampMeshRenderer.material = LampMatOn;
         }
     }
-
+    
     private void LampOff() {
         if (LampMeshRenderer.material != LampMatOff) {
             LampMeshRenderer.material = LampMatOff;
+        }
+    }
+
+    private void CheckLights() {
+        if (LocalGeneratorLever.LeverActivated && _amogusOk == false) {
+            _leverLight.enabled = false;
+            _amogusLight.enabled = true;
+            _cabinLight.enabled = false;
+        } else if (LocalGeneratorLever.LeverActivated == false && _amogusOk) {
+            _leverLight.enabled = true;
+            _amogusLight.enabled = false;
+            _cabinLight.enabled = true;
         }
     }
 
@@ -105,8 +121,8 @@ public class GeneratorManager : MonoBehaviour
             _animator.SetTrigger("OpenGenerator");
             _audioSource.clip = _openingNoise;
             _audioSource.Play();
-            _amogusLight.SetActive(true);
-            _leverLight.SetActive(true);
+            _amogusLight.enabled = true;
+            _leverLight.enabled = true;
         }
         else {
             LocalGeneratorLever.LockLeverGenerator();

@@ -2,9 +2,11 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 
 public class NumberManager : MonoBehaviour
 {
+    [Header("Code display")]
     public TextMeshProUGUI codeDisplay;
     private string currentCode = "___";
     [SerializeField] private string _unlockCode;
@@ -12,9 +14,16 @@ public class NumberManager : MonoBehaviour
 
     private bool _radioLocked;
 
+    [Header("Engima")]
     [SerializeField] private Enigma _enigma;
-
     public CodeObjectDatabase codeDatabase;
+
+    [Header("Lock Display")]
+    [SerializeField] private Image _lockImage;
+    [SerializeField] private Sprite _unlockedSprite;
+    [SerializeField] private Sprite _lockedSprite;
+    [SerializeField] private Color _unlockedColor;
+    [SerializeField] private Color _lockedColor;
     //public bool RadioLocked;
     //public MeshRenderer LockIndicator;
     //public Material LockOnMaterial;
@@ -25,6 +34,8 @@ public class NumberManager : MonoBehaviour
         currentCode = "___";
         _radioLocked = true;
         UpdateCodeDisplay();
+        _lockImage.sprite = _lockedSprite;
+        _lockImage.color = _lockedColor;
     }
 
     public void AddNumber(int number)
@@ -58,6 +69,8 @@ public class NumberManager : MonoBehaviour
         if (_radioLocked && currentCode == _unlockCode) {
             _radioLocked = false;
             Debug.Log("Radio Unlocked");
+            _lockImage.sprite = _unlockedSprite;
+            _lockImage.color = _unlockedColor;
         } else if (_radioLocked && currentCode != _unlockCode) {
                 currentCode = "Err";
                 UpdateCodeDisplay();

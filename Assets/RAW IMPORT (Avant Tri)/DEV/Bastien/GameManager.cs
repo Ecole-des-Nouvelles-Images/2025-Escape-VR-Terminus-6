@@ -21,6 +21,7 @@ public class GameManager : MonoBehaviour {
     
     [Header("Enigma Management & tracking")]
     [SerializeField] private List<Enigma> _enigmas;
+    public Station currentStation;
 
     public int currentEnigma = 0;
     // [SerializeField] private int currentEnigmaBackup = 0;

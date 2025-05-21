@@ -1625,7 +1625,6 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   Solved: 0
-  isAnomaly: 0
   Id: 1
 --- !u!1 &271824163 stripped
 GameObject:
@@ -3980,7 +3979,6 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   Solved: 0
-  isAnomaly: 0
   Id: 0
 --- !u!1 &550465199
 GameObject:
@@ -13108,7 +13106,6 @@ MonoBehaviour:
           m_BoolArgument: 1
         m_CallState: 2
   Solved: 0
-  isAnomaly: 1
   Id: 3
 --- !u!4 &723275782649616365
 Transform:
@@ -15104,7 +15101,6 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   Solved: 0
-  isAnomaly: 1
   Id: 4
 --- !u!114 &3474406177505575550
 MonoBehaviour:
@@ -17096,7 +17092,6 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   Solved: 0
-  isAnomaly: 1
   Id: 2
 --- !u!4 &8310052843265105470
 Transform:
