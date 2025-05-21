@@ -9,6 +9,7 @@ public class Enigma : MonoBehaviour {
     public UnityEvent Solve;
     public UnityEvent Begin;
     public bool Solved;
+    public bool isAnomaly;
     public int Id;
     
     private void Start()

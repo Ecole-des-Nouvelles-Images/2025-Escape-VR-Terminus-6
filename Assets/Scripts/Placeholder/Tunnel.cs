@@ -33,7 +33,7 @@ public class Tunnel : MonoBehaviour {
     private bool _isInSlowdown;
     private float _currentSpeed;     // Current speed
     private float _targetSpeed;     // New speed value, end of interpolation
-
+    
     private float _currentSegment;
 
     private void Start()
@@ -76,7 +76,10 @@ public class Tunnel : MonoBehaviour {
     }
 
     private void OnSpeedChange() {
-        if (ignoreLever) _lever.Reset();
+        if (ignoreLever) {
+            _lever.Reset();
+            _lever.PlayErrorSound();
+        }
         else _targetSpeed = _currentSpeed;
     }
 

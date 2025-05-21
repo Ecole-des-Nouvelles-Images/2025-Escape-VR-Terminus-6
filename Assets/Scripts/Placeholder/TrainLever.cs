@@ -14,6 +14,10 @@ using UnityEngine.XR.Interaction.Toolkit.Interactables;
         [SerializeField] private float _leverMargin;
         [SerializeField] private float _maxInteractionDistance;
         
+        [Header("Audio & Immersion")]
+        [SerializeField] private AudioSource _audioSource;
+        [SerializeField] private AudioClip _errorSound;
+        
         [Header("Debug")]
         private float _leverRotation;   //Self-explanatory
         private float _min, _max, _mid; //Minimum, maximum and middle rotation
@@ -52,6 +56,7 @@ using UnityEngine.XR.Interaction.Toolkit.Interactables;
             _mid = _hingeJoint.limits.max / 2;
             _lowMid = _mid - _leverMargin;
             _highMid = _mid + _leverMargin;
+            _audioSource = GetComponent<AudioSource>();
         }
     
         void Update() {
@@ -59,5 +64,10 @@ using UnityEngine.XR.Interaction.Toolkit.Interactables;
                 _leverRotation = transform.rotation.eulerAngles.x;
                 this.transform.rotation = Quaternion.Euler(new Vector3(_leverRotation, 0, 0));
             }
+        }
+
+        public void PlayErrorSound() {
+            _audioSource.clip = _errorSound;
+            _audioSource.Play();
         }
     }

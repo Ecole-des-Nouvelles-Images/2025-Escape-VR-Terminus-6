@@ -96,6 +96,10 @@ public class Station : MonoBehaviour
         Exit.Invoke();
     }
 
+    private void ErrorSound() {
+        
+    }
+
     private void OnEnigmaSolved() {
         _tunnel.ignoreLever = false;
         Debug.Log("Lever reactivated after enigma");

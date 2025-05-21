@@ -31,8 +31,9 @@ public class GeneratorManager : MonoBehaviour
     [SerializeField] private AudioClip _closingNoise;
 
     [Header("Lights")]
-    [SerializeField] private GameObject _amogusLight;
-    [SerializeField] private GameObject _leverLight;
+    [SerializeField] private Light _amogusLight;
+    [SerializeField] private Light _leverLight;
+    [SerializeField] private Light _cabinLight;
     
     
     public bool GeneratorOk { get; private set; }
@@ -41,7 +42,7 @@ public class GeneratorManager : MonoBehaviour
     private void Awake() {
         _animator = GetComponent<Animator>();
         _locked = false;
-        _amogusLight.SetActive(false); _leverLight.SetActive(false);
+        _amogusLight.enabled = false; _leverLight.enabled = false;
     }
 
     private void Start() {
@@ -65,7 +66,7 @@ public class GeneratorManager : MonoBehaviour
         bool cableHead3Ok = LocalCableHead3 != null && LocalCableHead3.CableOk;
         _amogusOk = (cableHead1Ok && cableHead2Ok && cableHead3Ok);
         // Met à jour GeneratorOk en fonction des booléens
-        GeneratorOk = (LocalGeneratorLever.LeverActivated && _amogusOk);
+        GeneratorOk = (LocalGeneratorLever.LeverActivated == false && _amogusOk);
         
         if (GeneratorOk) {
             _enigma.Solve.Invoke();
@@ -96,11 +97,13 @@ public class GeneratorManager : MonoBehaviour
 
     private void CheckLights() {
         if (LocalGeneratorLever.LeverActivated && _amogusOk == false) {
-            _leverLight.GetComponent<Light>().enabled = false;
-            _amogusLight.GetComponent<Light>().enabled = true;
-        } else if (LocalGeneratorLever.LeverActivated && _amogusOk) {
-            _leverLight.GetComponent<Light>().enabled = true;
-            _amogusLight.GetComponent<Light>().enabled = false;
+            _leverLight.enabled = false;
+            _amogusLight.enabled = true;
+            _cabinLight.enabled = false;
+        } else if (LocalGeneratorLever.LeverActivated == false && _amogusOk) {
+            _leverLight.enabled = true;
+            _amogusLight.enabled = false;
+            _cabinLight.enabled = true;
         }
     }
 
@@ -118,8 +121,8 @@ public class GeneratorManager : MonoBehaviour
             _animator.SetTrigger("OpenGenerator");
             _audioSource.clip = _openingNoise;
             _audioSource.Play();
-            _amogusLight.SetActive(true);
-            _leverLight.SetActive(true);
+            _amogusLight.enabled = true;
+            _leverLight.enabled = true;
         }
         else {
             LocalGeneratorLever.LockLeverGenerator();
