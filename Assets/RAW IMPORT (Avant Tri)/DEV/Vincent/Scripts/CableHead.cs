@@ -7,7 +7,7 @@ public class CableHead : MonoBehaviour {
     public LineRenderer LineRenderer;
     public Transform CableBase;
     public Material ConnectedMaterial;
-
+    
     [SerializeField] private bool _isConnected;
     private bool _anchorDetected;
     private Transform _anchorTransform;

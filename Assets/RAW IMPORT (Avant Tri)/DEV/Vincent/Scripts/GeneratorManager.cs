@@ -13,6 +13,10 @@ public class GeneratorManager : MonoBehaviour
     public CableHead CableHead2;
     public CableHead CableHead3;
 
+    public Transform CableHead1IP;
+    public Transform CableHead2IP;
+    public Transform CableHead3IP;
+    
     public MeshRenderer LampMeshRenderer;
     public Material LampMatOn;
     public Material LampMatOff;
@@ -38,11 +42,16 @@ public class GeneratorManager : MonoBehaviour
     
     public bool GeneratorOk { get; private set; }
     private bool _amogusOk;
+    private bool _cableDisconnected;
 
     private void Awake() {
         _animator = GetComponent<Animator>();
         _locked = false;
         _amogusLight.enabled = false; _leverLight.enabled = false;
+        LocalCableHead1.gameObject.GetComponent<BoxCollider>().enabled = false;
+        LocalCableHead2.gameObject.GetComponent<BoxCollider>().enabled = false;
+        LocalCableHead3.gameObject.GetComponent<BoxCollider>().enabled = false;
+        _cableDisconnected = false;
     }
 
     private void Start() {
@@ -100,6 +109,15 @@ public class GeneratorManager : MonoBehaviour
             _leverLight.enabled = false;
             _amogusLight.enabled = true;
             _cabinLight.enabled = false;
+            if (_cableDisconnected == false) {
+                CableHead1.gameObject.transform.position = CableHead1IP.transform.position;
+                CableHead2.gameObject.transform.position = CableHead2IP.transform.position;
+                CableHead3.gameObject.transform.position = CableHead3IP.transform.position;
+                _cableDisconnected = true;
+                LocalCableHead1.gameObject.GetComponent<BoxCollider>().enabled = true;
+                LocalCableHead2.gameObject.GetComponent<BoxCollider>().enabled = true;
+                LocalCableHead3.gameObject.GetComponent<BoxCollider>().enabled = true;
+            }
         } else if (LocalGeneratorLever.LeverActivated == false && _amogusOk) {
             _leverLight.enabled = true;
             _amogusLight.enabled = false;
