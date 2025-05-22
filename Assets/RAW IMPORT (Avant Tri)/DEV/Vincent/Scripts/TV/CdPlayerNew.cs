@@ -8,6 +8,7 @@ public class CdPlayerNew : MonoBehaviour
     [SerializeField] private Transform cdAnchor;
     [SerializeField] private MeshRenderer cdGhost;
     [SerializeField] private Enigma enigma;
+    [SerializeField] private GameObject light;
 
     private GameObject currentCd;
     private bool isCdIn;
@@ -19,6 +20,7 @@ public class CdPlayerNew : MonoBehaviour
 
     private void Awake()
     {
+        light.SetActive(false);
         videoPlayer = GetComponent<VideoPlayer>();
         audioSource = GetComponent<AudioSource>();
         cdGhost.enabled = false;
@@ -33,6 +35,7 @@ public class CdPlayerNew : MonoBehaviour
             enigma.Solve.Invoke();
             hasSolvedEnigma = true;
             StartCoroutine(EjectCd());
+            light.SetActive(false);
             isCdIn = false;
         }
     }
@@ -77,6 +80,7 @@ public class CdPlayerNew : MonoBehaviour
 
         yield return new WaitForSeconds(0.33f);
         videoPlayer.Play();
+        light.SetActive(true);
     }
 
     private IEnumerator EjectCd()
