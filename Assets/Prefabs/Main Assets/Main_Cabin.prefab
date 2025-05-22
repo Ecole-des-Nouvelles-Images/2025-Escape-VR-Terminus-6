@@ -6524,8 +6524,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ViewCamera: {fileID: 959046357149896454}
   CameraTransforms:
-  - {fileID: 6312122370572156236}
   - {fileID: 9107302458510898248}
+  - {fileID: 6312122370572156236}
   - {fileID: 8968509616140289800}
 --- !u!1 &8188342201883202514
 GameObject:

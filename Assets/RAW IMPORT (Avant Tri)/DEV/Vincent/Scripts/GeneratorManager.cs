@@ -1,4 +1,5 @@
 using Unity.VisualScripting;
+using UnityEditor.Animations;
 using UnityEngine;
 
 public class GeneratorManager : MonoBehaviour
@@ -38,6 +39,7 @@ public class GeneratorManager : MonoBehaviour
     [SerializeField] private Light _amogusLight;
     [SerializeField] private Light _leverLight;
     [SerializeField] private Light _cabinLight;
+    [SerializeField] private Animator _animatorController;
     
     
     public bool GeneratorOk { get; private set; }
@@ -109,6 +111,7 @@ public class GeneratorManager : MonoBehaviour
             _leverLight.enabled = false;
             _amogusLight.enabled = true;
             _cabinLight.enabled = false;
+            _animatorController.SetBool("CubeActivated", true);
             if (_cableDisconnected == false) {
                 CableHead1.gameObject.transform.position = CableHead1IP.transform.position;
                 CableHead2.gameObject.transform.position = CableHead2IP.transform.position;
@@ -122,6 +125,7 @@ public class GeneratorManager : MonoBehaviour
             _leverLight.enabled = true;
             _amogusLight.enabled = false;
             _cabinLight.enabled = true;
+            _animatorController.SetBool("CubeActivated", false);
         }
     }
 
