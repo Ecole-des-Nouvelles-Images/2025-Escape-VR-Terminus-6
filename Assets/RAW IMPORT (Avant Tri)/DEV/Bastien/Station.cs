@@ -94,6 +94,7 @@ public class Station : MonoBehaviour
 
     private void OnTriggerExit(Collider other) {
         Exit.Invoke();
+        _tunnel.ignoreLever = true;
     }
 
     private void ErrorSound() {
@@ -102,6 +103,7 @@ public class Station : MonoBehaviour
 
     private void OnEnigmaSolved() {
         _tunnel.ignoreLever = false;
+        _tunnel.isStopped = false;
         Debug.Log("Lever reactivated after enigma");
         _currentEnigma.Solve.RemoveListener(OnEnigmaSolved);
     }

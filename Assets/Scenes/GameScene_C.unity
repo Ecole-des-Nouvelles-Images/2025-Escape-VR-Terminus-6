@@ -2295,6 +2295,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 100807583981166329, guid: 5d281cfe5a4c99f459ed5ede4abd527c, type: 3}
+      propertyPath: OutputAudioMixerGroup
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 114796082736947894, guid: 5d281cfe5a4c99f459ed5ede4abd527c, type: 3}
       propertyPath: XRCameraOffset
       value: 
@@ -2335,6 +2339,10 @@ PrefabInstance:
       propertyPath: m_UseGravity
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 979637778770347757, guid: 5d281cfe5a4c99f459ed5ede4abd527c, type: 3}
+      propertyPath: enigma
+      value: 
+      objectReference: {fileID: 530193624}
     - target: {fileID: 1161176648559412584, guid: 5d281cfe5a4c99f459ed5ede4abd527c, type: 3}
       propertyPath: m_Enabled
       value: 0
@@ -2638,6 +2646,18 @@ PrefabInstance:
     - target: {fileID: 8418207305425282518, guid: 5d281cfe5a4c99f459ed5ede4abd527c, type: 3}
       propertyPath: m_Name
       value: FusibleLight
+      objectReference: {fileID: 0}
+    - target: {fileID: 8760470146974566521, guid: 5d281cfe5a4c99f459ed5ede4abd527c, type: 3}
+      propertyPath: m_VideoClip
+      value: 
+      objectReference: {fileID: 32900000, guid: b44f0e727252248448fc1f7f4450f254, type: 3}
+    - target: {fileID: 8760470146974566521, guid: 5d281cfe5a4c99f459ed5ede4abd527c, type: 3}
+      propertyPath: m_PlaybackSpeed
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 8760470146974566521, guid: 5d281cfe5a4c99f459ed5ede4abd527c, type: 3}
+      propertyPath: m_AudioOutputMode
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8760470146974566521, guid: 5d281cfe5a4c99f459ed5ede4abd527c, type: 3}
       propertyPath: m_ControlledAudioTrackCount
