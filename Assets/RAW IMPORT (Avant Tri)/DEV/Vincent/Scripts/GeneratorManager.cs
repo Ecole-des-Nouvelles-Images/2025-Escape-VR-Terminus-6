@@ -81,6 +81,7 @@ public class GeneratorManager : MonoBehaviour
         
         if (GeneratorOk) {
             _enigma.Solve.Invoke();
+            LocalGeneratorLever.LockLeverGenerator();
             GameManager.Instance.currentStation.LightsOff.Invoke();
         }
     }
