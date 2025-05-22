@@ -118,8 +118,8 @@ GameObject:
   - component: {fileID: 411875273111347110}
   - component: {fileID: 2662306065842609302}
   - component: {fileID: 6255855630997817950}
-  - component: {fileID: 2039935045400817454}
   - component: {fileID: 24266535737577303}
+  - component: {fileID: 5834773078652424706}
   m_Layer: 0
   m_Name: PH_M_CD_Lector
   m_TagString: Untagged
@@ -227,21 +227,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 2
---- !u!114 &2039935045400817454
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4588242741431489403}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 416c40e40ddd99548802356ddd2e5140, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _anchor: {fileID: 0}
-  _cdGhost: {fileID: 0}
-  _enigma: {fileID: 0}
 --- !u!95 &24266535737577303
 Animator:
   serializedVersion: 5
@@ -263,6 +248,21 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &5834773078652424706
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4588242741431489403}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 39244a16e93cf344cbede31bc2639ba6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cdAnchor: {fileID: 8820058845984136645}
+  cdGhost: {fileID: 7650498759741335210}
+  enigma: {fileID: 0}
 --- !u!1 &7505031315679503168
 GameObject:
   m_ObjectHideFlags: 0
