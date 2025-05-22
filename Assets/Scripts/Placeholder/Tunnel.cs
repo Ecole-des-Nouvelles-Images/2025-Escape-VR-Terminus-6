@@ -24,6 +24,8 @@ public class Tunnel : MonoBehaviour {
     [SerializeField] private TrainLever _lever;
     [SerializeField] private float _speed;
     [SerializeField] private float _acceleration;
+    public bool isStopped;
+
     
     [Header("Speed")]
     [SerializeField] private float _accelerationTime;
@@ -47,18 +49,20 @@ public class Tunnel : MonoBehaviour {
 
     void Update() {
         //Always update the variable
-        _targetSpeed = Mathf.Clamp(_lever.LeverValue, 0f, 1f) * _acceleration;
+        _targetSpeed = Mathf.Clamp01(_lever.LeverValue) * _acceleration;
         _currentSegment = transform.rotation.eulerAngles.y / _segmentRotationStep;
 
         if (_isInSlowdown) {
-            if (_currentSpeed > 0) _currentSpeed -= _acceleration * Time.deltaTime / _slowdownTime;
-            else {
+            if (_currentSpeed > 0.005) _currentSpeed -= _acceleration * Time.deltaTime / _slowdownTime;
+            
+            else if (_currentSpeed < 0.005) {
                 _isInSlowdown = false;
+                isStopped = true;
                 return;
             }
         }
 
-        if (!_isInSlowdown) {
+        if (!_isInSlowdown && isStopped == false) {
             if (_currentSpeed < _targetSpeed) {
                 _currentSpeed += _acceleration * Time.deltaTime / _accelerationTime;
             }
@@ -67,6 +71,8 @@ public class Tunnel : MonoBehaviour {
             } 
         } 
         tunnelAnimator.SetFloat("Speed", _currentSpeed);
+
+        if (isStopped) _currentSpeed = 0;
     }
 
     private void OnHalt() {
