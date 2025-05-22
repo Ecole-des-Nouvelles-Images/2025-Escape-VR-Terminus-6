@@ -123,6 +123,9 @@ Transform:
   - {fileID: 384149231071658399}
   - {fileID: 6650101747182006984}
   - {fileID: 5662320595933249199}
+  - {fileID: 8395864059742163472}
+  - {fileID: 8147056660116154411}
+  - {fileID: 8352699109950419193}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!114 &7274982466115190036
@@ -145,6 +148,9 @@ MonoBehaviour:
   CableHead1: {fileID: 2311118821691077737}
   CableHead2: {fileID: 8844031065707713343}
   CableHead3: {fileID: 5643291326113533543}
+  CableHead1IP: {fileID: 8395864059742163472}
+  CableHead2IP: {fileID: 8147056660116154411}
+  CableHead3IP: {fileID: 8352699109950419193}
   LampMeshRenderer: {fileID: 3922820141851487140}
   LampMatOn: {fileID: 2100000, guid: 62bab08abfc3aa046b2acea73244513b, type: 2}
   LampMatOff: {fileID: 2100000, guid: 17893a5273d01e645bd1569a731660db, type: 2}
@@ -153,8 +159,9 @@ MonoBehaviour:
   _audioSource: {fileID: 5031028038224923211}
   _openingNoise: {fileID: 8300000, guid: 8df80ab18fdfb3c4abc0ac8e22b9b3ca, type: 3}
   _closingNoise: {fileID: 0}
-  _amogusLight: {fileID: 1213057904508987771}
-  _leverLight: {fileID: 9031884654909985304}
+  _amogusLight: {fileID: 8437581643154757448}
+  _leverLight: {fileID: 8830501549923895634}
+  _cabinLight: {fileID: 0}
 --- !u!95 &4750530816635590090
 Animator:
   serializedVersion: 5
@@ -626,6 +633,37 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2332697650629622431}
   m_Mesh: {fileID: 5739745553924487773, guid: bc223bebf33f52d4eb34b518923e5fbe, type: 3}
+--- !u!1 &2392668546887589464
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8147056660116154411}
+  m_Layer: 0
+  m_Name: Cable_Head_2_InactivePos
+  m_TagString: Untagged
+  m_Icon: {fileID: 2800000, guid: 73d124bf77e463c45942d14136745d9f, type: 3}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8147056660116154411
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2392668546887589464}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071067}
+  m_LocalPosition: {x: -0.012648582, y: 1.5805, z: -0.17316103}
+  m_LocalScale: {x: 0.01, y: 0.009999999, z: 0.009999999}
+  m_ConstrainProportionsScale: 1
+  m_Children: []
+  m_Father: {fileID: 3204665148685406075}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &3171899049240235842
 GameObject:
   m_ObjectHideFlags: 0
@@ -2032,6 +2070,37 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!1 &5983134463310777079
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8352699109950419193}
+  m_Layer: 0
+  m_Name: Cable_Head_3_InactivePos
+  m_TagString: Untagged
+  m_Icon: {fileID: 2800000, guid: 73d124bf77e463c45942d14136745d9f, type: 3}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8352699109950419193
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5983134463310777079}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071067}
+  m_LocalPosition: {x: -0.012648582, y: 1.5285, z: -0.17316103}
+  m_LocalScale: {x: 0.01, y: 0.009999999, z: 0.009999999}
+  m_ConstrainProportionsScale: 1
+  m_Children: []
+  m_Father: {fileID: 3204665148685406075}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6264501789883597862
 GameObject:
   m_ObjectHideFlags: 0
@@ -2868,6 +2937,37 @@ MonoBehaviour:
   m_MinimumScaleRatio: 0.25
   m_MaximumScaleRatio: 2
   m_ScaleMultiplier: 0.25
+--- !u!1 &7038051686657087380
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8395864059742163472}
+  m_Layer: 0
+  m_Name: Cable_Head_1_InactivePos
+  m_TagString: Untagged
+  m_Icon: {fileID: 2800000, guid: 73d124bf77e463c45942d14136745d9f, type: 3}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8395864059742163472
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7038051686657087380}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071067}
+  m_LocalPosition: {x: -0.012648582, y: 1.6284634, z: -0.17316103}
+  m_LocalScale: {x: 0.01, y: 0.009999999, z: 0.009999999}
+  m_ConstrainProportionsScale: 1
+  m_Children: []
+  m_Father: {fileID: 3204665148685406075}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7213512247895785282
 GameObject:
   m_ObjectHideFlags: 0
