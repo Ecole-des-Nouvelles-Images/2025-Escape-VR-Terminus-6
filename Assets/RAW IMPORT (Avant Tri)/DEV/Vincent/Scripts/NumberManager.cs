@@ -29,8 +29,7 @@ public class NumberManager : MonoBehaviour
     //public Material LockOnMaterial;
     //public Material LockOffMaterial;
     
-    void Start()
-    {
+    void Start() {
         currentCode = "___";
         _radioLocked = true;
         UpdateCodeDisplay();

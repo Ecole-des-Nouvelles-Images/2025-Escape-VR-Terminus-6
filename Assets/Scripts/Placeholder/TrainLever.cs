@@ -22,23 +22,18 @@ using UnityEngine.XR.Interaction.Toolkit.Interactables;
         private float _leverRotation;   //Self-explanatory
         private float _min, _max, _mid; //Minimum, maximum and middle rotation
         private float _lowMid, _highMid;   //Values calculated from the middle for padding
-        private bool _isMovable;        //Is the lever locked? Not the same as ignoreLever
+        public bool isMovable;        //Is the lever locked? Not the same as ignoreLever
     
         public void Unlock() {
-            _isMovable = true;
+            isMovable = true;
         }
     
         public void Lock() {
-            _isMovable = false;
-            if (_leverRotation < _lowMid) {
+            isMovable = false;
+            if (_leverRotation <= _mid) {
                 transform.rotation = Quaternion.Euler(new Vector3(_min, 0f, 0f));
                 LeverValue = 0f;
-            }
-            else if (_leverRotation > _lowMid && _leverRotation < _highMid) {
-                transform.rotation = Quaternion.Euler(new Vector3(_mid, 0f, 0f));
-                LeverValue = 0.5f;
-            }
-            else if (_leverRotation > _highMid || (_leverRotation + _leverMargin) >= _max) {
+            } else if (_leverRotation > _mid || (_leverRotation + _leverMargin) >= _max) {
                 transform.rotation = Quaternion.Euler(new Vector3(_max, 0f, 0f));
                 LeverValue = 1f;
             }
@@ -48,6 +43,11 @@ using UnityEngine.XR.Interaction.Toolkit.Interactables;
         public void Reset() {
             transform.rotation = Quaternion.Euler(Vector3.zero);
             LeverValue = 0f;
+        }
+
+        public void SetToMax() {
+            transform.rotation = Quaternion.Euler(new Vector3(_max, 0, 0));
+            LeverValue = 1f;
         }
         
         private void Start() {
@@ -60,7 +60,7 @@ using UnityEngine.XR.Interaction.Toolkit.Interactables;
         }
     
         void Update() {
-            if (_isMovable) {
+            if (isMovable) {
                 _leverRotation = transform.rotation.eulerAngles.x;
                 this.transform.rotation = Quaternion.Euler(new Vector3(_leverRotation, 0, 0));
             }
