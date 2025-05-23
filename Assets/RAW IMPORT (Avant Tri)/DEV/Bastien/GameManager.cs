@@ -9,6 +9,8 @@ using UnityEngine.Events;
 public class GameManager : MonoBehaviour {
     private static GameManager instance = null;
     public static GameManager Instance => instance;
+
+    public UnityEvent End;
     
     private void Awake() {
         if (instance != null && instance != this) {
@@ -39,6 +41,9 @@ public class GameManager : MonoBehaviour {
 
     public Enigma AssignEnigma() {
         Debug.Log($"Enigma {currentEnigma} assigned");
+        if (currentEnigma == 4) {
+            End.Invoke();
+        }
         return _enigmas[currentEnigma];
     }
 }

@@ -64,41 +64,41 @@ public class Station : MonoBehaviour
             _currentEnigma = GameManager.Instance.AssignEnigma();
             _tunnel.Halt.Invoke();
             Enter.Invoke();
-            
-            if (_currentEnigma) {
+
+            if (!_currentEnigma) {
+                _tunnel.ignoreLever = false;
+                Debug.Log("No enigma here, you can continue");
+            }
+            else {
                 _currentEnigma.Solve.AddListener(OnEnigmaSolved);
                 _currentEnigma.Begin.Invoke();
                 _tunnel.ignoreLever = true;
-                
-                if (_currentEnigma.Id == 0) {
-                    _radioNumberManager.enabled = false;
-                    foreach (Transform child in _radioNumberManager.transform) {
-                        if (child.GetComponent<BoxCollider>()) {
+
+                switch (_currentEnigma.Id) {
+                    case 0: {
+                        _radioNumberManager.enabled = false;
+                        foreach (Transform child in _radioNumberManager.transform) {
                             child.GetComponent<BoxCollider>().enabled = false;
-                        }
+                        } break;
                     }
-                }
-                
-                if (_currentEnigma.Id == 1) {
-                    _radioNumberManager.enabled = true;
-                    foreach (Transform child in _radioNumberManager.transform) {
-                        child.GetComponent<BoxCollider>().enabled = true;
+                    case 1: {
+                        _radioNumberManager.enabled = true;
+                        foreach (Transform child in _radioNumberManager.transform) {
+                            child.GetComponent<BoxCollider>().enabled = true;
+                        } break;
                     }
+                    case 2:
+                        _generatorManager.SwitchLock();
+                        _generatorManager.SwitchLock();
+                        this.LightsOff.AddListener(OnLightsOff);
+                        break;
                 }
-                
-                if (_currentEnigma.Id == 2) {
-                    _generatorManager.SwitchLock();
-                    _generatorManager.SwitchLock();
-                    this.LightsOff.AddListener(OnLightsOff);
-                }
+
                 _cabinBipper.enigma = this._currentEnigma;
                 _cabinBipper.Anomaly.Invoke();
                 //_generatorManager.SwitchLock(); // Done twice, because wtf
-            } else { 
-                _tunnel.ignoreLever = false;
-                Debug.Log("No enigma here, you can continue");  
             }
-        
+
             if (IsMirror) {
                 _playerTrain = other.gameObject;
                 _fakeTrain.SetActive(true);
