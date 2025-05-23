@@ -10,6 +10,7 @@ public class CameraManager : MonoBehaviour {
     public GameObject CensureCanvas;
 
     private int _currentCameraIndex = 0;
+    public Enigma enigmaJerry;
 
     private void Awake() {
         UpdateCamera();
@@ -28,7 +29,7 @@ public class CameraManager : MonoBehaviour {
         UpdateCamera();
     }
     private void UpdateCamera() {
-        CensureCanvas.SetActive(_currentCameraIndex == 1);
+        if (!enigmaJerry.Solved) { CensureCanvas.SetActive(_currentCameraIndex == 1); }
         ViewCamera.transform.position = CameraTransforms[_currentCameraIndex].position;
         ViewCamera.transform.rotation = CameraTransforms[_currentCameraIndex].rotation;
     }
