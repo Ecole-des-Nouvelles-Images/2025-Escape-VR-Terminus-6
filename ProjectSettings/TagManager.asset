@@ -13,6 +13,7 @@ TagManager:
   - CD
   - Interactable
   - Teleportable
+  - Environnement
   layers:
   - Default
   - TransparentFX
