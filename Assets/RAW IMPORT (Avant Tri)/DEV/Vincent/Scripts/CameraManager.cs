@@ -7,6 +7,7 @@ public class CameraManager : MonoBehaviour {
     
     public Camera ViewCamera;  
     public List<Transform> CameraTransforms = new List<Transform>();
+    public GameObject CensureCanvas;
 
     private int _currentCameraIndex = 0;
 
@@ -27,6 +28,7 @@ public class CameraManager : MonoBehaviour {
         UpdateCamera();
     }
     private void UpdateCamera() {
+        CensureCanvas.SetActive(_currentCameraIndex == 1);
         ViewCamera.transform.position = CameraTransforms[_currentCameraIndex].position;
         ViewCamera.transform.rotation = CameraTransforms[_currentCameraIndex].rotation;
     }
