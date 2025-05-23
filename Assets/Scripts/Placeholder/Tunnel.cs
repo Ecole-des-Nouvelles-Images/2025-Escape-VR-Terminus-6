@@ -1,4 +1,5 @@
 using DG.Tweening;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.Serialization;
@@ -25,7 +26,6 @@ public class Tunnel : MonoBehaviour {
     [SerializeField] private float _speed;
     [SerializeField] private float _acceleration;
     public bool isStopped;
-
     
     [Header("Speed")]
     [SerializeField] private float _accelerationTime;
@@ -65,6 +65,7 @@ public class Tunnel : MonoBehaviour {
         if (!_isInSlowdown && isStopped == false) {
             if (_currentSpeed < _targetSpeed) {
                 _currentSpeed += _acceleration * Time.deltaTime / _accelerationTime;
+                _lever.Lock();
             }
             else if (_currentSpeed > _targetSpeed) {
                 _currentSpeed -= _acceleration * Time.deltaTime / _accelerationTime;
@@ -112,7 +113,6 @@ public class Tunnel : MonoBehaviour {
                 _sgo.GetComponent<Segment>().id = i;
             }
             _yInstanceRotation += _segmentRotationStep;
-
         }
     }
     

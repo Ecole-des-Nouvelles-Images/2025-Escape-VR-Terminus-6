@@ -1,7 +1,9 @@
 using System;
 using JetBrains.Annotations;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.XR.Interaction.Toolkit.Interactables;
 
 public class Station : MonoBehaviour
 {
@@ -13,12 +15,16 @@ public class Station : MonoBehaviour
     
     [SerializeField] private Tunnel _tunnel;    // Tunnel (Tunnel will prolly be a singleton
     [SerializeField] private int id;            // Station ID
+    [SerializeField] private TrainLever _lever;
     
     [Header("Enigmas")]
     [SerializeField] private Enigma _currentEnigma;// Get events for the enigma, with minimal overhead
     [SerializeField] private bool _changeEnigmaOnExit;
     [SerializeField, CanBeNull] private GeneratorManager _generatorManager;
 
+    [Header("Radio -- Use only for Enigma 1")]
+    public NumberManager _radioNumberManager;
+    
     [Header("Mirror Illusion -- use only for Enigma 2")]
     public bool IsMirror;                       // Used only for Enigma 2, allows mirror train code to execute
     [SerializeField] private GameObject _fakeTrain;     // Object for the mirror train
@@ -31,7 +37,6 @@ public class Station : MonoBehaviour
     [SerializeField] private AudioSource _speaker;      // Audio source
     [SerializeField] private AudioClip _message;        // Voice line when entering the station
     
-
     [Header("Debug")]
     private GameObject _playerTrain;
     private Vector3 _symVector;
@@ -64,6 +69,21 @@ public class Station : MonoBehaviour
                 _currentEnigma.Solve.AddListener(OnEnigmaSolved);
                 _currentEnigma.Begin.Invoke();
                 _tunnel.ignoreLever = true;
+                
+                if (_currentEnigma.Id == 0) {
+                    _radioNumberManager.enabled = false;
+                    foreach (Transform child in _radioNumberManager.transform) {
+                        child.GetComponent<BoxCollider>().enabled = false;
+                    }
+                }
+                
+                if (_currentEnigma.Id == 1) {
+                    _radioNumberManager.enabled = true;
+                    foreach (Transform child in _radioNumberManager.transform) {
+                        child.GetComponent<BoxCollider>().enabled = true;
+                    }
+                }
+                
                 if (_currentEnigma.Id == 2) {
                     _generatorManager.SwitchLock();
                     _generatorManager.SwitchLock();
@@ -93,8 +113,11 @@ public class Station : MonoBehaviour
     }
 
     private void OnTriggerExit(Collider other) {
+        Debug.Log("Station exited");
         Exit.Invoke();
-        _tunnel.ignoreLever = true;
+        _lever.SetToMax();
+        _lever.Lock();
+        _lever.Lock(); 
     }
 
     private void ErrorSound() {
