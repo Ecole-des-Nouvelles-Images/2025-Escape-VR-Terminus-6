@@ -26,8 +26,6 @@ public class GameManager : MonoBehaviour {
     public Station currentStation;
 
     public int currentEnigma = 0;
-    // [SerializeField] private int currentEnigmaBackup = 0;
-
     
     private void Start() {
         currentEnigma = 0;
@@ -36,7 +34,7 @@ public class GameManager : MonoBehaviour {
     public void VerifyEnigma(Enigma enigma)
     {
         currentEnigma++;
-        Debug.Log("Increasing Enigma by 1");
+        Debug.Log("Ready to start next enigma");
     }
 
     public Enigma AssignEnigma() {

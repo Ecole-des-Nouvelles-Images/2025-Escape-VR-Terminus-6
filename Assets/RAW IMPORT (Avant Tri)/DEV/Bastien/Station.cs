@@ -60,6 +60,9 @@ public class Station : MonoBehaviour
     
     private void OnTriggerEnter(Collider other) {
         if (other.CompareTag("Train")) {
+            
+            _speaker.Play();
+            
             GameManager.Instance.currentStation = this;
             _currentEnigma = GameManager.Instance.AssignEnigma();
             _tunnel.Halt.Invoke();
@@ -103,8 +106,6 @@ public class Station : MonoBehaviour
                 _playerTrain = other.gameObject;
                 _fakeTrain.SetActive(true);
             }
-            _speaker.Play();
-
         }
     }
 
@@ -119,11 +120,7 @@ public class Station : MonoBehaviour
         Exit.Invoke();
         _lever.SetToMax();
         _lever.Lock();
-        _lever.Lock(); 
-    }
-
-    private void ErrorSound() {
-        
+        _lever.Lock(); // ??? 
     }
 
     private void OnEnigmaSolved() {

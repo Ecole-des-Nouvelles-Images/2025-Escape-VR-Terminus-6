@@ -646,9 +646,11 @@ MonoBehaviour:
       m_Calls: []
   _tunnel: {fileID: 0}
   id: 2
+  _lever: {fileID: 0}
   _currentEnigma: {fileID: 0}
   _changeEnigmaOnExit: 0
   _generatorManager: {fileID: 0}
+  _radioNumberManager: {fileID: 0}
   IsMirror: 1
   _fakeTrain: {fileID: 0}
   _rotationCenter: {fileID: 155391658394041606}
