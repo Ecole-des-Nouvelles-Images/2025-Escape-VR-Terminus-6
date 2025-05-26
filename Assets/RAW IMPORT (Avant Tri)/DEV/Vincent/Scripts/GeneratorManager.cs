@@ -1,5 +1,7 @@
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Events;
+using UnityEngine.XR.Interaction.Toolkit.Interactables;
 
 public class GeneratorManager : MonoBehaviour
 {
@@ -39,19 +41,30 @@ public class GeneratorManager : MonoBehaviour
     [SerializeField] private Light _leverLight;
     [SerializeField] private Light _cabinLight;
     [SerializeField] private Animator _animatorController;
-    
+
+
+    private BoxCollider _localCableHead1Collider;
+    private BoxCollider _localCableHead2Collider;
+    private BoxCollider _localCableHead3Collider;
     
     public bool GeneratorOk { get; private set; }
     private bool _amogusOk;
     private bool _cableDisconnected;
+    private bool _resetDone;
 
     private void Awake() {
         _animator = GetComponent<Animator>();
         _locked = false;
         _amogusLight.enabled = false; _leverLight.enabled = false;
-        LocalCableHead1.gameObject.GetComponent<BoxCollider>().enabled = false;
-        LocalCableHead2.gameObject.GetComponent<BoxCollider>().enabled = false;
-        LocalCableHead3.gameObject.GetComponent<BoxCollider>().enabled = false;
+        _localCableHead1Collider = LocalCableHead1.transform.GetComponent<BoxCollider>();
+        _localCableHead2Collider = LocalCableHead2.transform.GetComponent<BoxCollider>();
+        _localCableHead3Collider = LocalCableHead3.transform.GetComponent<BoxCollider>();
+        _localCableHead1Collider.enabled = false;
+        _localCableHead2Collider.enabled = false;
+        _localCableHead3Collider.enabled = false;
+        CableHead1.LockHead(); 
+        CableHead2.LockHead();
+        CableHead3.LockHead();
         _cableDisconnected = false;
     }
 
@@ -62,7 +75,7 @@ public class GeneratorManager : MonoBehaviour
     private void Update()
     {
         UpdateGeneratorOk();
-        VerifyLamp();
+        //VerifyLamp();
         CheckLights();
     }
 
@@ -85,14 +98,14 @@ public class GeneratorManager : MonoBehaviour
         }
     }
 
-    private void VerifyLamp() {
+    /*private void VerifyLamp() {
         if (GeneratorOk) {
             LampOn();
         }
         else {
             LampOff();
         }
-    }
+    }*/
 
     private void LampOn() {
         if (LampMeshRenderer.material != LampMatOn) {
@@ -112,20 +125,26 @@ public class GeneratorManager : MonoBehaviour
             _amogusLight.enabled = true;
             _cabinLight.enabled = false;
             _animatorController.SetBool("CubeActivated", true);
-            if (_cableDisconnected == false) {
+            LampOff();
+            if (_cableDisconnected == false && _resetDone == false) {
                 CableHead1.gameObject.transform.position = CableHead1IP.transform.position;
+                CableHead1.UnlockHead();
                 CableHead2.gameObject.transform.position = CableHead2IP.transform.position;
+                CableHead2.UnlockHead();
                 CableHead3.gameObject.transform.position = CableHead3IP.transform.position;
+                CableHead3.UnlockHead();
                 _cableDisconnected = true;
-                LocalCableHead1.gameObject.GetComponent<BoxCollider>().enabled = true;
-                LocalCableHead2.gameObject.GetComponent<BoxCollider>().enabled = true;
-                LocalCableHead3.gameObject.GetComponent<BoxCollider>().enabled = true;
+                _localCableHead1Collider.enabled = true;
+                _localCableHead2Collider.enabled = true;
+                _localCableHead3Collider.enabled = true;
+                _resetDone = true;
             }
         } else if (LocalGeneratorLever.LeverActivated == false && _amogusOk) {
             _leverLight.enabled = true;
             _amogusLight.enabled = false;
             _cabinLight.enabled = true;
             _animatorController.SetBool("CubeActivated", false);
+            LampOn();
         }
     }
 
@@ -134,16 +153,16 @@ public class GeneratorManager : MonoBehaviour
         if (_locked) {
             LocalGeneratorLever.UnlockLeverGenerator();
             FusibleAnchorCollider.enabled = true;
-            CableHead1.UnlockHead();
+            /*CableHead1.UnlockHead();
             CableHead2.UnlockHead();
             CableHead3.UnlockHead();
             CableHead1.UnlockHead();
             CableHead2.UnlockHead();
-            CableHead3.UnlockHead();
+            CableHead3.UnlockHead();*/
             _animator.SetTrigger("OpenGenerator");
             _audioSource.clip = _openingNoise;
             _audioSource.Play();
-            _amogusLight.enabled = true;
+            //_amogusLight.enabled = true;
             _leverLight.enabled = true;
         }
         else {

@@ -81,7 +81,9 @@ public class Station : MonoBehaviour
                     case 0: {
                         _radioNumberManager.enabled = false;
                         foreach (Transform child in _radioNumberManager.transform) {
-                            child.GetComponent<BoxCollider>().enabled = false;
+                            if (child.GetComponent<BoxCollider>()) { 
+                                child.GetComponent<BoxCollider>().enabled = false;
+                            }
                         } break;
                     }
                     case 1: {

@@ -3453,7 +3453,7 @@ PrefabInstance:
       objectReference: {fileID: 267527531}
     - target: {fileID: 4440035442216149207, guid: 5d281cfe5a4c99f459ed5ede4abd527c, type: 3}
       propertyPath: _unlockCode
-      value: 486
+      value: 000
       objectReference: {fileID: 0}
     - target: {fileID: 4445675840078856976, guid: 5d281cfe5a4c99f459ed5ede4abd527c, type: 3}
       propertyPath: m_Name
@@ -3663,10 +3663,6 @@ PrefabInstance:
       propertyPath: m_VideoClip
       value: 
       objectReference: {fileID: 32900000, guid: 5d8c7b1a63b7f31549404483745f90c8, type: 3}
-    - target: {fileID: 8760470146974566521, guid: 5d281cfe5a4c99f459ed5ede4abd527c, type: 3}
-      propertyPath: m_PlaybackSpeed
-      value: 10
-      objectReference: {fileID: 0}
     - target: {fileID: 8760470146974566521, guid: 5d281cfe5a4c99f459ed5ede4abd527c, type: 3}
       propertyPath: m_ControlledAudioTrackCount
       value: 1
