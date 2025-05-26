@@ -12,7 +12,7 @@ public class InWallBlindness : MonoBehaviour
     {
         if (other.CompareTag("Environnement") && Dark == false)
         {
-            BwcAnimator.SetBool("InWall", true);
+            Dark = true;
         }
     }
 
@@ -20,9 +20,12 @@ public class InWallBlindness : MonoBehaviour
     {
         if (other.CompareTag("Environnement") && Dark)
         {
-            BwcAnimator.SetBool("InWall", false);
+            Dark = false;
         }
     }
 
-    
+    private void Update()
+    {
+        BwcAnimator.SetBool("InWall", Dark);
+    }
 }
