@@ -44,10 +44,11 @@ public class Portal : MonoBehaviour
     private void PortalEntered(Collider other)
     {
         if (destinationPortal == null || _isHidden) return;
+        
         if (other.CompareTag(playerTag) || other.CompareTag("Teleportable"))
         {
             if (_teleportedObjects.Contains(other)) return;
-                
+
             Transform originTransform = other.GetComponentInParent<XROrigin>().gameObject.transform;
             var offset = originTransform.position - transform.position;
             var offsetRotation = originTransform.transform.rotation.eulerAngles - transform.rotation.eulerAngles;
@@ -55,8 +56,9 @@ public class Portal : MonoBehaviour
             //originTransform.transform.eulerAngles = destinationPortal.transform.rotation.eulerAngles + offsetRotation;
             StartCoroutine(MaskOtherPortal());
             _teleportedObjects.Add(other);
-                
-            if (other.CompareTag(playerTag)) {
+
+            if (other.CompareTag(playerTag))
+            {
                 destinationPortal._isHidden = true;
                 isActive = false;
                 destinationPortal.destinationPortal.isActive = true;

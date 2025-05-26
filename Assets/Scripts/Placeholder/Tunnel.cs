@@ -33,10 +33,10 @@ public class Tunnel : MonoBehaviour {
 
     [Header("Debug")]
     private bool _isInSlowdown;
-    private float _currentSpeed;     // Current speed
+    private float _currentSpeed;    // Current speed
     private float _targetSpeed;     // New speed value, end of interpolation
     
-    private float _currentSegment;
+    private float _currentSegment;  // For debug, to create segments
 
     private void Start()
     {
