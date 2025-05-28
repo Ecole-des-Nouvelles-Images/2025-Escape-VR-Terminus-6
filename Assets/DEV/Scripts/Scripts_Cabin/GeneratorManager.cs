@@ -50,6 +50,8 @@ namespace DEV.Scripts.Scripts_Cabin {
         private bool _cableDisconnected;
         private bool _resetDone;
 
+        private bool _c1ok, _c2ok, _c3ok;
+
         private void Awake() {
             _animator = GetComponent<Animator>();
             _locked = false;
@@ -82,28 +84,20 @@ namespace DEV.Scripts.Scripts_Cabin {
             // Vérifie les booléens dans les objets associés
             //bool fusibleOk = LocalFusible       != null && LocalFusible.FusibleOk;
             //bool fusibleOk = true;
-            bool cableHead1Ok = LocalCableHead1 != null && LocalCableHead1.CableOk;
-            bool cableHead2Ok = LocalCableHead2 != null && LocalCableHead2.CableOk;
-            bool cableHead3Ok = LocalCableHead3 != null && LocalCableHead3.CableOk;
-            _amogusOk = (cableHead1Ok && cableHead2Ok && cableHead3Ok);
+            _c1ok = LocalCableHead1.CableOk;
+            _c2ok = LocalCableHead2.CableOk;
+            _c3ok = LocalCableHead3.CableOk;
+            _amogusOk = (_c1ok && _c2ok && _c3ok);
             // Met à jour GeneratorOk en fonction des booléens
             GeneratorOk = (LocalGeneratorLever.LeverActivated == false && _amogusOk);
         
             if (GeneratorOk) {
+                _animatorController.SetBool("CubeActivated", false);
                 _enigma.Solve.Invoke();
-                LocalGeneratorLever.LockLeverGenerator();
+                SwitchLock();
                 GameManager.Instance.currentStation.LightsOff.Invoke();
             }
         }
-
-        /*private void VerifyLamp() {
-        if (GeneratorOk) {
-            LampOn();
-        }
-        else {
-            LampOff();
-        }
-    }*/
 
         private void LampOn() {
             if (LampMeshRenderer.material != LampMatOn) {
@@ -119,6 +113,7 @@ namespace DEV.Scripts.Scripts_Cabin {
 
         private void CheckLights() {
             if (LocalGeneratorLever.LeverActivated && _amogusOk == false) {
+                LocalGeneratorLever.LockLeverGenerator();
                 _leverLight.enabled = false;
                 _amogusLight.enabled = true;
                 _cabinLight.enabled = false;
@@ -137,11 +132,11 @@ namespace DEV.Scripts.Scripts_Cabin {
                     _localCableHead3Collider.enabled = true;
                     _resetDone = true;
                 }
-            } else if (LocalGeneratorLever.LeverActivated == false && _amogusOk) {
+            } else if (LocalGeneratorLever.LeverActivated && _amogusOk) {
+                LocalGeneratorLever.UnlockLeverGenerator();
                 _leverLight.enabled = true;
                 _amogusLight.enabled = false;
                 _cabinLight.enabled = true;
-                _animatorController.SetBool("CubeActivated", false);
                 LampOn();
             }
         }
@@ -151,12 +146,6 @@ namespace DEV.Scripts.Scripts_Cabin {
             if (_locked) {
                 LocalGeneratorLever.UnlockLeverGenerator();
                 FusibleAnchorCollider.enabled = true;
-                /*CableHead1.UnlockHead();
-            CableHead2.UnlockHead();
-            CableHead3.UnlockHead();
-            CableHead1.UnlockHead();
-            CableHead2.UnlockHead();
-            CableHead3.UnlockHead();*/
                 _animator.SetTrigger("OpenGenerator");
                 _audioSource.clip = _openingNoise;
                 _audioSource.Play();
@@ -180,6 +169,5 @@ namespace DEV.Scripts.Scripts_Cabin {
             _audioSource.clip = _openingNoise;
             _audioSource.Play();
         }
-    
     }
 }

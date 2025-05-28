@@ -18,6 +18,8 @@ public class CdPlayerNew : MonoBehaviour
     private BoxCollider boxCollider;
     private Animator animator;
 
+    private bool inserting;
+    
     private void Awake()
     {
         light.SetActive(false);
@@ -32,6 +34,7 @@ public class CdPlayerNew : MonoBehaviour
     {
         if (isCdIn && !hasSolvedEnigma && videoPlayer.time >= videoPlayer.clip.length - 0.5f)
         {
+            if (inserting) return;
             enigma.Solve.Invoke();
             hasSolvedEnigma = true;
             StartCoroutine(EjectCd());
@@ -57,6 +60,7 @@ public class CdPlayerNew : MonoBehaviour
 
     private IEnumerator InsertCd(GameObject cd)
     {
+        inserting = true;
         var rb = cd.GetComponent<Rigidbody>();
         var collider = cd.GetComponent<Collider>();
 
@@ -81,6 +85,7 @@ public class CdPlayerNew : MonoBehaviour
         yield return new WaitForSeconds(0.33f);
         videoPlayer.Play();
         light.SetActive(true);
+        inserting = false;
     }
 
     private IEnumerator EjectCd()

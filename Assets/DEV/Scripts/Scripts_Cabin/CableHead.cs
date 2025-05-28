@@ -62,6 +62,7 @@ public class CableHead : MonoBehaviour {
 
     private void SetupEventListeners() {
         _grabInteractable.selectEntered.AddListener(OnGrab);
+        _grabInteractable.selectEntered.AddListener(OnGrab);
         _grabInteractable.selectExited.AddListener(OnRelease);
     }
 
@@ -108,10 +109,12 @@ public class CableHead : MonoBehaviour {
 
     private void HandleReleaseNearAnchor() {
         if (_tempCableAnchor.CablePlugged) {
+            _tempCableAnchor.VerifyColor(ConnectedMaterial);
             ReturnToBase();
             _tempCableAnchor.CablePlugged = true;
         }
         else {
+            _tempCableAnchor.VerifyColor(ConnectedMaterial);
             SnapToAnchor();
         }
     }
