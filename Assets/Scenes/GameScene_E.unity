@@ -2435,6 +2435,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: MTR_CABIN
       objectReference: {fileID: 0}
+    - target: {fileID: 4446708028406977196, guid: 5d281cfe5a4c99f459ed5ede4abd527c, type: 3}
+      propertyPath: enigma
+      value: 
+      objectReference: {fileID: 530193624}
+    - target: {fileID: 6442836941489939319, guid: 5d281cfe5a4c99f459ed5ede4abd527c, type: 3}
+      propertyPath: enigma
+      value: 
+      objectReference: {fileID: 530193624}
+    - target: {fileID: 6716888104834079672, guid: 5d281cfe5a4c99f459ed5ede4abd527c, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7136418931576828893, guid: 5d281cfe5a4c99f459ed5ede4abd527c, type: 3}
       propertyPath: _enigma
       value: 
