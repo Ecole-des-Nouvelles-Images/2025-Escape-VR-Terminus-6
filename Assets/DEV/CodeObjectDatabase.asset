@@ -13,5 +13,9 @@ MonoBehaviour:
   m_Name: CodeObjectDatabase
   m_EditorClassIdentifier: 
   codeObjects:
-  - code: 004
+  - code: 400
+    objectName: MNG_AudioManager
+  - code: 189
+    objectName: MNG_AudioManager
+  - code: 742
     objectName: MNG_AudioManager

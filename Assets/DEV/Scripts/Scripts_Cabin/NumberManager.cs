@@ -2,21 +2,23 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.Events;
 using UnityEngine.UI;
 
 public class NumberManager : MonoBehaviour
 {
     [Header("Code display")]
     public TextMeshProUGUI codeDisplay;
-    private string currentCode = "___";
     [SerializeField] private string _unlockCode;
+    private string currentCode = "___";
     private int currentIndex = 0;
-
     private bool _radioLocked;
 
     [Header("Engima")]
-    [SerializeField] private Enigma _enigma;
+    public Station station;
+    public UnityEvent ChangeStation;
     public CodeObjectDatabase codeDatabase;
+    [SerializeField] private Enigma _enigma;
 
     [Header("Lock Display")]
     [SerializeField] private Image _lockImage;
@@ -30,6 +32,7 @@ public class NumberManager : MonoBehaviour
     //public Material LockOffMaterial;
     
     void Start() {
+        ChangeStation.AddListener(OnChageStation);
         currentCode = "___";
         _radioLocked = true;
         UpdateCodeDisplay();
@@ -37,10 +40,8 @@ public class NumberManager : MonoBehaviour
         _lockImage.color = _lockedColor;
     }
 
-    public void AddNumber(int number)
-    {
-        if (currentIndex < 3)
-        {
+    public void AddNumber(int number) {
+        if (currentIndex < 3) {
             char[] codeArray = currentCode.ToCharArray();
             codeArray[currentIndex] = number.ToString()[0];
             currentCode = new string(codeArray);
@@ -49,8 +50,7 @@ public class NumberManager : MonoBehaviour
         }
     }
 
-    public void ValidateCode()
-    {
+    public void ValidateCode() {
         Debug.Log("Code validé : " + currentCode);
         TestCode();
 
@@ -63,8 +63,12 @@ public class NumberManager : MonoBehaviour
         codeDisplay.text = currentCode;
     }
 
-    private void TestCode()
-    {
+    private void OnChageStation() {
+        station = GameManager.Instance.currentStation;
+        _enigma = GameManager.Instance.AssignEnigma();
+    }
+
+    private void TestCode() {
         if (_radioLocked && currentCode == _unlockCode) {
             _radioLocked = false;
             Debug.Log("Radio Unlocked");
@@ -81,8 +85,13 @@ public class NumberManager : MonoBehaviour
         foreach (var pair in codeDatabase.codeObjects) {
             GameObject obj = GameObject.Find(pair.objectName);
             if (obj != null) {
-                if (pair.code == currentCode && GameManager.Instance.currentEnigma == 1) {
-                    _enigma.Solve.Invoke();
+                if (pair.code == currentCode && currentCode == station.code) { //Need a code for every enigma
+                    Debug.Log("Reporting issue");
+                    station.Report.Invoke();
+                    Debug.Log("Issue reported");
+                    if (GameManager.Instance.currentEnigma == 1 || GameManager.Instance.currentEnigma == 3) {
+                        _enigma.Solve.Invoke();
+                    }
                     if (obj.GetComponent<AudioCode>()) { obj.GetComponent<AudioCode>().ActivateCode(currentCode); } 
                 }
             }

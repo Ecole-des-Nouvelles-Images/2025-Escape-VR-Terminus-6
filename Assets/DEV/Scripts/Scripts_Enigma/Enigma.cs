@@ -11,6 +11,7 @@ public class Enigma : MonoBehaviour {
     public bool Solved;
     public bool isAnomaly;
     public int Id;
+    public string code;
     
     private void Start()
     {
