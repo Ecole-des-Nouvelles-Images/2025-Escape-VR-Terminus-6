@@ -21,9 +21,18 @@ public class CdPlayerFsm : MonoBehaviour
 
     private bool isCdIn;
     private bool hasSolvedEnigma;
+    private bool isInserting;
+    private bool isEjecting;
     private VideoPlayer videoPlayer;
     private BoxCollider boxCollider;
     private GameObject currentCd;
+
+    private bool StateOutStaticOk;
+    private bool StateInOk;
+    private bool StateInStaticOk;
+    private bool StateOutOk;
+    
+    private bool VideoCurrentlyPlaying;
 
     public enum LectorStates
     {
@@ -50,7 +59,7 @@ public class CdPlayerFsm : MonoBehaviour
         {
             cdGhost.enabled = true;
         }
-        else if (!isCdIn)
+        else if (!isCdIn && !isInserting && !isEjecting)
         {
             currentCd = other.gameObject;
             LectorState = LectorStates.In;
@@ -86,17 +95,19 @@ public class CdPlayerFsm : MonoBehaviour
 
     private void ManageOutStatic()
     {
-        // Rester en position "transformStartPosition" et attendre d'être inséré
         transform.position = transformStartPosition.position;
     }
 
     private void ManageIn()
     {
+        if (isInserting) return;
+
         isCdIn = true;
+        isInserting = true;
         Rigidbody cdRigidbody = currentCd.GetComponent<Rigidbody>();
         Collider cdCollider = currentCd.GetComponent<Collider>();
 
-        cdRigidbody.velocity = Vector3.zero;
+        if (!cdRigidbody.isKinematic) cdRigidbody.velocity = Vector3.zero;
         cdRigidbody.isKinematic = true;
         cdRigidbody.useGravity = false;
         cdCollider.enabled = false;
@@ -109,50 +120,82 @@ public class CdPlayerFsm : MonoBehaviour
 
         boxCollider.enabled = false;
 
-        StartCoroutine(MoveCdToPosition(transformInPosition.position, startInTimer));
+        StartCoroutine(MoveCdIn(transformInPosition.position, startInTimer));
     }
 
     private void ManageInStatic()
     {
-        if (videoPlayer.time >= videoPlayer.clip.length - 0.25f)
+        if (!videoPlayer.isPlaying)
         {
+            VerifyVideo();
+            return;
+        }
+        else if (videoPlayer.time >= videoPlayer.clip.length - 0.15f && !isEjecting)
+        {
+            isInserting = false;
             if (!hasSolvedEnigma)
             {
                 enigma.Solve.Invoke();
                 hasSolvedEnigma = true;
             }
+            Debug.Log("End In Static");
+            VideoCurrentlyPlaying = false;
+            videoPlayer.Stop();
+            videoPlayer.time = 0;
             LectorState = LectorStates.Out;
+        }
+    }
+
+    private void VerifyVideo()
+    {
+        if (videoPlayer.time <= videoPlayer.clip.length * (1-90/100))
+        {
+            VideoCurrentlyPlaying = true;
         }
     }
 
     private void ManageOut()
     {
-        StartCoroutine(MoveCdToPosition(transformOutPosition.position, inOutTimer));
+        if (isEjecting || isInserting) return;
+        if (VideoCurrentlyPlaying) return;
+        
+        isEjecting = true;
+        Debug.Log("Start Out");
+        StartCoroutine(MoveCdOut(transformOutPosition.position, inOutTimer));
     }
 
-    private IEnumerator MoveCdToPosition(Vector3 targetPosition, float duration)
+    private IEnumerator MoveCdIn(Vector3 targetPosition, float duration)
     {
         float elapsedTime = 0;
         Vector3 startingPosition = transform.position;
 
         while (elapsedTime < duration)
         {
-            transform.position = Vector3.Lerp(startingPosition, targetPosition, elapsedTime / duration);
+            transform.position = Vector3.Lerp(startingPosition, transformInPosition.position, elapsedTime / duration);
             elapsedTime += Time.deltaTime;
             yield return null;
         }
 
         transform.position = targetPosition;
+        LectorState = LectorStates.InStatic;
+        videoPlayer.Play();
+    }
 
-        if (LectorState == LectorStates.Out)
+    private IEnumerator MoveCdOut(Vector3 targetPosition, float duration)
+    {
+        Debug.Log("Move Out");
+        float elapsedTime = 0;
+        Vector3 startingPosition = transform.position;
+
+        while (elapsedTime < duration)
         {
-            ResetToOutStatic();
+            transform.position = Vector3.Lerp(startingPosition, transformOutPosition.position, elapsedTime / duration);
+            elapsedTime += Time.deltaTime;
+            yield return null;
         }
-        else if (LectorState == LectorStates.In)
-        {
-            LectorState = LectorStates.InStatic;
-            videoPlayer.Play();
-        }
+
+        transform.position = targetPosition;
+        ResetToOutStatic();
     }
 
     private void ResetToOutStatic()
@@ -160,7 +203,7 @@ public class CdPlayerFsm : MonoBehaviour
         Rigidbody cdRigidbody = currentCd.GetComponent<Rigidbody>();
         Collider cdCollider = currentCd.GetComponent<Collider>();
 
-        cdRigidbody.velocity = Vector3.zero;
+        if (!cdRigidbody.isKinematic)  cdRigidbody.velocity = Vector3.zero;
         cdRigidbody.isKinematic = false;
         cdRigidbody.useGravity = true;
         cdCollider.enabled = true;
@@ -175,5 +218,6 @@ public class CdPlayerFsm : MonoBehaviour
         boxCollider.enabled = true;
         LectorState = LectorStates.OutStatic;
         isCdIn = false;
+        isEjecting = false;
     }
 }
