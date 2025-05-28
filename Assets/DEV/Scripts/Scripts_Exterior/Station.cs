@@ -48,6 +48,7 @@ public class Station : MonoBehaviour
     [Header("Debug")]
     private GameObject _playerTrain;
     private Vector3 _symVector;
+    private bool _stationExited;
     
     private void Start() {
         if(IsMirror) _fakeTrain.SetActive(false);
@@ -73,7 +74,8 @@ public class Station : MonoBehaviour
     
     private void OnTriggerEnter(Collider other) {
         if (other.CompareTag("Train")) {
-            
+
+            _stationExited = false;
             _speaker.Play();
             
             GameManager.Instance.currentStation = this;
@@ -140,11 +142,19 @@ public class Station : MonoBehaviour
     }
 
     private void OnTriggerExit(Collider other) {
-        Debug.Log("Station exited");
-        Exit.Invoke();
-        _lever.SetToMax();
-        _lever.Lock();
-        _lever.Lock();
+        if (_stationExited) {
+            return;
+        }
+        else {
+            GameManager.Instance.VerifyEnigma();
+            _stationExited = true;
+            Debug.Log("Station exited");
+            Exit.Invoke();
+            _lever.SetToMax();
+            _lever.Lock();
+            _lever.Lock();
+        }
+        
     }
 
     private void OnEnigmaSolved() {

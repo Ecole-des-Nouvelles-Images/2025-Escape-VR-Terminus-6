@@ -84,16 +84,18 @@ public class NumberManager : MonoBehaviour
         
         foreach (var pair in codeDatabase.codeObjects) {
             GameObject obj = GameObject.Find(pair.objectName);
-            if (obj != null) {
-                if (pair.code == currentCode && currentCode == station.code) { //Need a code for every enigma
-                    Debug.Log("Reporting issue");
-                    station.Report.Invoke();
-                    Debug.Log("Issue reported");
-                    if (GameManager.Instance.currentEnigma == 1 || GameManager.Instance.currentEnigma == 3) {
-                        _enigma.Solve.Invoke();
-                    }
-                    if (obj.GetComponent<AudioCode>()) { obj.GetComponent<AudioCode>().ActivateCode(currentCode); } 
+            if (obj != null) return; 
+            
+            if (pair.code == currentCode && currentCode == station.code) { //Need a code for every enigma
+                Debug.Log("Reporting issue");
+                station.Report.Invoke();
+                Debug.Log("Issue reported");
+                    
+                if (GameManager.Instance.currentEnigma == 1 || GameManager.Instance.currentEnigma == 3) {
+                    _enigma.Solve.Invoke();
                 }
+
+                if (obj.GetComponent<AudioCode>()) { obj.GetComponent<AudioCode>().ActivateCode(currentCode); } 
             }
         }
     }

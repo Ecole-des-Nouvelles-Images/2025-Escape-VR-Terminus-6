@@ -39,8 +39,7 @@ namespace DEV.Scripts.Scripts_Cabin {
         [SerializeField] private Light _leverLight;
         [SerializeField] private Light _cabinLight;
         [SerializeField] private Animator _animatorController;
-
-
+        
         private BoxCollider _localCableHead1Collider;
         private BoxCollider _localCableHead2Collider;
         private BoxCollider _localCableHead3Collider;
