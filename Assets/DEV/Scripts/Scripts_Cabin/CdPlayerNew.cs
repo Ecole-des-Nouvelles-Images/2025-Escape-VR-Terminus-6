@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.Video;
 using UnityEngine.XR.Interaction.Toolkit.Interactables;
@@ -21,7 +22,8 @@ public class CdPlayerNew : MonoBehaviour
     private float insertCdTimer;
     private float ejectCdTimer;
     private int ejectCdStep;
-
+    private bool _joystickEnabled;
+    
     private void Awake()
     {
         light.SetActive(false);
@@ -31,6 +33,7 @@ public class CdPlayerNew : MonoBehaviour
         boxCollider = GetComponent<BoxCollider>();
         animator = GetComponent<Animator>();
     }
+
 
     private void Update()
     {

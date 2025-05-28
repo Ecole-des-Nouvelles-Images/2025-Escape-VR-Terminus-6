@@ -1273,6 +1273,7 @@ MonoBehaviour:
   _currentEnigma: {fileID: 267527531}
   _changeEnigmaOnExit: 1
   _generatorManager: {fileID: 1289376291}
+  _doorButton: {fileID: 0}
   _radioNumberManager: {fileID: 1155097170}
   IsMirror: 0
   _fakeTrain: {fileID: 3002902790118283458}
@@ -2439,6 +2440,10 @@ PrefabInstance:
       propertyPath: enigma
       value: 
       objectReference: {fileID: 530193624}
+    - target: {fileID: 6053781136341166099, guid: 5d281cfe5a4c99f459ed5ede4abd527c, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6442836941489939319, guid: 5d281cfe5a4c99f459ed5ede4abd527c, type: 3}
       propertyPath: enigma
       value: 
