@@ -81,7 +81,7 @@ public class NumberManager : MonoBehaviour
         foreach (var pair in codeDatabase.codeObjects) {
             GameObject obj = GameObject.Find(pair.objectName);
             if (obj != null) {
-                if (pair.code == currentCode) {
+                if (pair.code == currentCode && GameManager.Instance.currentEnigma == 1) {
                     _enigma.Solve.Invoke();
                     if (obj.GetComponent<AudioCode>()) { obj.GetComponent<AudioCode>().ActivateCode(currentCode); } 
                 }

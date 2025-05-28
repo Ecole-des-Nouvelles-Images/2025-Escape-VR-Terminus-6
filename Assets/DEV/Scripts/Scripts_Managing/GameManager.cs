@@ -13,6 +13,8 @@ public class GameManager : MonoBehaviour {
     public UnityEvent End;
     
     private void Awake() {
+        Application.targetFrameRate = 90; /// IMPORTANT : FIXES FRAMERATE TO BE ACCEPTABLE IN VR
+        
         if (instance != null && instance != this) {
             Destroy(this.gameObject);
             return; 

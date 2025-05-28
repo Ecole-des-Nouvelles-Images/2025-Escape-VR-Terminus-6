@@ -1,7 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class Segment : MonoBehaviour {
-    public int id;
+namespace DEV.Scripts.Scripts_Exterior {
+    public class Segment : MonoBehaviour {
+        public int id;
+    }
 }

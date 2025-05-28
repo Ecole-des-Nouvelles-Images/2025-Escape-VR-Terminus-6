@@ -1,8 +1,10 @@
 using System;
+using DEV.Scripts.Scripts_Cabin;
 using JetBrains.Annotations;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.UI;
 using UnityEngine.XR.Interaction.Toolkit.Interactables;
 
 public class Station : MonoBehaviour
@@ -21,6 +23,7 @@ public class Station : MonoBehaviour
     [SerializeField] private Enigma _currentEnigma;// Get events for the enigma, with minimal overhead
     [SerializeField] private bool _changeEnigmaOnExit;
     [SerializeField, CanBeNull] private GeneratorManager _generatorManager;
+    [SerializeField] private Button _doorButton;
 
     [Header("Radio -- Use only for Enigma 1")]
     public NumberManager _radioNumberManager;
@@ -79,25 +82,31 @@ public class Station : MonoBehaviour
 
                 switch (_currentEnigma.Id) {
                     case 0: {
-                        _radioNumberManager.enabled = false;
+                        /*_radioNumberManager.enabled = false;
                         foreach (Transform child in _radioNumberManager.transform) {
-                            if (child.GetComponent<BoxCollider>())
-                            {
-                                child.GetComponent<BoxCollider>().enabled = false;   
+                            if (child.GetComponent<BoxCollider>()){
+                                child.GetComponent<BoxCollider>().enabled = false;
                             }
-                        } break;
+                        }*/
+                        break;
                     }
                     case 1: {
                         _radioNumberManager.enabled = true;
                         foreach (Transform child in _radioNumberManager.transform) {
                             child.GetComponent<BoxCollider>().enabled = true;
-                        } break;
+                        }
+                        break;
                     }
-                    case 2:
+                    case 2: {
                         _generatorManager.SwitchLock();
                         _generatorManager.SwitchLock();
                         this.LightsOff.AddListener(OnLightsOff);
                         break;
+                    }
+                    case 3: {
+                        _doorButton.enabled = true;
+                        break;
+                    }
                 }
 
                 _cabinBipper.enigma = this._currentEnigma;
