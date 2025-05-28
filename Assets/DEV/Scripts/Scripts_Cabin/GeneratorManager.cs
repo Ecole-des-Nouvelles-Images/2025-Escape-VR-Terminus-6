@@ -93,7 +93,7 @@ namespace DEV.Scripts.Scripts_Cabin {
         
             if (GeneratorOk) {
                 _animatorController.SetBool("CubeActivated", false);
-                _enigma.Solve.Invoke();
+                //_enigma.Solve.Invoke();
                 SwitchLock();
                 GameManager.Instance.currentStation.LightsOff.Invoke();
             }

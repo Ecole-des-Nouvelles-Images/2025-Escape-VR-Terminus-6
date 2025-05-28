@@ -13,7 +13,12 @@ public class Station : MonoBehaviour
     public UnityEvent Enter;                    // Station entry event
     public UnityEvent Exit;                     // Station exit event
     public UnityEvent LightsOff;
+    public UnityEvent Report;
     public UnityEvent Load;
+
+    [Header("Radio")]
+    public string code;
+    private bool _reported;
     
     [SerializeField] private Tunnel _tunnel;    // Tunnel (Tunnel will prolly be a singleton
     [SerializeField] private int id;            // Station ID
@@ -51,6 +56,7 @@ public class Station : MonoBehaviour
         if (_secondModel) {
             _secondModel.SetActive(false);
         }
+        Report.AddListener(OnReport);
     }
 
     private void Update() {
@@ -58,6 +64,10 @@ public class Station : MonoBehaviour
             _symVector = _playerTrain.transform.position - _rotationCenter.transform.position;
             _fakeTrain.transform.position = new Vector3((_symVector.x * -1) + _rotationCenter.transform.position.x,
                 _symVector.y, (_symVector.z * -1) + _rotationCenter.transform.position.z);
+        }
+
+        if (IsMirror) {
+            if (_generatorManager.GeneratorOk && _reported) _currentEnigma.Solve.Invoke();
         }
     }
     
@@ -68,9 +78,11 @@ public class Station : MonoBehaviour
             
             GameManager.Instance.currentStation = this;
             _currentEnigma = GameManager.Instance.AssignEnigma();
+            code = _currentEnigma.code;
+            _radioNumberManager.ChangeStation.Invoke();
             _tunnel.Halt.Invoke();
             Enter.Invoke();
-
+            
             if (!_currentEnigma) {
                 _tunnel.ignoreLever = false;
                 Debug.Log("No enigma here, you can continue");
@@ -132,7 +144,7 @@ public class Station : MonoBehaviour
         Exit.Invoke();
         _lever.SetToMax();
         _lever.Lock();
-        _lever.Lock(); // ??? 
+        _lever.Lock();
     }
 
     private void OnEnigmaSolved() {
@@ -140,5 +152,9 @@ public class Station : MonoBehaviour
         _tunnel.isStopped = false;
         Debug.Log("Lever reactivated after enigma");
         _currentEnigma.Solve.RemoveListener(OnEnigmaSolved);
+    }
+
+    private void OnReport() {
+        _reported = true;
     }
 }
