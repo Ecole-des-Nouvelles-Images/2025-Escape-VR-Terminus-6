@@ -1,5 +1,5 @@
 using UnityEngine;
-using UnityEngine.Serialization;
+using UnityEngine.Events;
 using UnityEngine.XR.Interaction.Toolkit;
 using UnityEngine.XR.Interaction.Toolkit.Interactables;
 
@@ -7,6 +7,7 @@ public class CableHead : MonoBehaviour {
     public LineRenderer LineRenderer;
     public Transform CableBase;
     public Material ConnectedMaterial;
+    public UnityEvent Connected;
     
     [SerializeField] private bool _isConnected;
     private bool _anchorDetected;
@@ -14,7 +15,7 @@ public class CableHead : MonoBehaviour {
     private XRGrabInteractable _grabInteractable;
     private Vector3 _originalPosition;
     private Rigidbody _rb;
-    private CableAnchor _tempCableAnchor;
+    public CableAnchor tempCableAnchor;
     private bool _isReturning = false; // Nouveau booléen pour le retour progressif
     public bool CableHeadUnlocked;
     private void Start() {
@@ -78,8 +79,8 @@ public class CableHead : MonoBehaviour {
 
     private void OnGrab(SelectEnterEventArgs args) {
         DetachFromAnchor();
-        _tempCableAnchor?.ColorOff();
-        _tempCableAnchor?.SetCablePlugged(false);
+        tempCableAnchor?.ColorOff();
+        tempCableAnchor?.SetCablePlugged(false);
         _isReturning = false; // Réinitialiser le retour lors de la saisie
     }
 
@@ -89,10 +90,10 @@ public class CableHead : MonoBehaviour {
     }
 
     private void HandleAnchorStay(Collider other) {
-        _tempCableAnchor = other.GetComponent<CableAnchor>();
-        _anchorTransform = _tempCableAnchor.Ghost.transform;
+        tempCableAnchor = other.GetComponent<CableAnchor>();
+        _anchorTransform = tempCableAnchor.Ghost.transform;
         _anchorDetected = true;
-        _tempCableAnchor.ActivateGhost();
+        tempCableAnchor.ActivateGhost();
     }
 
     private void HandleAnchorExit(Collider other) {
@@ -108,25 +109,23 @@ public class CableHead : MonoBehaviour {
     }
 
     private void HandleReleaseNearAnchor() {
-        if (_tempCableAnchor.CablePlugged) {
-            _tempCableAnchor.VerifyColor(ConnectedMaterial);
+        if (tempCableAnchor.CablePlugged) {
             ReturnToBase();
-            _tempCableAnchor.CablePlugged = true;
+            tempCableAnchor.CablePlugged = true;
         }
         else {
-            _tempCableAnchor.VerifyColor(ConnectedMaterial);
             SnapToAnchor();
         }
     }
 
     private void SnapToAnchor() {
-        _tempCableAnchor.VerifyColor(ConnectedMaterial);
-        _tempCableAnchor.SetCablePlugged(true);
+        Connected.Invoke();
+        tempCableAnchor.SetCablePlugged(true);
         ResetRigidbodyVelocities();
         AttachToAnchor();
-        if (_tempCableAnchor.CableOk) {
+        if (tempCableAnchor.CableOk) {
             GetComponent<Collider>().enabled = false;
-            _tempCableAnchor.GetComponent<Collider>().enabled = false;
+            tempCableAnchor.GetComponent<Collider>().enabled = false;
         }
     }
 

@@ -1,13 +1,15 @@
+using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace DEV.Scripts.Scripts_Cabin {
     public class GeneratorManager : MonoBehaviour
     {
         public GeneratorLever LocalGeneratorLever;
         public Fusible LocalFusible;
-        public CableAnchor LocalCableHead1;
-        public CableAnchor LocalCableHead2;
-        public CableAnchor LocalCableHead3;
+        public CableAnchor CableAnchor1;
+        public CableAnchor CableAnchor2;
+        public CableAnchor CableAnchor3;
     
         public CableHead CableHead1;
         public CableHead CableHead2;
@@ -40,9 +42,9 @@ namespace DEV.Scripts.Scripts_Cabin {
         [SerializeField] private Light _cabinLight;
         [SerializeField] private Animator _animatorController;
         
-        private BoxCollider _localCableHead1Collider;
-        private BoxCollider _localCableHead2Collider;
-        private BoxCollider _localCableHead3Collider;
+        private BoxCollider _cableAnchorColl1;
+        private BoxCollider _cableAnchorColl2;
+        private BoxCollider _cableAnchorColl3;
     
         public bool GeneratorOk { get; private set; }
         private bool _amogusOk;
@@ -51,19 +53,30 @@ namespace DEV.Scripts.Scripts_Cabin {
 
         private bool _c1ok, _c2ok, _c3ok;
 
+        private List<CableHead> _cableHeads;
+        
+        //Putain c'est du sale
         private void Awake() {
             _animator = GetComponent<Animator>();
+            _cableHeads = new List<CableHead>();
+            _cableAnchorColl1 = CableAnchor1.transform.GetComponent<BoxCollider>();
+            _cableAnchorColl2 = CableAnchor2.transform.GetComponent<BoxCollider>();
+            _cableAnchorColl3 = CableAnchor3.transform.GetComponent<BoxCollider>();
+            _cableHeads.Add(CableHead1);
+            _cableHeads.Add(CableHead2);
+            _cableHeads.Add(CableHead3);
             _locked = false;
             _amogusLight.enabled = false; _leverLight.enabled = false;
-            _localCableHead1Collider = LocalCableHead1.transform.GetComponent<BoxCollider>();
-            _localCableHead2Collider = LocalCableHead2.transform.GetComponent<BoxCollider>();
-            _localCableHead3Collider = LocalCableHead3.transform.GetComponent<BoxCollider>();
-            _localCableHead1Collider.enabled = false;
-            _localCableHead2Collider.enabled = false;
-            _localCableHead3Collider.enabled = false;
+            CableHead1.Connected.AddListener(OnCableConnect);
+            CableHead2.Connected.AddListener(OnCableConnect);
+            CableHead3.Connected.AddListener(OnCableConnect);
+            _cableAnchorColl1.enabled = false;
+            _cableAnchorColl2.enabled = false;
+            _cableAnchorColl3.enabled = false;
             CableHead1.LockHead(); 
             CableHead2.LockHead();
             CableHead3.LockHead();
+            
             _cableDisconnected = false;
         }
 
@@ -83,9 +96,9 @@ namespace DEV.Scripts.Scripts_Cabin {
             // Vérifie les booléens dans les objets associés
             //bool fusibleOk = LocalFusible       != null && LocalFusible.FusibleOk;
             //bool fusibleOk = true;
-            _c1ok = LocalCableHead1.CableOk;
-            _c2ok = LocalCableHead2.CableOk;
-            _c3ok = LocalCableHead3.CableOk;
+            _c1ok = CableAnchor1.CableOk;
+            _c2ok = CableAnchor2.CableOk;
+            _c3ok = CableAnchor3.CableOk;
             _amogusOk = (_c1ok && _c2ok && _c3ok);
             // Met à jour GeneratorOk en fonction des booléens
             GeneratorOk = (LocalGeneratorLever.LeverActivated == false && _amogusOk);
@@ -126,9 +139,9 @@ namespace DEV.Scripts.Scripts_Cabin {
                     CableHead3.gameObject.transform.position = CableHead3IP.transform.position;
                     CableHead3.UnlockHead();
                     _cableDisconnected = true;
-                    _localCableHead1Collider.enabled = true;
-                    _localCableHead2Collider.enabled = true;
-                    _localCableHead3Collider.enabled = true;
+                    _cableAnchorColl1.enabled = true;
+                    _cableAnchorColl2.enabled = true;
+                    _cableAnchorColl3.enabled = true;
                     _resetDone = true;
                 }
             } else if (LocalGeneratorLever.LeverActivated && _amogusOk) {
@@ -167,6 +180,17 @@ namespace DEV.Scripts.Scripts_Cabin {
         public void PlayOpenSound() {
             _audioSource.clip = _openingNoise;
             _audioSource.Play();
+        }
+
+        private void OnCableConnect()
+        {
+            foreach (CableHead _ch in _cableHeads)
+            {
+                if (_ch.tempCableAnchor == null) return;
+                    
+                _ch.tempCableAnchor.CableOk = false;
+                _ch.tempCableAnchor.VerifyColor(_ch.ConnectedMaterial);
+            }
         }
     }
 }

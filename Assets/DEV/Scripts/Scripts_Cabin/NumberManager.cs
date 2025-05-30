@@ -84,7 +84,7 @@ public class NumberManager : MonoBehaviour
         
         foreach (var pair in codeDatabase.codeObjects) {
             GameObject obj = GameObject.Find(pair.objectName);
-            if (obj != null) return; 
+            if (obj == null) return; 
             
             if (pair.code == currentCode && currentCode == station.code) { //Need a code for every enigma
                 Debug.Log("Reporting issue");
