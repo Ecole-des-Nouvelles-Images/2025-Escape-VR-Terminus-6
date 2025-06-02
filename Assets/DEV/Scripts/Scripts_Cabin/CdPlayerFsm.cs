@@ -139,7 +139,6 @@ public class CdPlayerFsm : MonoBehaviour
                 enigma.Solve.Invoke();
                 hasSolvedEnigma = true;
             }
-            Debug.Log("End In Static");
             VideoCurrentlyPlaying = false;
             videoPlayer.Stop();
             videoPlayer.time = 0;
@@ -162,7 +161,6 @@ public class CdPlayerFsm : MonoBehaviour
         if (VideoCurrentlyPlaying) return;
         
         isEjecting = true;
-        Debug.Log("Start Out");
         StartCoroutine(MoveCdOut(transformOutPosition.position, inOutTimer));
     }
 
@@ -186,7 +184,6 @@ public class CdPlayerFsm : MonoBehaviour
 
     private IEnumerator MoveCdOut(Vector3 targetPosition, float duration)
     {
-        Debug.Log("Move Out");
         float elapsedTime = 0;
         Vector3 startingPosition = transform.position;
 
