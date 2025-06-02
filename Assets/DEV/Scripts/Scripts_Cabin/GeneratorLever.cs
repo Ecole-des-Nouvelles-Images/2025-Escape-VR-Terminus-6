@@ -55,9 +55,11 @@ public class GeneratorLever : MonoBehaviour
                 if (_targetRotation == Quaternion.Euler(0, 0, _minRot))
                 {
                     LeverActivated = true;
+                    Debug.Log("Lever activated");
                 }
                 else if (_targetRotation == Quaternion.Euler(0, 0, _maxRot)) {
                     LeverActivated = false;
+                    Debug.Log("Lever deactivated");
                 }
                 _interpolationTimer = 0; // Réinitialise le timer pour la prochaine interpolation
             }

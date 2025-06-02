@@ -30,7 +30,7 @@ public class GameManager : MonoBehaviour {
         currentEnigma = 0;
     }
 
-    public void VerifyEnigma(Enigma enigma) {
+    public void VerifyEnigma() {
         currentEnigma++;
         Debug.Log("Ready to start next enigma");
     }
