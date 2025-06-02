@@ -13,6 +13,10 @@ public class Enigma : MonoBehaviour {
     public int Id;
     public string code;
     
+    public void SolveFunc() {
+        this.Solve.Invoke();
+    }
+    
     private void Start()
     {
         this.Solve.AddListener(OnSolve); 

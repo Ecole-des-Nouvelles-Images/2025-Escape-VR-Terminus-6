@@ -28,7 +28,7 @@ public class Station : MonoBehaviour
     [SerializeField] private Enigma _currentEnigma;// Get events for the enigma, with minimal overhead
     [SerializeField] private bool _changeEnigmaOnExit;
     [SerializeField, CanBeNull] private GeneratorManager _generatorManager;
-    [SerializeField] private Button _doorButton;
+    [SerializeField] private XRButton _doorButton;
 
     [Header("Radio -- Use only for Enigma 1")]
     public NumberManager _radioNumberManager;
@@ -53,6 +53,7 @@ public class Station : MonoBehaviour
     private void Start() {
         if(IsMirror) _fakeTrain.SetActive(false);
         _speaker = GetComponent<AudioSource>();
+        if(_doorButton != null) _doorButton.GetComponent<BoxCollider>().enabled = true;
         _speaker.clip = _message;
         if (_secondModel) {
             _secondModel.SetActive(false);
@@ -77,7 +78,7 @@ public class Station : MonoBehaviour
 
             _stationExited = false;
             _speaker.Play();
-            
+            if(_doorButton != null)_doorButton.GetComponent<BoxCollider>().enabled = false;
             GameManager.Instance.currentStation = this;
             _currentEnigma = GameManager.Instance.AssignEnigma();
             code = _currentEnigma.code;
@@ -118,7 +119,7 @@ public class Station : MonoBehaviour
                         break;
                     }
                     case 3: {
-                        _doorButton.enabled = true;
+                        _doorButton.GetComponent<BoxCollider>().enabled = true;
                         break;
                     }
                 }
