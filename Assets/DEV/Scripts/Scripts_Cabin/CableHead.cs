@@ -13,6 +13,7 @@ public class CableHead : MonoBehaviour {
     private bool _anchorDetected;
     private Transform _anchorTransform;
     private XRGrabInteractable _grabInteractable;
+    public Transform baseAnchorPos;
     private Vector3 _originalPosition;
     private Rigidbody _rb;
     public CableAnchor tempCableAnchor;
@@ -21,7 +22,7 @@ public class CableHead : MonoBehaviour {
     private void Start() {
         InitializeComponents();
         SetupEventListeners();
-        _originalPosition = transform.position;
+        _originalPosition = baseAnchorPos.transform.position;
         LockHead();
     }
 

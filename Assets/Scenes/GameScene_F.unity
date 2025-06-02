@@ -3303,6 +3303,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3520213505001434877, guid: 5d281cfe5a4c99f459ed5ede4abd527c, type: 3}
+      propertyPath: baseAnchorPos
+      value: 
+      objectReference: {fileID: 67999177}
     - target: {fileID: 3655376603524499388, guid: 5d281cfe5a4c99f459ed5ede4abd527c, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.01
@@ -3495,6 +3499,10 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: -0.003
       objectReference: {fileID: 0}
+    - target: {fileID: 6816213795110868211, guid: 5d281cfe5a4c99f459ed5ede4abd527c, type: 3}
+      propertyPath: baseAnchorPos
+      value: 
+      objectReference: {fileID: 784798094}
     - target: {fileID: 7102473946351021063, guid: 5d281cfe5a4c99f459ed5ede4abd527c, type: 3}
       propertyPath: m_Color.b
       value: 0.14951938
@@ -3547,6 +3555,10 @@ PrefabInstance:
       propertyPath: m_Intensity
       value: 0.02
       objectReference: {fileID: 0}
+    - target: {fileID: 7670965794976434603, guid: 5d281cfe5a4c99f459ed5ede4abd527c, type: 3}
+      propertyPath: baseAnchorPos
+      value: 
+      objectReference: {fileID: 1852285043}
     - target: {fileID: 7683681759475216503, guid: 5d281cfe5a4c99f459ed5ede4abd527c, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.8482
@@ -6085,7 +6097,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   LoopEnter:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 3178973326706732772}
+        m_TargetAssemblyTypeName: UnityEngine.Animator, UnityEngine
+        m_MethodName: SetTrigger
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Loop
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!54 &6063285451370684150
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -6708,6 +6732,10 @@ PrefabInstance:
       propertyPath: m_SortingLayerID
       value: 1289417335
       objectReference: {fileID: 0}
+    - target: {fileID: 1285391412558487331, guid: e2f23e1f2041b854bb7931b1d0fe1d5d, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2130993556111117273, guid: e2f23e1f2041b854bb7931b1d0fe1d5d, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -6728,6 +6756,10 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 5776032c119ad444dabd9e676df20382, type: 2}
+    - target: {fileID: 3305419608037781823, guid: e2f23e1f2041b854bb7931b1d0fe1d5d, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3359475026223422578, guid: e2f23e1f2041b854bb7931b1d0fe1d5d, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
