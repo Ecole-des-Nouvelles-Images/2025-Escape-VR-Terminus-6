@@ -49,6 +49,7 @@ public class CdPlayerFsm : MonoBehaviour
         videoPlayer = GetComponent<VideoPlayer>();
         boxCollider = GetComponent<BoxCollider>();
         cdGhost.enabled = false;
+        screenLight.SetActive(false);
     }
 
     private void OnTriggerStay(Collider other)
@@ -142,6 +143,7 @@ public class CdPlayerFsm : MonoBehaviour
             VideoCurrentlyPlaying = false;
             videoPlayer.Stop();
             videoPlayer.time = 0;
+            screenLight.SetActive(false);
             LectorState = LectorStates.Out;
         }
     }
@@ -179,6 +181,7 @@ public class CdPlayerFsm : MonoBehaviour
         transform.position = targetPosition;
         LectorState = LectorStates.InStatic;
         videoPlayer.Play();
+        screenLight.SetActive(true);
     }
 
     private IEnumerator MoveCdOut(Vector3 targetPosition, float duration)
