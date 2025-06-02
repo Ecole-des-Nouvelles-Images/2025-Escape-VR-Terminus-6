@@ -262,6 +262,32 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: b8067f5f5fc76944cb907cd394958262, type: 3}
   m_PrefabInstance: {fileID: 212497610}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &220104004 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4804662212098994193, guid: 5d281cfe5a4c99f459ed5ede4abd527c, type: 3}
+  m_PrefabInstance: {fileID: 738199648687975799}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &220104012
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 220104004}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 0daf842c5be4ec94ca733838b38ac9a4, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &249625906
 GameObject:
   m_ObjectHideFlags: 0
@@ -4175,6 +4201,10 @@ PrefabInstance:
       propertyPath: _enigma
       value: 
       objectReference: {fileID: 539548968586632696}
+    - target: {fileID: 4323738266801579704, guid: 5d281cfe5a4c99f459ed5ede4abd527c, type: 3}
+      propertyPath: _enigma
+      value: 
+      objectReference: {fileID: 539548968586632696}
     - target: {fileID: 4440035442216149207, guid: 5d281cfe5a4c99f459ed5ede4abd527c, type: 3}
       propertyPath: _enigma
       value: 
@@ -4395,6 +4425,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7686667773718967952, guid: 5d281cfe5a4c99f459ed5ede4abd527c, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 84cefd42b3b70a344bcb06cc74d24d16, type: 3}
     - target: {fileID: 7798614108312468012, guid: 5d281cfe5a4c99f459ed5ede4abd527c, type: 3}
       propertyPath: MaxDistance
       value: 0.4
@@ -4595,6 +4629,9 @@ PrefabInstance:
       insertIndex: 1
       addedObject: {fileID: 1409579071}
     m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4804662212098994193, guid: 5d281cfe5a4c99f459ed5ede4abd527c, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 220104012}
     - targetCorrespondingSourceObject: {fileID: 1422727691306117687, guid: 5d281cfe5a4c99f459ed5ede4abd527c, type: 3}
       insertIndex: -1
       addedObject: {fileID: 271824167}

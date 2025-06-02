@@ -28,6 +28,10 @@ public class NumberManager : MonoBehaviour
     [SerializeField] private Sprite _lockedSprite;
     [SerializeField] private Color _unlockedColor;
     [SerializeField] private Color _lockedColor;
+
+    [Header("Sound & Immersion")]
+    [SerializeField] private AudioSource _audioSource;
+    [SerializeField] private AudioClip _errorSound;
     //public bool RadioLocked;
     //public MeshRenderer LockIndicator;
     //public Material LockOnMaterial;
@@ -40,6 +44,7 @@ public class NumberManager : MonoBehaviour
         UpdateCodeDisplay();
         _lockImage.sprite = _lockedSprite;
         _lockImage.color = _lockedColor;
+        _audioSource.clip = _errorSound;
     }
 
     public void AddNumber(int number) {
@@ -83,24 +88,28 @@ public class NumberManager : MonoBehaviour
         }
         
         if (_radioLocked) return;
-        
+
         foreach (var pair in codeDatabase.codeObjects) {
             GameObject obj = GameObject.Find(pair.objectName);
-            if (obj == null) return; 
-            
-            if (pair.code == currentCode && currentCode == station.code) { //Need a code for every enigma
+            if (obj == null) return;
+
+            if (pair.code == currentCode && currentCode == station.code) {
+                //Need a code for every enigma
                 Debug.Log("Reporting issue");
                 station.Report.Invoke();
                 Debug.Log("Issue reported");
-                    
+
                 if (GameManager.Instance.currentEnigma == 1) {
                     _enigma.Solve.Invoke();
                 }
+
                 if (GameManager.Instance.currentEnigma == 3) {
                     _doorButton.GetComponent<BoxCollider>().enabled = true;
                 }
-                
-                if (obj.GetComponent<AudioCode>()) { obj.GetComponent<AudioCode>().ActivateCode(currentCode); } 
+
+                if (obj.GetComponent<AudioCode>()) {
+                    obj.GetComponent<AudioCode>().ActivateCode(currentCode);
+                }
             }
         }
     }
