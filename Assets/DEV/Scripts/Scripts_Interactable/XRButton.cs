@@ -21,11 +21,17 @@ public class XRButton : MonoBehaviour {
     private const float ColliderScaleFactor = 1.15f;
     private const float CooldownDuration = 0.2f;
 
+    public bool StartDisabler;
+
     private void Awake() { InitializeComponents(); }
 
     private void InitializeComponents() {
         _baseScale = transform.localScale;
         _colliderScale = GetComponent<BoxCollider>().size;
+        if (StartDisabler)
+        {
+            GetComponent<BoxCollider>().enabled = false;
+        }
         _material = GetComponent<Renderer>().material;
         SetMaterialColor(EmissionColor);
     }

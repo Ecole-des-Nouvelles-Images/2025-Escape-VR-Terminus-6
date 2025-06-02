@@ -13,12 +13,14 @@ public class NumberManager : MonoBehaviour
     private string currentCode = "___";
     private int currentIndex = 0;
     private bool _radioLocked;
-
+    
+    
     [Header("Engima")]
     public Station station;
     public UnityEvent ChangeStation;
     public CodeObjectDatabase codeDatabase;
     [SerializeField] private Enigma _enigma;
+    public XRButton _doorButton;
 
     [Header("Lock Display")]
     [SerializeField] private Image _lockImage;
@@ -91,10 +93,13 @@ public class NumberManager : MonoBehaviour
                 station.Report.Invoke();
                 Debug.Log("Issue reported");
                     
-                if (GameManager.Instance.currentEnigma == 1 || GameManager.Instance.currentEnigma == 3) {
+                if (GameManager.Instance.currentEnigma == 1) {
                     _enigma.Solve.Invoke();
                 }
-
+                if (GameManager.Instance.currentEnigma == 3) {
+                    _doorButton.GetComponent<BoxCollider>().enabled = true;
+                }
+                
                 if (obj.GetComponent<AudioCode>()) { obj.GetComponent<AudioCode>().ActivateCode(currentCode); } 
             }
         }
