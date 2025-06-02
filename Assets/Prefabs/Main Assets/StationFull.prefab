@@ -884,7 +884,7 @@ Transform:
   m_GameObject: {fileID: 3183129063644111669}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0.13052616, w: 0.9914449}
-  m_LocalPosition: {x: -4, y: -0.03, z: 0}
+  m_LocalPosition: {x: -3.5, y: 5, z: -0.9}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -900,7 +900,7 @@ Transform:
   - {fileID: 6521258972957568554}
   - {fileID: 6212299786241410899}
   - {fileID: 4398686617955507114}
-  m_Father: {fileID: 3518467289307071688}
+  m_Father: {fileID: 3968320973838875791}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 15}
 --- !u!1 &3814879013875143722
 GameObject:
@@ -2107,7 +2107,7 @@ Transform:
   m_GameObject: {fileID: 7929950994603815605}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.75, y: 0, z: 0}
+  m_LocalPosition: {x: 5.1, y: 5, z: -0.9}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2121,7 +2121,7 @@ Transform:
   - {fileID: 8187408182055249002}
   - {fileID: 7962617715886542559}
   - {fileID: 5994933488873726325}
-  m_Father: {fileID: 3518467289307071688}
+  m_Father: {fileID: 3968320973838875791}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8152473768878443736
 GameObject:
@@ -4246,19 +4246,14 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
-    - targetCorrespondingSourceObject: {fileID: 6420712599522266877, guid: ce322b3322d9618479b55418b1104aaa, type: 3}
+    - targetCorrespondingSourceObject: {fileID: 6835516087970920122, guid: ce322b3322d9618479b55418b1104aaa, type: 3}
       insertIndex: -1
       addedObject: {fileID: 703756490421869861}
-    - targetCorrespondingSourceObject: {fileID: 6420712599522266877, guid: ce322b3322d9618479b55418b1104aaa, type: 3}
+    - targetCorrespondingSourceObject: {fileID: 6835516087970920122, guid: ce322b3322d9618479b55418b1104aaa, type: 3}
       insertIndex: -1
       addedObject: {fileID: 4051515622256139999}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ce322b3322d9618479b55418b1104aaa, type: 3}
---- !u!4 &3518467289307071688 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 6420712599522266877, guid: ce322b3322d9618479b55418b1104aaa, type: 3}
-  m_PrefabInstance: {fileID: 7624294332767177269}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &3968320973838875791 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6835516087970920122, guid: ce322b3322d9618479b55418b1104aaa, type: 3}
