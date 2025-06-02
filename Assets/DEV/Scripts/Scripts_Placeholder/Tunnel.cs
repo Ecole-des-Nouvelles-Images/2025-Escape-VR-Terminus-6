@@ -106,7 +106,7 @@ public class Tunnel : MonoBehaviour {
         float _yInstanceRotation = 0;
         
         for (int i = 0; i < _totalSegmentCount; i++) {
-            if (i == 0 || i == 112 || i == 96){
+            if (i == 127 || i == 0 || i == 1 || i == 111 || i == 112 || i == 113 || i == 95 || i == 96 || i == 97){
                 Debug.Log($"Cannot create tunnel segment {i}, station here.");
             } else {
                 _sgo = Instantiate(_segment, _container.transform);
@@ -114,7 +114,7 @@ public class Tunnel : MonoBehaviour {
                 _sgo.GetComponent<Segment>().id = i;
             }
             _yInstanceRotation += _segmentRotationStep;
-        }
+        } 
     }
     
 }
