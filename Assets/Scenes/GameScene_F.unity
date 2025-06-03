@@ -1773,7 +1773,7 @@ MonoBehaviour:
   code: 
   _tunnel: {fileID: 6972328271547236338}
   id: 0
-  _lever: {fileID: 738199648687975800}
+  _lever: {fileID: 5624113091519271455}
   _currentEnigma: {fileID: 267527531}
   _changeEnigmaOnExit: 1
   _generatorManager: {fileID: 1289376291}
@@ -2107,6 +2107,32 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: dd8ca96f4022a824c8762a691953dd28, type: 3}
   m_PrefabInstance: {fileID: 1094475279}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1095459690 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6771843412255329843, guid: 5d281cfe5a4c99f459ed5ede4abd527c, type: 3}
+  m_PrefabInstance: {fileID: 738199648687975799}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &1095459694
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1095459690}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.72285235, y: 1.9648374, z: 0.07505953}
+  m_Center: {x: 0, y: 1.0003018, z: -1.5602131}
 --- !u!108 &1142504338 stripped
 Light:
   m_CorrespondingSourceObject: {fileID: 7336572795224165852, guid: 5d281cfe5a4c99f459ed5ede4abd527c, type: 3}
@@ -3663,26 +3689,6 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 446415113}
-    - target: {fileID: 2570503307256244167, guid: 5d281cfe5a4c99f459ed5ede4abd527c, type: 3}
-      propertyPath: m_Anchor.y
-      value: -0.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2570503307256244167, guid: 5d281cfe5a4c99f459ed5ede4abd527c, type: 3}
-      propertyPath: m_Limits.max
-      value: 64.47792
-      objectReference: {fileID: 0}
-    - target: {fileID: 2570503307256244167, guid: 5d281cfe5a4c99f459ed5ede4abd527c, type: 3}
-      propertyPath: m_Limits.min
-      value: 2.5140352
-      objectReference: {fileID: 0}
-    - target: {fileID: 2570503307256244167, guid: 5d281cfe5a4c99f459ed5ede4abd527c, type: 3}
-      propertyPath: m_ConnectedAnchor.x
-      value: -0.2379
-      objectReference: {fileID: 0}
-    - target: {fileID: 2570503307256244167, guid: 5d281cfe5a4c99f459ed5ede4abd527c, type: 3}
-      propertyPath: m_ConnectedAnchor.y
-      value: 0.9224
-      objectReference: {fileID: 0}
     - target: {fileID: 2582893837262311718, guid: 5d281cfe5a4c99f459ed5ede4abd527c, type: 3}
       propertyPath: m_Constraints
       value: 126
@@ -3975,10 +3981,6 @@ PrefabInstance:
       propertyPath: m_TagString
       value: CD
       objectReference: {fileID: 0}
-    - target: {fileID: 7128245193066228195, guid: 5d281cfe5a4c99f459ed5ede4abd527c, type: 3}
-      propertyPath: _audioSource
-      value: 
-      objectReference: {fileID: 738199648687975802}
     - target: {fileID: 7136418931576828893, guid: 5d281cfe5a4c99f459ed5ede4abd527c, type: 3}
       propertyPath: _enigma
       value: 
@@ -4238,7 +4240,6 @@ PrefabInstance:
     - {fileID: 6690571541715743996, guid: 5d281cfe5a4c99f459ed5ede4abd527c, type: 3}
     - {fileID: 723141499932531469, guid: 5d281cfe5a4c99f459ed5ede4abd527c, type: 3}
     - {fileID: 5035037914805819744, guid: 5d281cfe5a4c99f459ed5ede4abd527c, type: 3}
-    - {fileID: 2971993649525126324, guid: 5d281cfe5a4c99f459ed5ede4abd527c, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 4804662212098994193, guid: 5d281cfe5a4c99f459ed5ede4abd527c, type: 3}
@@ -4247,23 +4248,10 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 1422727691306117687, guid: 5d281cfe5a4c99f459ed5ede4abd527c, type: 3}
       insertIndex: -1
       addedObject: {fileID: 271824167}
+    - targetCorrespondingSourceObject: {fileID: 6771843412255329843, guid: 5d281cfe5a4c99f459ed5ede4abd527c, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1095459694}
   m_SourcePrefab: {fileID: 100100000, guid: 5d281cfe5a4c99f459ed5ede4abd527c, type: 3}
---- !u!114 &738199648687975800 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7128245193066228195, guid: 5d281cfe5a4c99f459ed5ede4abd527c, type: 3}
-  m_PrefabInstance: {fileID: 738199648687975799}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b8b38031c6ff4e64d8d1d6362c7dea60, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!82 &738199648687975802 stripped
-AudioSource:
-  m_CorrespondingSourceObject: {fileID: 4690464640522083086, guid: 5d281cfe5a4c99f459ed5ede4abd527c, type: 3}
-  m_PrefabInstance: {fileID: 738199648687975799}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &758671376971340566
 GameObject:
   m_ObjectHideFlags: 0
@@ -5204,7 +5192,7 @@ PrefabInstance:
     - target: {fileID: 347830961769082879, guid: 7aeaae7431140a14997ede4c108d9399, type: 3}
       propertyPath: _lever
       value: 
-      objectReference: {fileID: 738199648687975800}
+      objectReference: {fileID: 5624113091519271455}
     - target: {fileID: 347830961769082879, guid: 7aeaae7431140a14997ede4c108d9399, type: 3}
       propertyPath: _enigma
       value: 
@@ -6258,6 +6246,17 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &5624113091519271455 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2809852018511126721, guid: 5d281cfe5a4c99f459ed5ede4abd527c, type: 3}
+  m_PrefabInstance: {fileID: 738199648687975799}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b8b38031c6ff4e64d8d1d6362c7dea60, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &5718689216256813076
 Transform:
   m_ObjectHideFlags: 0
@@ -6644,7 +6643,7 @@ PrefabInstance:
     - target: {fileID: 1805711953704890297, guid: 8fce3d8f090c24c4a97aad76d8d6177d, type: 3}
       propertyPath: _lever
       value: 
-      objectReference: {fileID: 738199648687975800}
+      objectReference: {fileID: 5624113091519271455}
     - target: {fileID: 1805711953704890297, guid: 8fce3d8f090c24c4a97aad76d8d6177d, type: 3}
       propertyPath: _enigma
       value: 
@@ -6929,7 +6928,7 @@ MonoBehaviour:
   _container: {fileID: 1655144115}
   _segmentRotationStep: 2.8125
   _totalSegmentCount: 128
-  _lever: {fileID: 738199648687975800}
+  _lever: {fileID: 5624113091519271455}
   _speed: 3
   _acceleration: 1.5
   isStopped: 0
