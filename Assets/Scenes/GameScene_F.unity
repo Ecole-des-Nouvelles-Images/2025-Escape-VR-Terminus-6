@@ -262,32 +262,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: b8067f5f5fc76944cb907cd394958262, type: 3}
   m_PrefabInstance: {fileID: 212497610}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &220104004 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4804662212098994193, guid: 5d281cfe5a4c99f459ed5ede4abd527c, type: 3}
-  m_PrefabInstance: {fileID: 738199648687975799}
-  m_PrefabAsset: {fileID: 0}
---- !u!95 &220104012
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 220104004}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 0daf842c5be4ec94ca733838b38ac9a4, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &249625906
 GameObject:
   m_ObjectHideFlags: 0
@@ -2195,32 +2169,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: dd8ca96f4022a824c8762a691953dd28, type: 3}
   m_PrefabInstance: {fileID: 1094475279}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1095459690 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6771843412255329843, guid: 5d281cfe5a4c99f459ed5ede4abd527c, type: 3}
-  m_PrefabInstance: {fileID: 738199648687975799}
-  m_PrefabAsset: {fileID: 0}
---- !u!65 &1095459694
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1095459690}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 0.72285235, y: 1.9648374, z: 0.07505953}
-  m_Center: {x: 0, y: 1.0003018, z: -1.5602131}
 --- !u!108 &1142504338 stripped
 Light:
   m_CorrespondingSourceObject: {fileID: 7336572795224165852, guid: 5d281cfe5a4c99f459ed5ede4abd527c, type: 3}
@@ -3819,7 +3767,7 @@ PrefabInstance:
     - target: {fileID: 1508835910726322262, guid: 47712409922d4dfa49e0c8d1f45a2b8b, type: 3}
       propertyPath: destinationPortal
       value: 
-      objectReference: {fileID: 3107646805758528099}
+      objectReference: {fileID: 0}
     - target: {fileID: 3375372683529493764, guid: 47712409922d4dfa49e0c8d1f45a2b8b, type: 3}
       propertyPath: m_Name
       value: PH_ExitPortal
@@ -4633,15 +4581,9 @@ PrefabInstance:
       insertIndex: 1
       addedObject: {fileID: 1409579071}
     m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 4804662212098994193, guid: 5d281cfe5a4c99f459ed5ede4abd527c, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 220104012}
     - targetCorrespondingSourceObject: {fileID: 1422727691306117687, guid: 5d281cfe5a4c99f459ed5ede4abd527c, type: 3}
       insertIndex: -1
       addedObject: {fileID: 271824167}
-    - targetCorrespondingSourceObject: {fileID: 6771843412255329843, guid: 5d281cfe5a4c99f459ed5ede4abd527c, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1095459694}
   m_SourcePrefab: {fileID: 100100000, guid: 5d281cfe5a4c99f459ed5ede4abd527c, type: 3}
 --- !u!1 &758671376971340566
 GameObject:
@@ -5978,17 +5920,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &3107646805758528099 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3149925906698887474, guid: 5d281cfe5a4c99f459ed5ede4abd527c, type: 3}
-  m_PrefabInstance: {fileID: 738199648687975799}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 441eb68b351c08100b092c15e8d19aa2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!23 &3134299787949599856
 MeshRenderer:
   m_ObjectHideFlags: 0

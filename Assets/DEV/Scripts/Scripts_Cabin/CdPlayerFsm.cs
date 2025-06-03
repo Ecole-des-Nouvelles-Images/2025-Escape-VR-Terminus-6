@@ -102,7 +102,7 @@ public class CdPlayerFsm : MonoBehaviour
     private void ManageIn()
     {
         if (isInserting) return;
-
+        if (!hasSolvedEnigma) currentCd.GetComponent<Animator>().SetBool("NotGlowing", true);
         isCdIn = true;
         isInserting = true;
         Rigidbody cdRigidbody = currentCd.GetComponent<Rigidbody>();
