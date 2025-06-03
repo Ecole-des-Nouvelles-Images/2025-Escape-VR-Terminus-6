@@ -121,7 +121,7 @@ public class Station : MonoBehaviour
                         break;
                     }
                     case 3: {
-                        _doorButton.GetComponent<BoxCollider>().enabled = true;
+                        //_doorButton.GetComponent<BoxCollider>().enabled = true;
                         break;
                     }
                 }

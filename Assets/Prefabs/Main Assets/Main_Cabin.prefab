@@ -6072,7 +6072,7 @@ Camera:
     serializedVersion: 2
     m_Bits: 4294967295
   m_RenderingPath: -1
-  m_TargetTexture: {fileID: 8600000, guid: 2a26a04d9dca08e40920eb9c5044629b, type: 2}
+  m_TargetTexture: {fileID: 8600000, guid: 3a88b5644f9fac34786810e0fd02c504, type: 2}
   m_TargetDisplay: 0
   m_TargetEye: 3
   m_HDR: 1
@@ -6916,6 +6916,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8064114488488830527}
   - component: {fileID: 4440035442216149207}
+  - component: {fileID: 7686667773718967952}
   m_Layer: 0
   m_Name: EGO_PH_Radio_Blocking
   m_TagString: Untagged
@@ -6978,6 +6979,105 @@ MonoBehaviour:
   _lockedSprite: {fileID: 21300000, guid: 3aad042fcb57b4bed9d9a46b932df060, type: 3}
   _unlockedColor: {r: 0.09344961, g: 0.7924528, b: 0.44946212, a: 1}
   _lockedColor: {r: 0.77254903, g: 0.16798003, b: 0.082352936, a: 1}
+  _audioSource: {fileID: 7686667773718967952}
+  _errorSound: {fileID: 8300000, guid: 84cefd42b3b70a344bcb06cc74d24d16, type: 3}
+  _ambientRadioSound: {fileID: 0}
+--- !u!82 &7686667773718967952
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8188342201883202514}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: -8217714893344485519, guid: ebe0bcd59bbb0ac97a61579e6acab3a7, type: 2}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 1
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &8313396098433470291
 GameObject:
   m_ObjectHideFlags: 0
@@ -8643,7 +8743,7 @@ PrefabInstance:
       addedObject: {fileID: 7611161116995088328}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: c2b7b070d895b4246a2a6d93f9d9fb4e, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 7136418931576828893}
+      addedObject: {fileID: 4323738266801579704}
   m_SourcePrefab: {fileID: 100100000, guid: c2b7b070d895b4246a2a6d93f9d9fb4e, type: 3}
 --- !u!1 &3905399656908144611 stripped
 GameObject:
@@ -8671,7 +8771,7 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &7136418931576828893
+--- !u!114 &4323738266801579704
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -9803,7 +9903,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2708309835134749687, guid: b6187ab8b25cfc745bda9cdabcda875a, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3885381322898046251, guid: b6187ab8b25cfc745bda9cdabcda875a, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.123
+      objectReference: {fileID: 0}
+    - target: {fileID: 3885381322898046251, guid: b6187ab8b25cfc745bda9cdabcda875a, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7641350445782843727, guid: b6187ab8b25cfc745bda9cdabcda875a, type: 3}
       propertyPath: m_LocalScale.x
