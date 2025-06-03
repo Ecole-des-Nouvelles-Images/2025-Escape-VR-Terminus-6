@@ -32,6 +32,7 @@ public class NumberManager : MonoBehaviour
     [Header("Sound & Immersion")]
     [SerializeField] private AudioSource _audioSource;
     [SerializeField] private AudioClip _errorSound;
+    [SerializeField] private AudioClip _ambientRadioSound;
     //public bool RadioLocked;
     //public MeshRenderer LockIndicator;
     //public Material LockOnMaterial;
@@ -104,7 +105,8 @@ public class NumberManager : MonoBehaviour
                 }
 
                 if (GameManager.Instance.currentEnigma == 3) {
-                    _doorButton.GetComponent<BoxCollider>().enabled = true;
+                    //_doorButton.GetComponent<BoxCollider>().enabled = true;
+                    _enigma.Solve.Invoke();
                 }
 
                 if (obj.GetComponent<AudioCode>()) {

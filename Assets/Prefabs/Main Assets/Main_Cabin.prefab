@@ -6112,7 +6112,7 @@ Camera:
     serializedVersion: 2
     m_Bits: 4294967295
   m_RenderingPath: -1
-  m_TargetTexture: {fileID: 8600000, guid: 2a26a04d9dca08e40920eb9c5044629b, type: 2}
+  m_TargetTexture: {fileID: 8600000, guid: 3a88b5644f9fac34786810e0fd02c504, type: 2}
   m_TargetDisplay: 0
   m_TargetEye: 3
   m_HDR: 1
@@ -7021,6 +7021,7 @@ MonoBehaviour:
   _lockedColor: {r: 0.77254903, g: 0.16798003, b: 0.082352936, a: 1}
   _audioSource: {fileID: 7686667773718967952}
   _errorSound: {fileID: 8300000, guid: 84cefd42b3b70a344bcb06cc74d24d16, type: 3}
+  _ambientRadioSound: {fileID: 0}
 --- !u!82 &7686667773718967952
 AudioSource:
   m_ObjectHideFlags: 0

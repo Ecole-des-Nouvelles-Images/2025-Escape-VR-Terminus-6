@@ -4009,6 +4009,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 1.7440033
       objectReference: {fileID: 0}
+    - target: {fileID: 787292002658310427, guid: 5d281cfe5a4c99f459ed5ede4abd527c, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: ae5a8175da68f5c43a45b592d9611112, type: 2}
     - target: {fileID: 831244204516975818, guid: 5d281cfe5a4c99f459ed5ede4abd527c, type: 3}
       propertyPath: _enigma
       value: 
