@@ -199,6 +199,7 @@ MonoBehaviour:
   _maxInteractionDistance: 0
   _audioSource: {fileID: 0}
   _errorSound: {fileID: 8300000, guid: 84cefd42b3b70a344bcb06cc74d24d16, type: 3}
+  isMovable: 0
 --- !u!33 &5964777056819473126
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -411,7 +412,7 @@ HingeJoint:
   m_Anchor: {x: 0, y: -0.5, z: 0}
   m_Axis: {x: 1, y: 0, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: -0.347, y: 1.073231, z: 1.0995492}
+  m_ConnectedAnchor: {x: -0.48988417, y: 0.84954244, z: 1.4091539}
   serializedVersion: 2
   m_UseSpring: 0
   m_Spring:
