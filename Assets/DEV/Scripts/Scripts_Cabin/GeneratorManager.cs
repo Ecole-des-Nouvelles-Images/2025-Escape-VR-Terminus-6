@@ -42,6 +42,8 @@ namespace DEV.Scripts.Scripts_Cabin {
         [SerializeField] private Light _leverLight;
         [SerializeField] private Light _cabinLight;
         [SerializeField] private Animator _animatorController;
+        [SerializeField] private Animator _lightsAnimator;
+        public ParticleSystem _sparks;
         
         private BoxCollider _cableAnchorColl1;
         private BoxCollider _cableAnchorColl2;
@@ -134,7 +136,7 @@ namespace DEV.Scripts.Scripts_Cabin {
             if (LocalGeneratorLever.LeverActivated && _amogusOk == false) {
                 LocalGeneratorLever.LockLeverGenerator();
                 _leverLight.enabled = false;
-                _amogusLight.enabled = true;
+                _lightsAnimator.SetTrigger("Switch");
                 _cabinLight.enabled = false;
                 _animatorController.SetBool("CubeActivated", true);
                 LampOff();
@@ -143,6 +145,7 @@ namespace DEV.Scripts.Scripts_Cabin {
                     //CableHead2.gameObject.transform.position = CableHead2IP.transform.position;
                     //CableHead3.gameObject.transform.position = CableHead3IP.transform.position;
                     StartCoroutine(PullCables());
+                    _sparks.Play();
                     CableHead1.UnlockHead();
                     CableHead2.UnlockHead();
                     CableHead3.UnlockHead();
