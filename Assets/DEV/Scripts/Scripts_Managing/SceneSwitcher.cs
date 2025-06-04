@@ -4,7 +4,7 @@ using UnityEngine.SceneManagement;
 public class SceneSwitcher : MonoBehaviour
 {
     public void StartGame(){
-	SceneManager.LoadScene("GameScene_FinalNew_Bastien", LoadSceneMode.Single);
+	SceneManager.LoadScene("GameScene_FinalNew", LoadSceneMode.Single);
     }
 
     public void StartTransitionAnimation()

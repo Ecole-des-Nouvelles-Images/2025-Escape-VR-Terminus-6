@@ -2338,17 +2338,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 639063751}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &681058317 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2983938499996085660, guid: 5d281cfe5a4c99f459ed5ede4abd527c, type: 3}
-  m_PrefabInstance: {fileID: 738199648687975799}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b8b38031c6ff4e64d8d1d6362c7dea60, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &732082452
 GameObject:
   m_ObjectHideFlags: 0
@@ -3192,7 +3181,7 @@ MonoBehaviour:
   code: 
   _tunnel: {fileID: 6972328271547236338}
   id: 0
-  _lever: {fileID: 681058317}
+  _lever: {fileID: 1259806770}
   _currentEnigma: {fileID: 267527531}
   _changeEnigmaOnExit: 1
   _generatorManager: {fileID: 1289376291}
@@ -9199,6 +9188,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 37b066fccd30dfc4c98747864b328220, type: 3}
   m_PrefabInstance: {fileID: 7774757731007746979}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1259806770 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1734732879042686839, guid: 5d281cfe5a4c99f459ed5ede4abd527c, type: 3}
+  m_PrefabInstance: {fileID: 738199648687975799}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b8b38031c6ff4e64d8d1d6362c7dea60, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1261772660
 GameObject:
   m_ObjectHideFlags: 0
@@ -16597,6 +16597,46 @@ PrefabInstance:
       propertyPath: m_Name
       value: MTR_CABIN
       objectReference: {fileID: 0}
+    - target: {fileID: 5732356394581462494, guid: 5d281cfe5a4c99f459ed5ede4abd527c, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.2217
+      objectReference: {fileID: 0}
+    - target: {fileID: 5732356394581462494, guid: 5d281cfe5a4c99f459ed5ede4abd527c, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.2554
+      objectReference: {fileID: 0}
+    - target: {fileID: 5732356394581462494, guid: 5d281cfe5a4c99f459ed5ede4abd527c, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 1.3403
+      objectReference: {fileID: 0}
+    - target: {fileID: 5732356394581462494, guid: 5d281cfe5a4c99f459ed5ede4abd527c, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: -0.3882329
+      objectReference: {fileID: 0}
+    - target: {fileID: 5732356394581462494, guid: 5d281cfe5a4c99f459ed5ede4abd527c, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.59099513
+      objectReference: {fileID: 0}
+    - target: {fileID: 5732356394581462494, guid: 5d281cfe5a4c99f459ed5ede4abd527c, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.49804792
+      objectReference: {fileID: 0}
+    - target: {fileID: 5732356394581462494, guid: 5d281cfe5a4c99f459ed5ede4abd527c, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.50194454
+      objectReference: {fileID: 0}
+    - target: {fileID: 5732356394581462494, guid: 5d281cfe5a4c99f459ed5ede4abd527c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 182.355
+      objectReference: {fileID: 0}
+    - target: {fileID: 5732356394581462494, guid: 5d281cfe5a4c99f459ed5ede4abd527c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -78.76599
+      objectReference: {fileID: 0}
+    - target: {fileID: 5732356394581462494, guid: 5d281cfe5a4c99f459ed5ede4abd527c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 281.69
+      objectReference: {fileID: 0}
     - target: {fileID: 6442836941489939319, guid: 5d281cfe5a4c99f459ed5ede4abd527c, type: 3}
       propertyPath: enigma
       value: 
@@ -16612,7 +16652,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3978167691385077798, guid: 5d281cfe5a4c99f459ed5ede4abd527c, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8417187157188620917}
   m_SourcePrefab: {fileID: 100100000, guid: 5d281cfe5a4c99f459ed5ede4abd527c, type: 3}
 --- !u!108 &742003158914959838
 Light:
@@ -17671,7 +17714,7 @@ MonoBehaviour:
   code: 400
   _tunnel: {fileID: 6972328271547236338}
   id: 1
-  _lever: {fileID: 681058317}
+  _lever: {fileID: 1259806770}
   _currentEnigma: {fileID: 267527531}
   _changeEnigmaOnExit: 1
   _generatorManager: {fileID: 1289376291}
@@ -20066,7 +20109,7 @@ MonoBehaviour:
   code: 189
   _tunnel: {fileID: 6972328271547236338}
   id: 2
-  _lever: {fileID: 681058317}
+  _lever: {fileID: 1259806770}
   _currentEnigma: {fileID: 0}
   _changeEnigmaOnExit: 0
   _generatorManager: {fileID: 1289376291}
@@ -20178,6 +20221,11 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 1
   m_IsActive: 1
+--- !u!1 &5200479057640843115 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3978167691385077798, guid: 5d281cfe5a4c99f459ed5ede4abd527c, type: 3}
+  m_PrefabInstance: {fileID: 738199648687975799}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &5244519078823792841
 Transform:
   m_ObjectHideFlags: 0
@@ -21573,7 +21621,7 @@ MonoBehaviour:
   _container: {fileID: 1655144115}
   _segmentRotationStep: 2.8125
   _totalSegmentCount: 128
-  _lever: {fileID: 681058317}
+  _lever: {fileID: 1259806770}
   _speed: 3
   _acceleration: 1.5
   isStopped: 0
@@ -23687,6 +23735,28 @@ PrefabInstance:
       addedObject: {fileID: 291066512651018631}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 37b066fccd30dfc4c98747864b328220, type: 3}
+--- !u!64 &8417187157188620917
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5200479057640843115}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -5466926643580427572, guid: 8f58b4f21520c914eb7827cc386efd59, type: 3}
 --- !u!114 &8419432715578644970
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -9,7 +9,7 @@ public class CabinEnvironment : MonoBehaviour {
     [SerializeField] private List<GameObject> _firstCabinContents;
     [SerializeField] private List<GameObject> _secondCabinContents;
     
-    [SerializeField] private Portal _switchPortal;
+    //[SerializeField] private Portal _switchPortal;
     // Start is called before the first frame update
     void Start() {
         SetupEventListeners();
