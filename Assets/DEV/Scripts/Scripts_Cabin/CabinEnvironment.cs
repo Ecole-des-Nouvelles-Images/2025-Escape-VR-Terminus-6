@@ -18,7 +18,7 @@ public class CabinEnvironment : MonoBehaviour {
     private void SetupEventListeners() {
         _enigma.Solve.AddListener(OnEnigmaSolved);
         //PortalCrossed.AddListener(ChangeCabin);
-        _switchPortal.CabinSwitch.AddListener(ChangeCabin);
+//        _switchPortal.CabinSwitch.AddListener(ChangeCabin);
     }
 
     private void OnEnigmaSolved() {
