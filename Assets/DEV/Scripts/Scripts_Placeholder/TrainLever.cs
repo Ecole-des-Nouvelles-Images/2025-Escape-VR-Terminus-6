@@ -2,7 +2,6 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.XR.Interaction.Toolkit.Interactables;
 
-
     public class TrainLever : MonoBehaviour {
         [Header("Essentials")]
         public float LeverValue;
@@ -29,6 +28,7 @@ using UnityEngine.XR.Interaction.Toolkit.Interactables;
         }
     
         public void Lock() {
+            Debug.Log("Entering Lock");
             isMovable = false;
             if (_leverRotation <= _mid) {
                 transform.rotation = Quaternion.Euler(new Vector3(_min, 0f, 0f));
@@ -41,7 +41,7 @@ using UnityEngine.XR.Interaction.Toolkit.Interactables;
         }
     
         public void Reset() {
-            transform.rotation = Quaternion.Euler(Vector3.zero);
+            transform.rotation = Quaternion.Euler(_min, 0, 0);
             LeverValue = 0f;
         }
 
@@ -53,7 +53,7 @@ using UnityEngine.XR.Interaction.Toolkit.Interactables;
         private void Start() {
             _min = _hingeJoint.limits.min;
             _max = _hingeJoint.limits.max;
-            _mid = _hingeJoint.limits.max / 2;
+            _mid = _min + ((_max - _min) / 2);
             _lowMid = _mid - _leverMargin;
             _highMid = _mid + _leverMargin;
             _audioSource = GetComponent<AudioSource>();
