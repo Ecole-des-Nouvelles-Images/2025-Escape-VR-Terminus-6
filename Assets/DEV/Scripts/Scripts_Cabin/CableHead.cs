@@ -85,7 +85,7 @@ public class CableHead : MonoBehaviour {
         _isReturning = false; // Réinitialiser le retour lors de la saisie
     }
 
-    private void DetachFromAnchor() {
+    public void DetachFromAnchor() {
         if (transform.parent == _anchorTransform) transform.parent = null;
         _isConnected = false;
     }
@@ -140,10 +140,10 @@ public class CableHead : MonoBehaviour {
         _isConnected = true;
     }
 
-    private void ReturnToBase() {
+    public void ReturnToBase() {
         // Interpolation vers la position de base
         if (_isConnected) return; 
-        transform.position = Vector3.Lerp(transform.position, _originalPosition, Time.deltaTime * 4f);
+        transform.position = Vector3.Lerp(transform.position, _originalPosition, .3f);
 
         // Vérifier si la position est proche de la position de base pour arrêter le retour
         if (Vector3.Distance(transform.position, _originalPosition) < 0.01f) {

@@ -19,7 +19,7 @@ public class CableAnchor : MonoBehaviour {
 
     public void VerifyColor(Material cableMat) {
         if (cableMat.name == MatOn.name) SetMaterialStatus(true, MatOn);
-        else if (!CablePlugged) SetMaterialStatus(false, MatOff);
+        else SetMaterialStatus(false, MatOff);
     }
 
     private void SetMaterialStatus(bool status, Material material) {

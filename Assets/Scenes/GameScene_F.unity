@@ -4014,6 +4014,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2100000, guid: 62bab08abfc3aa046b2acea73244513b, type: 2}
     - target: {fileID: 8375885898247874432, guid: 5d281cfe5a4c99f459ed5ede4abd527c, type: 3}
+      propertyPath: lerpLimit
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 8375885898247874432, guid: 5d281cfe5a4c99f459ed5ede4abd527c, type: 3}
       propertyPath: CableHead1
       value: 
       objectReference: {fileID: 947600429}
@@ -4104,6 +4108,10 @@ PrefabInstance:
     - target: {fileID: 8418207305425282518, guid: 5d281cfe5a4c99f459ed5ede4abd527c, type: 3}
       propertyPath: m_Name
       value: FusibleLight
+      objectReference: {fileID: 0}
+    - target: {fileID: 8570694973404849619, guid: 5d281cfe5a4c99f459ed5ede4abd527c, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8760470146974566521, guid: 5d281cfe5a4c99f459ed5ede4abd527c, type: 3}
       propertyPath: m_VideoClip

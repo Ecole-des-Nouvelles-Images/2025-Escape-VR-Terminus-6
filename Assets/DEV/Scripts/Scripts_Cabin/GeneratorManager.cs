@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Serialization;
@@ -45,7 +46,9 @@ namespace DEV.Scripts.Scripts_Cabin {
         private BoxCollider _cableAnchorColl1;
         private BoxCollider _cableAnchorColl2;
         private BoxCollider _cableAnchorColl3;
-    
+        private float _pullLerpTime;
+        private float _pbc;
+        
         public bool GeneratorOk { get; private set; }
         private bool _amogusOk;
         private bool _cableDisconnected;
@@ -54,6 +57,9 @@ namespace DEV.Scripts.Scripts_Cabin {
         private bool _c1ok, _c2ok, _c3ok;
 
         private List<CableHead> _cableHeads;
+
+        [SerializeField] int lerpId;
+        [SerializeField] int lerpLimit;
         
         //Putain c'est du sale
         private void Awake() {
@@ -81,6 +87,7 @@ namespace DEV.Scripts.Scripts_Cabin {
         }
 
         private void Start() {
+            _pullLerpTime = Time.deltaTime;
             //SwitchLock();
         }
 
@@ -132,12 +139,19 @@ namespace DEV.Scripts.Scripts_Cabin {
                 _animatorController.SetBool("CubeActivated", true);
                 LampOff();
                 if (_cableDisconnected == false && _resetDone == false) {
-                    CableHead1.gameObject.transform.position = CableHead1IP.transform.position;
+                    //CableHead1.gameObject.transform.position = CableHead1IP.transform.position;
+                    //CableHead2.gameObject.transform.position = CableHead2IP.transform.position;
+                    //CableHead3.gameObject.transform.position = CableHead3IP.transform.position;
+                    StartCoroutine(PullCables());
                     CableHead1.UnlockHead();
-                    CableHead2.gameObject.transform.position = CableHead2IP.transform.position;
                     CableHead2.UnlockHead();
-                    CableHead3.gameObject.transform.position = CableHead3IP.transform.position;
                     CableHead3.UnlockHead();
+                    // CableHead1.DetachFromAnchor();
+                    // CableHead2.DetachFromAnchor();
+                    // CableHead3.DetachFromAnchor();
+                    // CableHead1.ReturnToBase();
+                    // CableHead2.ReturnToBase();
+                    // CableHead3.ReturnToBase();
                     _cableDisconnected = true;
                     _cableAnchorColl1.enabled = true;
                     _cableAnchorColl2.enabled = true;
@@ -191,6 +205,25 @@ namespace DEV.Scripts.Scripts_Cabin {
                 _ch.tempCableAnchor.CableOk = false;
                 _ch.tempCableAnchor.VerifyColor(_ch.ConnectedMaterial);
             }
+        }
+
+        private IEnumerator PullCables() {
+            CableHead1.DetachFromAnchor();
+            CableHead2.DetachFromAnchor();
+            CableHead3.DetachFromAnchor();
+            CableHead1.ReturnToBase();
+            CableHead2.ReturnToBase();
+            CableHead3.ReturnToBase();
+            yield return new WaitForSeconds(_pullLerpTime);
+            lerpId += 1;
+            if (lerpId < lerpLimit) {
+                StartCoroutine(PullCables());
+            }
+            else {
+                StopAllCoroutines();
+                yield break;
+            }
+
         }
     }
 }
