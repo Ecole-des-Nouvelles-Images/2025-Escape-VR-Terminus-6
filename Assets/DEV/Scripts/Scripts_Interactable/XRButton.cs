@@ -61,10 +61,25 @@ public class XRButton : MonoBehaviour {
     }
 
     private void SetButtonScale(float scaleFactor) {
-        childVisual.localScale = new Vector3(_baseScale.x, _baseScale.y * scaleFactor, _baseScale.z );
+        if (childVisual != null)
+        {
+            childVisual.localScale = new Vector3(_baseScale.x, _baseScale.y * scaleFactor, _baseScale.z );
+        }
+        else
+        {
+            transform.localScale = new Vector3(_baseScale.x, _baseScale.y * scaleFactor, _baseScale.z );
+        }
     }
     private void ResetButtonScale() {
-        childVisual.localScale = _baseScale;
+        if (childVisual != null)
+        {
+            childVisual.localScale = _baseScale;
+        }
+        else
+        {
+            transform.localScale = _baseScale;
+        }
+        
     }
     private void SetColliderScale(float scaleFactor) {
         GetComponent<BoxCollider>().size = new Vector3(_colliderScale.x, _colliderScale.y* scaleFactor, _baseScale.z );

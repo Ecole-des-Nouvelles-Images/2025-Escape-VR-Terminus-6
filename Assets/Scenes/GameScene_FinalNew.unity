@@ -2338,17 +2338,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 639063751}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &681058317 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2983938499996085660, guid: 5d281cfe5a4c99f459ed5ede4abd527c, type: 3}
-  m_PrefabInstance: {fileID: 738199648687975799}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b8b38031c6ff4e64d8d1d6362c7dea60, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &732082452
 GameObject:
   m_ObjectHideFlags: 0
@@ -3192,7 +3181,7 @@ MonoBehaviour:
   code: 
   _tunnel: {fileID: 6972328271547236338}
   id: 0
-  _lever: {fileID: 681058317}
+  _lever: {fileID: 1259806770}
   _currentEnigma: {fileID: 267527531}
   _changeEnigmaOnExit: 1
   _generatorManager: {fileID: 1289376291}
@@ -9199,6 +9188,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 37b066fccd30dfc4c98747864b328220, type: 3}
   m_PrefabInstance: {fileID: 7774757731007746979}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1259806770 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1734732879042686839, guid: 5d281cfe5a4c99f459ed5ede4abd527c, type: 3}
+  m_PrefabInstance: {fileID: 738199648687975799}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b8b38031c6ff4e64d8d1d6362c7dea60, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1261772660
 GameObject:
   m_ObjectHideFlags: 0
@@ -17671,7 +17671,7 @@ MonoBehaviour:
   code: 400
   _tunnel: {fileID: 6972328271547236338}
   id: 1
-  _lever: {fileID: 681058317}
+  _lever: {fileID: 1259806770}
   _currentEnigma: {fileID: 267527531}
   _changeEnigmaOnExit: 1
   _generatorManager: {fileID: 1289376291}
@@ -20066,7 +20066,7 @@ MonoBehaviour:
   code: 189
   _tunnel: {fileID: 6972328271547236338}
   id: 2
-  _lever: {fileID: 681058317}
+  _lever: {fileID: 1259806770}
   _currentEnigma: {fileID: 0}
   _changeEnigmaOnExit: 0
   _generatorManager: {fileID: 1289376291}
@@ -21573,7 +21573,7 @@ MonoBehaviour:
   _container: {fileID: 1655144115}
   _segmentRotationStep: 2.8125
   _totalSegmentCount: 128
-  _lever: {fileID: 681058317}
+  _lever: {fileID: 1259806770}
   _speed: 3
   _acceleration: 1.5
   isStopped: 0
