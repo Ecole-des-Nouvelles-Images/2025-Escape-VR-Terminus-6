@@ -54,9 +54,9 @@ public class SwitchBakedLights : MonoBehaviour
         foreach (GameObject lightRay in lightsObjects) {
             lightRay.SetActive(false);
         }
-        foreach (MeshRenderer lampRenderer in lightsObjectMeshRenderers) {
+        /*foreach (MeshRenderer lampRenderer in lightsObjectMeshRenderers) {
             lampRenderer.material = lampOffMat;
-        }
+        }*/
     }
 
     [ContextMenu("Switch to Bright Lightmap")]
@@ -66,9 +66,9 @@ public class SwitchBakedLights : MonoBehaviour
         foreach (GameObject lightRay in lightsObjects) {
             lightRay.SetActive(transform);
         }
-        foreach (MeshRenderer lampRenderer in lightsObjectMeshRenderers) {
+        /*foreach (MeshRenderer lampRenderer in lightsObjectMeshRenderers) {
             lampRenderer.material = lampOnMat;
-        }
+        }*/
     }
 
     

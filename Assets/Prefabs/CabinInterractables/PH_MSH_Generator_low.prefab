@@ -171,7 +171,7 @@ MonoBehaviour:
   _lightsAnimator: {fileID: 6732002135135729996}
   _sparks: {fileID: 0}
   lerpId: 0
-  lerpLimit: 0
+  lerpLimit: 10
 --- !u!95 &4750530816635590090
 Animator:
   serializedVersion: 5
