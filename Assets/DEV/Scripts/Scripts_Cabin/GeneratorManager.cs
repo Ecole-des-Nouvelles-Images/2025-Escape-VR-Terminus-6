@@ -135,8 +135,6 @@ namespace DEV.Scripts.Scripts_Cabin {
         private void CheckLights() {
             if (LocalGeneratorLever.LeverActivated && _amogusOk == false) {
                 LocalGeneratorLever.LockLeverGenerator();
-                _leverLight.enabled = false;
-                _lightsAnimator.SetTrigger("Switch");
                 _cabinLight.enabled = false;
                 _animatorController.SetBool("CubeActivated", true);
                 LampOff();
@@ -144,6 +142,8 @@ namespace DEV.Scripts.Scripts_Cabin {
                     //CableHead1.gameObject.transform.position = CableHead1IP.transform.position;
                     //CableHead2.gameObject.transform.position = CableHead2IP.transform.position;
                     //CableHead3.gameObject.transform.position = CableHead3IP.transform.position;
+                    _amogusLight.enabled = true;
+                    _lightsAnimator.SetTrigger("SwitchOff");
                     StartCoroutine(PullCables());
                     _sparks.Play();
                     CableHead1.UnlockHead();
@@ -163,8 +163,7 @@ namespace DEV.Scripts.Scripts_Cabin {
                 }
             } else if (LocalGeneratorLever.LeverActivated && _amogusOk) {
                 LocalGeneratorLever.UnlockLeverGenerator();
-                _leverLight.enabled = true;
-                _amogusLight.enabled = false;
+                _lightsAnimator.SetTrigger("SwitchOn");
                 _cabinLight.enabled = true;
                 LampOn();
             }
@@ -178,7 +177,6 @@ namespace DEV.Scripts.Scripts_Cabin {
                 _animator.SetTrigger("OpenGenerator");
                 _audioSource.clip = _openingNoise;
                 _audioSource.Play();
-                //_amogusLight.enabled = true;
                 _leverLight.enabled = true;
             }
             else {
