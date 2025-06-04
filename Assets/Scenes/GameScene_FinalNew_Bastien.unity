@@ -4329,7 +4329,7 @@ GameObject:
   - component: {fileID: 1239516457}
   - component: {fileID: 1239516456}
   m_Layer: 0
-  m_Name: Particle System (1)
+  m_Name: PS_Flash
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4440,9 +4440,9 @@ ParticleSystem:
   ringBufferMode: 0
   ringBufferLoopRange: {x: 0, y: 1}
   emitterVelocityMode: 1
-  looping: 1
+  looping: 0
   prewarm: 0
-  playOnAwake: 1
+  playOnAwake: 0
   useUnscaledTime: 0
   autoRandomSeed: 1
   startDelay:
@@ -10265,7 +10265,7 @@ GameObject:
   - component: {fileID: 1571688658}
   - component: {fileID: 1571688657}
   m_Layer: 0
-  m_Name: Particle System
+  m_Name: PS_Sparks
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10377,7 +10377,7 @@ ParticleSystem:
   emitterVelocityMode: 1
   looping: 0
   prewarm: 0
-  playOnAwake: 1
+  playOnAwake: 0
   useUnscaledTime: 0
   autoRandomSeed: 1
   startDelay:
@@ -16874,6 +16874,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 1557177202133244683, guid: 5d281cfe5a4c99f459ed5ede4abd527c, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.0964
+      objectReference: {fileID: 0}
     - target: {fileID: 1894163911689295466, guid: 5d281cfe5a4c99f459ed5ede4abd527c, type: 3}
       propertyPath: MaxDistance
       value: 2
@@ -16962,6 +16966,14 @@ PrefabInstance:
       propertyPath: enigma
       value: 
       objectReference: {fileID: 530193624}
+    - target: {fileID: 7284749988860744520, guid: 5d281cfe5a4c99f459ed5ede4abd527c, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7284749988860744520, guid: 5d281cfe5a4c99f459ed5ede4abd527c, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: e1860497aa838bc40b0f8407aed6c7e8, type: 2}
     - target: {fileID: 7638837793652129056, guid: 5d281cfe5a4c99f459ed5ede4abd527c, type: 3}
       propertyPath: m_Limits.max
       value: 20
