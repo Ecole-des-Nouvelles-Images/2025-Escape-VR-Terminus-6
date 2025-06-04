@@ -18018,6 +18018,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3249708348151764756, guid: 5d281cfe5a4c99f459ed5ede4abd527c, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3667315005105101214, guid: 5d281cfe5a4c99f459ed5ede4abd527c, type: 3}
       propertyPath: _enigma
       value: 
@@ -18078,6 +18082,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.y
       value: 198
       objectReference: {fileID: 0}
+    - target: {fileID: 7868719331072912418, guid: 5d281cfe5a4c99f459ed5ede4abd527c, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8375885898247874432, guid: 5d281cfe5a4c99f459ed5ede4abd527c, type: 3}
       propertyPath: _enigma
       value: 
@@ -18098,7 +18106,8 @@ PrefabInstance:
       propertyPath: OnButtonPressed.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 539548968586632696}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 3249708348151764756, guid: 5d281cfe5a4c99f459ed5ede4abd527c, type: 3}
     m_RemovedGameObjects:
     - {fileID: 229249388995467222, guid: 5d281cfe5a4c99f459ed5ede4abd527c, type: 3}
     - {fileID: 5929628893459602929, guid: 5d281cfe5a4c99f459ed5ede4abd527c, type: 3}
