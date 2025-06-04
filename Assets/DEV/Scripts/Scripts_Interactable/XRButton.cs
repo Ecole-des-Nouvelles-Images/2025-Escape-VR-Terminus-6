@@ -20,19 +20,20 @@ public class XRButton : MonoBehaviour {
     private const float PressedScaleFactor = 0.75f;
     private const float ColliderScaleFactor = 1.15f;
     private const float CooldownDuration = 0.2f;
+    public Transform childVisual;
 
     public bool StartDisabler;
 
     private void Awake() { InitializeComponents(); }
 
     private void InitializeComponents() {
-        _baseScale = transform.localScale;
+        _baseScale = childVisual == null ? transform.localScale : childVisual.localScale;
         _colliderScale = GetComponent<BoxCollider>().size;
         if (StartDisabler)
         {
             GetComponent<BoxCollider>().enabled = false;
         }
-        _material = GetComponent<Renderer>().material;
+        _material = childVisual != null ? childVisual.GetComponent<Renderer>().material : GetComponent<Renderer>().material;
         SetMaterialColor(EmissionColor);
     }
 
@@ -60,13 +61,13 @@ public class XRButton : MonoBehaviour {
     }
 
     private void SetButtonScale(float scaleFactor) {
-        transform.localScale = new Vector3(_baseScale.x, _baseScale.y, _baseScale.z * scaleFactor);
+        childVisual.localScale = new Vector3(_baseScale.x, _baseScale.y * scaleFactor, _baseScale.z );
     }
     private void ResetButtonScale() {
-        transform.localScale = _baseScale;
+        childVisual.localScale = _baseScale;
     }
     private void SetColliderScale(float scaleFactor) {
-        GetComponent<BoxCollider>().size = new Vector3(_colliderScale.x, _colliderScale.y, _baseScale.z * scaleFactor);
+        GetComponent<BoxCollider>().size = new Vector3(_colliderScale.x, _colliderScale.y* scaleFactor, _baseScale.z );
     }
     private void ResetColliderScale() {
         GetComponent<BoxCollider>().size = _colliderScale;
