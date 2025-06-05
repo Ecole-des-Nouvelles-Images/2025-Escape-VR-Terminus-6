@@ -21,7 +21,7 @@ public class Station : MonoBehaviour
     private bool _reported;
     
     [SerializeField] private Tunnel _tunnel;    // Tunnel (Tunnel will prolly be a singleton
-    [SerializeField] private int id;            // Station ID
+    public int id;            // Station ID
     [SerializeField] private TrainLever _lever;
     
     [Header("Enigmas")]

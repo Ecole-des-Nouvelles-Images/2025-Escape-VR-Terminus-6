@@ -66,6 +66,7 @@ public class Tunnel : MonoBehaviour {
         if (!_isInSlowdown && isStopped == false) {
             if (_currentSpeed < _targetSpeed) {
                 _currentSpeed += _acceleration * Time.deltaTime / _accelerationTime;
+                Debug.Log("Here!");
                 _lever.Lock();
             }
             else if (_currentSpeed > _targetSpeed) {

@@ -32,7 +32,7 @@ public class NumberManager : MonoBehaviour
     [Header("Sound & Immersion")]
     [SerializeField] private AudioSource _audioSource;
     [SerializeField] private AudioClip _errorSound;
-    [SerializeField] private AudioClip _ambientRadioSound;
+    [SerializeField] private AudioClip _radioAmbiance;
     //public bool RadioLocked;
     //public MeshRenderer LockIndicator;
     //public Material LockOnMaterial;
@@ -80,6 +80,8 @@ public class NumberManager : MonoBehaviour
         if (_radioLocked && currentCode == _unlockCode) {
             _radioLocked = false;
             Debug.Log("Radio Unlocked");
+            _audioSource.clip = _radioAmbiance;
+            _audioSource.Play();
             _lockImage.sprite = _unlockedSprite;
             _lockImage.color = _unlockedColor;
         } else if (_radioLocked && currentCode != _unlockCode) {
@@ -95,22 +97,17 @@ public class NumberManager : MonoBehaviour
             if (obj == null) return;
 
             if (pair.code == currentCode && currentCode == station.code) {
-                //Need a code for every enigma
                 Debug.Log("Reporting issue");
                 station.Report.Invoke();
                 Debug.Log("Issue reported");
 
-                if (GameManager.Instance.currentEnigma == 1) {
+                if (station.id == 1) {
                     _enigma.Solve.Invoke();
                 }
 
                 if (GameManager.Instance.currentEnigma == 3) {
                     //_doorButton.GetComponent<BoxCollider>().enabled = true;
                     _enigma.Solve.Invoke();
-                }
-
-                if (obj.GetComponent<AudioCode>()) {
-                    obj.GetComponent<AudioCode>().ActivateCode(currentCode);
                 }
             }
         }
