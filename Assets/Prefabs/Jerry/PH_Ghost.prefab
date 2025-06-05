@@ -2145,7 +2145,7 @@ GameObject:
   - component: {fileID: 3479704094189365275}
   - component: {fileID: 6596834575506584860}
   - component: {fileID: 9139128212356292825}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: NS_Creature_low
   m_TagString: Untagged
   m_Icon: {fileID: 0}

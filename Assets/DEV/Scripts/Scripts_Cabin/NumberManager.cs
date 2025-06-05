@@ -106,7 +106,7 @@ public class NumberManager : MonoBehaviour
                 }
 
                 if (GameManager.Instance.currentEnigma == 3) {
-                    //_doorButton.GetComponent<BoxCollider>().enabled = true;
+                    _doorButton.GetComponent<BoxCollider>().enabled = true;
                     _enigma.Solve.Invoke();
                 }
             }
