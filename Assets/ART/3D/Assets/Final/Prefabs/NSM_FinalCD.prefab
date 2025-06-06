@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 7931192512373582059}
   - component: {fileID: 1976203265710259422}
   - component: {fileID: 5649689768138619088}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: NSM_FinalCD
   m_TagString: CD
   m_Icon: {fileID: 0}
