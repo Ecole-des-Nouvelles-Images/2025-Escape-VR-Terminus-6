@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 2398668547403584808}
   - component: {fileID: 2137316433752948777}
   - component: {fileID: 8657938556264088993}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: NSM_NormalClipboard
   m_TagString: Untagged
   m_Icon: {fileID: 0}

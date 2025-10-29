@@ -65,6 +65,7 @@ using UnityEngine.XR.Interaction.Toolkit.Interactables;
                 this.transform.rotation = Quaternion.Euler(new Vector3(_leverRotation, 0, 0));
             }
         }
+        
 
         public void PlayErrorSound() {
             _audioSource.clip = _errorSound;
