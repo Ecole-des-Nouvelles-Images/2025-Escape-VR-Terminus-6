@@ -5,6 +5,7 @@ namespace DEV.Scripts.Scripts_Transitions_and_Ending {
     public class Ending : MonoBehaviour {
         private Image _image;
         private Animator _animator;
+        [SerializeField] private GameObject _menuButton;
     
         // Start is called before the first frame update
         void Start() {

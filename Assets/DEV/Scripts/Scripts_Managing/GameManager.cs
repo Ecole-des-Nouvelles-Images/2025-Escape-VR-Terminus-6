@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour {
     private static GameManager instance = null;
@@ -41,5 +42,10 @@ public class GameManager : MonoBehaviour {
 
     private void SetBuildSettings() {
         Application.targetFrameRate = 90; /// IMPORTANT : FIXES FRAMERATE TO BE ACCEPTABLE IN VR
+    }
+
+    private void ReturnToMenu()
+    {
+        SceneManager.LoadScene("Scenes/TitleScreen");
     }
 }

@@ -11,4 +11,9 @@ public class SceneSwitcher : MonoBehaviour
     {
         GetComponent<Animator>().SetTrigger("StartTransition");
     }
+
+    public void ExitGame()
+    {
+        SceneManager.LoadScene("TitleScreen", LoadSceneMode.Single);
+    }
 }
