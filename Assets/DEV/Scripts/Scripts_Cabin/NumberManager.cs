@@ -37,18 +37,26 @@ public class NumberManager : MonoBehaviour
     //public MeshRenderer LockIndicator;
     //public Material LockOnMaterial;
     //public Material LockOffMaterial;
+
+    private bool _isShowingMessage;
     
     void Start() {
         ChangeStation.AddListener(OnChageStation);
-        currentCode = "___";
         _radioLocked = true;
-        UpdateCodeDisplay();
+        //UpdateCodeDisplay();
         _lockImage.sprite = _lockedSprite;
         _lockImage.color = _lockedColor;
         _audioSource.clip = _errorSound;
     }
 
-    public void AddNumber(int number) {
+    public void AddNumber(int number)
+    {
+        _isShowingMessage = false;
+        /*if (currentIndex == 0)
+        {
+            codeDisplay.text = "";
+        }*/
+        
         if (currentIndex < 3) {
             char[] codeArray = currentCode.ToCharArray();
             codeArray[currentIndex] = number.ToString()[0];
@@ -60,14 +68,15 @@ public class NumberManager : MonoBehaviour
 
     public void ValidateCode() {
         Debug.Log("Code validé : " + currentCode);
-        TestCode();
-
-        currentCode = "___";
+        codeDisplay.text = (TestCode() ? "OK" : "ERR");
         currentIndex = 0;
-        UpdateCodeDisplay();
+        _isShowingMessage = true;
+        currentCode = "___";
     }
 
     private void UpdateCodeDisplay() {
+        if (_isShowingMessage) { return; }
+        
         codeDisplay.text = currentCode;
     }
 
@@ -76,7 +85,7 @@ public class NumberManager : MonoBehaviour
         _enigma = GameManager.Instance.AssignEnigma();
     }
 
-    private void TestCode() {
+    private bool TestCode() {
         if (_radioLocked && currentCode == _unlockCode) {
             _radioLocked = false;
             Debug.Log("Radio Unlocked");
@@ -84,17 +93,17 @@ public class NumberManager : MonoBehaviour
             _audioSource.Play();
             _lockImage.sprite = _unlockedSprite;
             _lockImage.color = _unlockedColor;
+            return true;
         } else if (_radioLocked && currentCode != _unlockCode) {
-                currentCode = "Err";
-                UpdateCodeDisplay();
                 Debug.Log("Wrong code");
+                return false;
         }
         
-        if (_radioLocked) return;
+        if (_radioLocked) return false;
 
         foreach (var pair in codeDatabase.codeObjects) {
             GameObject obj = GameObject.Find(pair.objectName);
-            if (obj == null) return;
+            if (obj == null) return false;
 
             if (pair.code == currentCode && currentCode == station.code) {
                 Debug.Log("Reporting issue");
@@ -103,13 +112,17 @@ public class NumberManager : MonoBehaviour
 
                 if (station.id == 1) {
                     _enigma.Solve.Invoke();
+                    return true;
                 }
 
-                if (GameManager.Instance.currentEnigma == 3) {
+                if (GameManager.Instance.currentEnigma == 3)
+                {
                     _doorButton.GetComponent<BoxCollider>().enabled = true;
                     _enigma.Solve.Invoke();
+                    return true;
                 }
             }
         }
+        return false;
     }
 }

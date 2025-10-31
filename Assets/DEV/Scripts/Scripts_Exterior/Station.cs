@@ -130,6 +130,8 @@ public class Station : MonoBehaviour
                 _cabinBipper.Anomaly.Invoke();
                 //_generatorManager.SwitchLock(); // Done twice, because wtf
             }
+            
+            _lever.DisableHelpVisuals();
 
             if (IsMirror) {
                 _playerTrain = other.gameObject;
@@ -163,6 +165,7 @@ public class Station : MonoBehaviour
     private void OnEnigmaSolved() {
         _tunnel.ignoreLever = false;
         _tunnel.isStopped = false;
+        _lever.EnableHelpVisuals();
         Debug.Log("Lever reactivated after enigma");
         _currentEnigma.Solve.RemoveListener(OnEnigmaSolved);
     }

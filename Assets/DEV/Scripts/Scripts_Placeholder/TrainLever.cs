@@ -17,6 +17,9 @@ using UnityEngine.XR.Interaction.Toolkit.Interactables;
         [SerializeField] private AudioSource _audioSource;
         [SerializeField] private AudioClip _errorSound;
         
+        [Header("Help visuals")]
+        [SerializeField] private GameObject _guideArrow;
+        
         [Header("Debug")]
         private float _leverRotation;   //Self-explanatory
         private float _min, _max, _mid; //Minimum, maximum and middle rotation
@@ -39,6 +42,9 @@ using UnityEngine.XR.Interaction.Toolkit.Interactables;
             }
             SpeedChange.Invoke();
         }
+
+        public void EnableHelpVisuals() { _guideArrow.SetActive(true); }
+        public void DisableHelpVisuals() { _guideArrow.SetActive(false); }
     
         public void Reset() {
             transform.rotation = Quaternion.Euler(_min, 0, 0);
@@ -57,6 +63,7 @@ using UnityEngine.XR.Interaction.Toolkit.Interactables;
             _lowMid = _mid - _leverMargin;
             _highMid = _mid + _leverMargin;
             _audioSource = GetComponent<AudioSource>();
+            _guideArrow.SetActive(false); // Disable guide arrow on start
         }
     
         void Update() {

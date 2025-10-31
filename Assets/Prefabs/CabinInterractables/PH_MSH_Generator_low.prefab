@@ -162,7 +162,7 @@ MonoBehaviour:
   FusibleAnchorCollider: {fileID: 0}
   _enigma: {fileID: 0}
   _audioSource: {fileID: 5031028038224923211}
-  _openingNoise: {fileID: 8300000, guid: 8df80ab18fdfb3c4abc0ac8e22b9b3ca, type: 3}
+  _openingNoise: {fileID: 8300000, guid: a15a5e576df198142a4e9b37cb7b4bbb, type: 3}
   _closingNoise: {fileID: 8300000, guid: 10eba15620e04b24580aca5de71d0194, type: 3}
   _amogusLight: {fileID: 8437581643154757448}
   _leverLight: {fileID: 8830501549923895634}
@@ -2577,7 +2577,7 @@ AudioSource:
   m_GameObject: {fileID: 5689476300801302037}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: -8217714893344485519, guid: ebe0bcd59bbb0ac97a61579e6acab3a7, type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
   m_Volume: 1

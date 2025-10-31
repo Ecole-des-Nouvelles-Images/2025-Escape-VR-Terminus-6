@@ -7648,8 +7648,8 @@ MonoBehaviour:
   m_TransformationPriority: 0
   m_MoveSpeed: 0
   m_EnableStrafe: 1
-  m_EnableFly: 0
-  m_UseGravity: 1
+  m_EnableFly: 1
+  m_UseGravity: 0
   m_ForwardSource: {fileID: 5198983034843668874}
   m_LeftHandMoveInput:
     m_InputSourceMode: 2

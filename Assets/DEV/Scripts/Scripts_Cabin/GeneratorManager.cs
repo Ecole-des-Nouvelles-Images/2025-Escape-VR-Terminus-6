@@ -36,6 +36,7 @@ namespace DEV.Scripts.Scripts_Cabin {
         [SerializeField] private AudioSource _audioSource;
         [SerializeField] private AudioClip _openingNoise;
         [SerializeField] private AudioClip _closingNoise;
+        [SerializeField] private bool _hasPlayedOnce = false;
 
         [Header("Lights")]
         [SerializeField] private Light _amogusLight;
@@ -176,7 +177,12 @@ namespace DEV.Scripts.Scripts_Cabin {
                 FusibleAnchorCollider.enabled = true;
                 _animator.SetTrigger("OpenGenerator");
                 _audioSource.clip = _openingNoise;
-                _audioSource.Play();
+                if (!_hasPlayedOnce)
+                {
+                    _audioSource.Play(); _hasPlayedOnce = true; 
+                    
+                }
+                Debug.Log("Lever switched");
                 _leverLight.enabled = true;
             }
             else {
