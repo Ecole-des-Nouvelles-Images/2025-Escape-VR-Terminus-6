@@ -45,7 +45,7 @@ This game was brought to life by the Terminus 6 team:
 
 ![Gameplay Screenshot](https://github.com/Ecole-des-Nouvelles-Images/Unity-Template/blob/main/MetaData/gameplay-screenshot.png)
 
----
+  * [ ] ---
 
 ## Universe
 
