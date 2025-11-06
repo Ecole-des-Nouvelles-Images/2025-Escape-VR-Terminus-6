@@ -1,14 +1,11 @@
 
-# Terminus 6
-
-[A brief and engaging tagline or description of the game]
+![Main Banner](Images/Banner.png)
 
 [![Unity Version](https://img.shields.io/badge/Unity-2022.3.47-blue?style=flat&logo=unity)](https://unity.com/)
 [![GitHub Release](https://img.shields.io/github/v/release/Ecole-des-Nouvelles-Images/Unity-Template)](https://github.com/Ecole-des-Nouvelles-Images/Unity-Template/releases)
 [![License](https://img.shields.io/github/license/Ecole-des-Nouvelles-Images/Unity-Template)](https://github.com/Ecole-des-Nouvelles-Images/Unity-Template/blob/main/LICENSE)
 [![Repo Size](https://img.shields.io/github/repo-size/Ecole-des-Nouvelles-Images/Unity-Template?color=lightgrey)](https://github.com/Ecole-des-Nouvelles-Images/Unity-Template)
 
-![Main Banner](https://github.com/Ecole-des-Nouvelles-Images/Unity-Template/blob/main/MetaData/main-banner.png)
 
 ## Table of Contents
 1. [Introduction](#introduction)
