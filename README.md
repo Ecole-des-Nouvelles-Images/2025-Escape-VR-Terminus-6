@@ -2,7 +2,7 @@
 ![Main Banner](Images/Banner.png)
 
 [![Unity Version](https://img.shields.io/badge/Unity-2022.3.47-blue?style=flat&logo=unity)](https://unity.com/)
-[![GitHub Release](https://img.shields.io/github/v/release/Ecole-des-Nouvelles-Images/Unity-Template)](https://github.com/Ecole-des-Nouvelles-Images/Unity-Template/releases)
+[![GitHub Release](https://img.shields.io/github/v/release/Ecole-des-Nouvelles-Images/2025-Escape-VR-Terminus-6)](https://github.com/Ecole-des-Nouvelles-Images/2025-Escape-VR-Terminus-6/releases)
 [![License](https://img.shields.io/github/license/Ecole-des-Nouvelles-Images/Unity-Template)](https://github.com/Ecole-des-Nouvelles-Images/Unity-Template/blob/main/LICENSE)
 [![Repo Size](https://img.shields.io/github/repo-size/Ecole-des-Nouvelles-Images/Unity-Template?color=lightgrey)](https://github.com/Ecole-des-Nouvelles-Images/Unity-Template)
 
@@ -40,8 +40,6 @@ This game was brought to life by the Terminus 6 team:
 
 ![Gameplay Screenshot](Images/Gameplay.png)
 
-  * [ ] ---
-
 ## Universe
 
  You have been hired by the transport company MTS as a night security guard. Your objective is to travel between stations, and signal any anomalies you encounter. However, your contract didn't mention that these anomalies might leave you questioning reality. 
@@ -49,23 +47,22 @@ This game was brought to life by the Terminus 6 team:
 ---
 
 ## Release
-[Provide details about the platform, availability, and installation instructions. Mention if the game is available on PC, console, or mobile, and provide links to download or install.]
-
-This game supports Android, to be run on Android-based VR headsets.
+This game supports Android, to be run on Android-based VR headsets. 
+Once you have downloaded the app, you can copy it into the contents of your headset.
 
 ---
 
 ## Development
-This project is currently in development. Future releases will contain additional stations and graphical enhancements.
+This project is currently in development. Future releases will contain additional stations and enhancements, such as improved lighting.
 Following the discovery of a security vunlerability in Unity ([CVE-2025-59489](https://nvd.nist.gov/vuln/detail/CVE-2025-59489)), the project has been migrated to Unity version 2022.3.62f2.
 
-If you encounter any bugs or have suggestions, please open an **[issue ticket](https://github.com/Ecole-des-Nouvelles-Images/Unity-Template/issues/new)**.
+If you encounter any bugs or have suggestions, please open an **[issue ticket](https://github.com/Ecole-des-Nouvelles-Images/2025-Escape-VR-Terminus-6/issues/new)**.
 
 ---
 
 ## Special Thanks
 We would like to thank:
-- **Fréderic BAST** for teaching us the C# language and Unity Engine
+- **Fréderic BAST** for teaching us the C# language and the basics of the Unity Engine and its XR Toolkit
 - **Christopher BARRERA** for discovering how to create portals on the Meta Quest 3
 
 ---
