@@ -33,8 +33,6 @@ This game was brought to life by the Terminus 6 team:
 - **Mathis GANZ**: Game Art
 - **Vincent MÉNÉROUD**: Dev
 
-![Team](https://github.com/Ecole-des-Nouvelles-Images/Unity-Template/blob/main/MetaData/team-photo.png)
-
 ---
 
 ## Gameplay
